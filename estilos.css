@@ -23,7 +23,7 @@ body {
 }
 /*posicionamos el texto*/
 .carousel-caption {
-    bottom: 30%; /*deja un espaciado en la parte inferior de la imagen*/
+    bottom: 40vh; /*deja un espaciado en la parte inferior de la imagen*/
     z-index: 2; /*hace que el texto se muestre encima de la imagen*/
     background-color: rgba(0,0,0,0.6); /*fondo transparente*/
 }
@@ -82,36 +82,36 @@ body {
 
 @media(max-width: 767px){
     .navbar-nav{
-        text-align: center;
+        text-align: center; /*Centra el texto en la barra de navegación*/
     }
     .carousel-item{
-        height: 70vh;
+        height: 70vh; /*Establecemos la altura de los elementos del carrusel en 70% del alto de la ventana*/
     }
     .w-100{
-        height: 70vh;
+        height: 70vh; /*Establecemos la altura de los elementos con clase .w-100 en 70% del alto de la ventana*/
     }
     .carousel-caption{
-        bottom: 125px;
+        bottom: 125px; /*Posicionamos la leyenda del carrusel a 125px desde la parte inferior*/
     }
     .carousel-caption h5 {
-        font-size: 17px;
+        font-size: 17px; /*Establecemos el tamaño de fuente de los títulos en la leyenda del carrusel en 17px*/
     }
     .carousel-caption a {
-        padding: 10px 15px;
-        font-size: 15px;
+        padding: 10px 15px; /*Se agrega un espaciado de 10px en el top/bottom y de 15px en left/right*/
+        font-size: 15px; /*Establecemos el tamaño de fuente de los enlaces en la leyenda del carrusel en 15px*/
     }
     .carousel-caption p {
-        width: 100%;
+        width: 100%; /*Establecemos el ancho del párrafo en la leyenda del carrusel en 100%*/
         line-height: 1.5;
-        font-size: 12px;
+        font-size: 12px; /*Establecemos el tamaño de fuente del párrafo en la leyenda del carrusel en 12px*/
     }
     .about-text{
-        padding-top: 50px;
+        padding-top: 50px; /*Agregamos un espacio superior de 50px al texto de la sección "about"*/
     }
     .card {
-        margin-bottom: 30px;
+        margin-bottom: 30px; /*Agregamos un margen inferior de 30px a las tarjetas*/
     }
     .section-padding {
-        padding: 50px 0;
+        padding: 50px 0; /*Agregamos un relleno de 50px en la parte superior e inferior de las secciones*/
     }
 }
