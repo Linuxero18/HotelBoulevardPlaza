@@ -68,7 +68,7 @@ body {
 
 .navbar-toggler{
     padding: 1px 5px; /*padding de 1px top/bottom y de 5 px left/right*/
-    font-size: 18px; /*tamaño de letra*/
+    font-size: 18px; /*tamaño de la letra*/
     line-height: 0.3; /*se reduce el alto de la linea para que se vea más compacto*/
 }
 /*tamaño de texto dentro de la clase .card-body*/
