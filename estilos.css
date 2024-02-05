@@ -80,8 +80,11 @@ body {
     font-size: 20px;
 }
 
+/* Definimos estilos específicos para dispositivos con un ancho máximo de 767px.*/
+
 @media(max-width: 767px){
     .navbar-nav{
+        text-align: center; /*Centra el texto en la barra de navegación*/
         text-align: center; /*Centra el texto en la barra de navegación*/
     }
     .carousel-item{
