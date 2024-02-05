@@ -69,7 +69,7 @@ body {
 .navbar-toggler{
     padding: 1px 5px; /*padding de 1px top/bottom y de 5 px left/right*/
     font-size: 18px; /*tamaño de la letra*/
-    line-height: 0.3; /*se reduce el alto de la linea para que se vea más compacto*/
+    line-height: 0.3; /*interlineado de lineas para que se vea más compacto*/
 }
 /*tamaño de texto dentro de la clase .card-body*/
 .services .card-body {
@@ -99,12 +99,12 @@ body {
         font-size: 17px; /*Establecemos el tamaño de fuente de los títulos en la leyenda del carrusel en 17px*/
     }
     .carousel-caption a {
-        padding: 10px 15px;
+        padding: 10px 15px; /*Agregamos espacio en top/bottom de 10px y left/right de 15px*/
         font-size: 15px; /*Establecemos el tamaño de fuente de los enlaces en la leyenda del carrusel en 15px*/
     }
     .carousel-caption p {
         width: 100%; /*Establecemos el ancho del párrafo en la leyenda del carrusel en 100%*/
-        line-height: 1.5;
+        line-height: 1.5; /*interlineado entre lineas*/
         font-size: 12px; /*Establecemos el tamaño de fuente del párrafo en la leyenda del carrusel en 12px*/
     }
     .about-text{
