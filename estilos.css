@@ -24,7 +24,7 @@ body {
 .carousel-caption {
     bottom: 200px;
     z-index: 2;
-    background-color: rgba(0,0,0,0.7);    
+    background-color: rgba(0,0,0,0.6);
 }
 
 .carousel-caption h5{
