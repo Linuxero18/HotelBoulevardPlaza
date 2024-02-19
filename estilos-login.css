@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'San Francisco';
+}
+
+@font-face {
+    font-family: 'San Francisco';
+    src: url('fuente/SanFran-Reg.otf') format('OpenType');
+}
+
+body{
+    background-image: url(img/fondo.jpg); /* url de la imagen */
+    background-size: cover; /* que cubra toda la pantalla */
+    background-repeat: no-repeat; /*no se repite el fondo*/
+    background-position: center; /*la imagen en el centro*/
+    background-attachment: fixed; /*se adapta a la pantalla*/
+}
+
+main{
+    width: 100%; /*tamaño*/
+    padding: 150px; /*espacio de 20px en los cuatro lados*/
+    margin: auto; /* margenes para que se centre */
+    margin-top: 100px; /*se aleje de la parte de arriba*/
+}
+
+.contenedor_universal{
+    width: 100%; /*tamaño*/
+    max-width: 800px; /*tamaño maximo*/
+    margin: auto; /*margenes automáticos*/
+    position: relative; /*posicion relativa*/
+}
+
+.caja_trasera_login{
+    width: 100%; /*tamaño*/
+    padding: 10px 20px; /*espacio dentro del elemento*/
+    display: flex; /*caja flexible*/
+    justify-content: center; /*centramos el flex*/
+    backdrop-filter: blur(8.5px); /*difuminamos el fondo*/
+    background-color: rgba(70, 162, 253, 0.9);
+    border-radius: 20px;
+}
+
+.caja_trasera_login div{
+    margin: 100px 40px; /*margen de los espacios fuera del elemento*/
+    color: black; /*color de letra*/
+    transition: all 500ms; /*asiganmos una transición a todo de 500ms*/
+}
+
+
+.caja_trasera_login div p,
+.caja_trasera_login button{
+    margin-top: 30px; /*espacio superior del parrafo y botón*/
+}
+
+.caja_trasera_login div h3{
+    font-weight: 400; /*peso de la fuente (letra)*/
+    font-size: 26px; /*tamaño de letra*/
+}
+
+.caja_trasera_login div p{
+    font-size: 16px; /*tamaño de letra*/
+    font-weight: 300; /*peso de la fuente*/
+}
+
+.caja_trasera_login button{
+    padding: 10px 40px; /*espacio dentro del elemento*/
+    border: 2px solid #fff; /*borde solido color blanco*/
+    font-size: 14px; /*tamaño de letra*/
+    background: transparent; /*fondo transparente*/
+    font-weight: 600; /*peso de la fuente*/
+    cursor: pointer; /*para que la gente sepa que es un boton y ejecuta una funcion*/
+    color: black; /*color de letra*/
+    transition: all 300ms; /*transición a todo de 300ms*/
+    border-radius: 10px;
+}
+
+.caja_trasera_login button:hover{
+    background: #fff; 
+    color: black;
+    border: 2px solid black;
+    /*background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);*/
+}
+
+/*Formularios*/
+
+.contenedor_login-registrarse{
+    display: flex; /*caja flexible*/
+    align-items: center; /*items del display centrados*/
+    width: 100%; /*tamaño*/
+    max-width: 380px; /*tamaño maximo*/
+    position: relative; /*para manejarlo mejor*/
+    top: -185px; /*espacio de la parte de arriba*/
+    left: 10px; /*espacio al lado izquierdo*/
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);/*transición en el formulario de login y registro*/
+}
+
+.contenedor_login-registrarse form{
+    width: 100%; /*tamaño*/
+    padding: 80px 20px; /*espacio dentro del elemento*/
+    background: #fff; /*color del fondo*/
+    position: absolute; /*que no se mueva*/
+    border-radius: 20px; /*border de tipo circular */
+}
+
+.contenedor_login-registrarse form h2{
+    font-size: 30px; /*tamaño del texto*/
+    text-align: center; /*texto centrado*/
+    margin-bottom: 20px; /*margen de la parte inferior*/
+    color: #46A2FD; /*color de letra*/
+}
+
+.contenedor_login-registrarse form input{
+    width: 100%; /*tamaño*/
+    margin-top: 20px; /*espacio en la parte superior*/
+    padding: 10px; /*espacio de 10px dentro del elemento*/
+    border: none; /*eliminamos los bordes*/
+    background: #fff; /*color de fondo*/
+    font-size: 16px; /*tamaño de letra*/
+    outline: none; /*eliminamos la linea de selección*/
+}
+
+.contenedor_login-registrarse form button{
+    padding: 10px 40px; /*espacio dentro del elemento*/
+    margin-top: 30px; /*espacio superior del 30px*/
+    border: none; /*sin bordes*/
+    font-size: 14px; /*tamaño de texto*/
+    background: #46A2FD; /*color del fondo*/
+    font-weight: 600; /*peso del texto*/
+    cursor: pointer; /*para que el usuario sepa que ejecuta una acción*/
+    color: #fff; /*color del texto*/
+    border-radius: 10px;
+}
+
+.contenedor_login-registrarse form button:hover{
+    border: 2px solid #46A2FD;
+    background-color: #F2F2F2;
+    color: #46A2FD;
+}
+
+.formulario_login{
+    opacity: 1; /*opacidad*/
+    display: block; /*display en bloque*/
+}
+.formulario_registrarse{
+    display: none; /*oculta el elemento*/
+}
+
+@media screen and (max-width: 850px){ /*Cuando la pagina tenga ancho de 700px*/
+    main{
+        margin-top: 50px; /*espacio superior de 50px*/
+    }
+
+    .caja_trasera_login{
+        max-width: 350px; /*tamaño maximo*/
+        height: 300px; /*altura de 300px*/
+        flex-direction: column; /*Ponemos en columna los elementos de la caja*/
+        margin: auto; /*margenes automaticos para que se centre*/
+    }
+
+    .caja_trasera_login div{
+        margin: 0px; /*ningún espacio*/
+        position: absolute; /*Se ocultan los div*/
+    }
+
+
+    /*Formularios*/
+
+    .contenedor_login-registrarse{
+        top: -10px; /*espacio superior*/
+        left: -5px; /*espacio a la izquierda*/
+        margin: auto; /*espacio automatico para que se mantenga centrado*/
+    }
+
+    .contenedor_login-registrarse form{
+        position: relative; /*que se pueda mover y no oculte el texto de atrás*/
+    }
+}
