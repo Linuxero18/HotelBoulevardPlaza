@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro - Hotel Boulevard</title>
+    <link rel="stylesheet" href="css/estilos-login.css">
+</head>
+<body>
+    <main>
+        <div class="contenedor_universal">
+            <div class="caja_trasera_login">
+                <div class="caja-login">
+                    <h3>¿Ya tienes una cuenta?</h3>
+                    <p>Inicia sesión para entrar en la página</p>
+                    <button id="btn_iniciar_sesion">Iniciar Sesión</button>
+                </div> 
+                <div class="caja-registrarse">
+                    <h3>¿Aún no tienes una cuenta?</h3>
+                    <p>Registrate para que puedas iniciar sesión</p>
+                    <button id="btn_registrarse">Regístrate</button>
+                </div>
+            </div>
+            <!-- Formulario login y registrarse -->
+            <div class="contenedor_login-registrarse">
+                <form action="" class="formulario_login" id="form_log">
+                    <h2>Iniciar Sesión</h2>
+                    <input type="text" id="correo" placeholder="Correo Electrónico">
+                    <input type="password" id="contra" placeholder="Contraseña">
+                    <button type="submit">Entrar</button>
+                </form>
+                <form action="" class="formulario_registrarse">
+                    <div class="caja_trasera_registrarse">
+                        <h2>Regístrate</h2>
+                        <input type="text" placeholder="Nombre completo">
+                        <input type="text" placeholder="Correo Electrónico">
+                        <input type="text" placeholder="Usuario">
+                        <input type="password" placeholder="Contraseña">
+                        <button>Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/script.js"></script>
+
+</body>
+</html>
