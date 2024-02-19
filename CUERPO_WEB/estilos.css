@@ -1,0 +1,119 @@
+/*Reinica los margenes, padding y box model*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*Se establece sans-serif como fuente principal*/
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*pone un fondo oscuro*/
+body {
+    background: #161815;    
+}
+/*Se agrega relleno en top/bottom de 70 px*/
+.section-padding {
+    padding: 70px 0;
+}
+/*hacemos responsive los items del carrusel*/
+.carousel-item {
+    height: 80%; /*indicamos un alto del 80% en cada slide*/
+    min-width: 300px; /*esto asegura que los slides no se compriman en pantallas chicas*/
+}
+/*posicionamos el texto*/
+.carousel-caption {
+    bottom: 30%; /*deja un espaciado en la parte inferior de la imagen*/
+    z-index: 2; /*hace que el texto se muestre encima de la imagen*/
+    background-color: rgba(0,0,0,0.6); /*fondo transparente*/
+}
+/*damos estilos a los h5 del carousel-caption*/
+.carousel-caption h5{
+    font-size: 45px; /*tamaño en 45px*/
+    text-transform: uppercase; /*texto en mayusculas*/
+    letter-spacing: 2px; /*espacio entre letras*/
+    margin-top: 25px; /*se deja un margen superior de 25px*/
+    color: white; /*color del texto*/
+}
+/*damos estilos a los p del carousel-caption*/
+.carousel-caption p {
+    width: 60%; /*se establece solo de 60% de anchura*/
+    margin: auto; /*centra de manera horizontal el parrafo*/
+    font-size: 18px; /*tamaño del texto*/
+    line-height: 1.9; /*interlineado de 1.9 en vertical entre lineas*/
+    color: white; /*color del texto*/
+}
+/*damos estilo al nav a*/
+.navbar-nav a {
+    font-size: 15px; /*tamaño del texto*/
+    text-transform: uppercase; /*Mayusculas*/
+    font-weight: 500; /*se resaltan los enlaces*/
+}
+/*a todo .navbar-brand dentro de .navbar-dar*/
+.navbar-dark .navbar-brand {
+    color: #fff; /*color del texto*/
+    font-size: 25px; /*tamaño del texto*/
+    text-transform: uppercase; /*Mayusculas*/
+    font-weight: bold; /*se usan negritas*/
+    letter-spacing: 2px; /*espaciado entre letras*/
+}
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+    color: #000; /*Cambia el color del texto del logo/marca a negro al hacer hover o focus.*/
+}
+/*agregamos altura a los elementos con clase .w-100*/
+.w-100 {
+    height: 100hv;
+}
+
+.navbar-toggler{
+    padding: 1px 5px; /*padding de 1px top/bottom y de 5 px left/right*/
+    font-size: 18px; /*tamaño de la letra*/
+    line-height: 0.3; /*se reduce el alto de la linea para que se vea más compacto*/
+}
+/*tamaño de texto dentro de la clase .card-body*/
+.services .card-body {
+    font-size: 20px;
+}
+/*tamaño de texto dentro de la etiqueta i*/
+.team .card-body i {
+    font-size: 20px;
+}
+
+/* Definimos estilos específicos para dispositivos con un ancho máximo de 767px.*/
+
+@media(max-width: 767px){
+    .navbar-nav{
+        text-align: center; /*Centra el texto en la barra de navegación*/
+    }
+    .carousel-item{
+        height: 70vh; /*Establecemos la altura de los elementos del carrusel en 70% del alto de la ventana*/
+    }
+    .w-100{
+        height: 70vh; /*Establecemos la altura de los elementos con clase .w-100 en 70% del alto de la ventana*/
+    }
+    .carousel-caption{
+        bottom: 125px; /*Posicionamos la leyenda del carrusel a 125px desde la parte inferior*/
+    }
+    .carousel-caption h5 {
+        font-size: 17px; /*Establecemos el tamaño de fuente de los títulos en la leyenda del carrusel en 17px*/
+    }
+    .carousel-caption a {
+        padding: 10px 15px;
+        font-size: 15px; /*Establecemos el tamaño de fuente de los enlaces en la leyenda del carrusel en 15px*/
+    }
+    .carousel-caption p {
+        width: 100%; /*Establecemos el ancho del párrafo en la leyenda del carrusel en 100%*/
+        line-height: 1.5;
+        font-size: 12px; /*Establecemos el tamaño de fuente del párrafo en la leyenda del carrusel en 12px*/
+    }
+    .about-text{
+        padding-top: 50px; /*Agregamos un espacio superior de 50px al texto de la sección "about"*/
+    }
+    .card {
+        margin-bottom: 30px; /*Agregamos un margen inferior de 30px a las tarjetas*/
+    }
+    .section-padding {
+        padding: 50px 0; /*Agregamos un relleno de 50px en la parte superior e inferior de las secciones*/
+    }
+}
