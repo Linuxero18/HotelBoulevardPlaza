@@ -28,18 +28,12 @@
     </script>
 <body>
     <!---------------------- BARRA DE NAVEGACIÓN ---------------------->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-
-            
-
-            <a href="#" class="navbar-brand"><span class="text-success"><sup><img src="img/logo-empresa-removebg-preview.png" alt="" width="170" height="150"></sup>Hotel</span> Boulevard Plaza</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="navbarS"
-                aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation"><span
-                    class="navbar-toggler-icon"></span>
+            <a href="#" class="navbar-brand"><span class="text-success"><sup><img src="img/logo-empresa-removebg-preview.png" alt="" width="100" height="100"></sup>Hotel</span> Boulevard Plaza</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS" aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarS">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -49,14 +43,13 @@
                         <a href="#Servicios" class="nav-link">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#asesores" class="nav-link">Habitaciones</a>
+                        <a href="#Habitaciones" class="nav-link">Habitaciones</a>
                     </li>
                     <li class="nav-item">
                         <a href="#contacto" class="nav-link">Contacto</a>
                     </li>
                 </ul>
             </div>
-
         </div>
     </nav>
     <!---------------------- FIN BARRA DE NAVEGACIÓN ---------------------->
@@ -64,53 +57,38 @@
 
     <!---------------------- INICIO DE SLIDER ---------------------->
 
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="max-width: 100%;">
-        
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/home-3.jpg" class="d-block w-100 img-fluid" alt="...">
+                <img src="img/home-1.jpg" class="d-block w-100 img-fluid" alt="...">
                 <div class="carousel-content">
-                    <form class="row g-3">
-                        <div class="entrada  col-md-4">
-                            <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
-                            <input type="date" class="form-control" id="fechaEntrada" required>
-                        </div>
-                        <div class="salida col-md-4 ">
-                            <label for="fechaSalida" class="form-label">Fecha Salida</label>
-                            <input type="date" class="form-control" id="fechaSalida" required>
-                        </div>
-                        <div class="personas col-md-4">
-                            <label for="numPersonas" class="form-label">N° Personas</label>
-                            <input type="number" class="form-control" id="numPersonas" required>
-                        </div>
-                        <div class="buscar col-md-12 "> 
-                            <button type="submit" class="btn btn-success">Buscar</button>
-                        </div>
-                    </form>
+                    <div class="d-flex flex-column align-items-center">
+                        <h3><b>Comodas Habitaciones</b></h3>
+                        <p>Cuartos Amplios, Limpieza  exhaustiva, Habitaciones Especiales y Promociones</p>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item ">
+
+            <div class="carousel-item">
                 <img src="img/home-2.jpg" class="d-block w-100 img-fluid" alt="...">
                 <div class="carousel-content">
-                    <form class="row g-3">
-                        <div class="entrada  col-md-4">
-                            <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
-                            <input type="date" class="form-control" id="fechaEntrada" required>
-                        </div>
-                        <div class="salida col-md-4 ">
-                            <label for="fechaSalida" class="form-label">Fecha Salida</label>
-                            <input type="date" class="form-control" id="fechaSalida" required>
-                        </div>
-                        <div class="personas col-md-4">
-                            <label for="numPersonas" class="form-label">N° Personas</label>
-                            <input type="number" class="form-control" id="numPersonas" required>
-                        </div>
-                        <div class="buscar col-md-12 "> 
-                            <button type="submit" class="btn btn-success">Buscar</button>
-                        </div>
-                    </form>
+                    <div class="d-flex flex-column align-items-center">
+                        <h3><b>Moderna Infrestructura</b></h3>
+                        <p>Seguridad, Decoracion Moderna, Espacios de trabajo y relajacion</p>
+                    </div>
                 </div>
             </div>
+
+            <div class="carousel-item">
+                <img src="img/home-3.jpg" class="d-block w-100 img-fluid" alt="...">
+                <div class="carousel-content">
+                    <div class="d-flex flex-column align-items-center">
+                        <h3><b>Comodidades</b></h3>
+                        <p> Áreas con Google Home, Salas Movie con Acceso a Netflix y mas Plataformas de Video Premium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -121,17 +99,50 @@
         </button>
     </div>
     
+    
+    
     <!---------------------- FIN DE SLIDER ---------------------->
 
 
+    <!---------------------- INICIO BUSCAR--------------------->
+
+    <section id="Buscar" class="form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
+                        <input type="date" class="form-control fecha" id="fechaEntrada" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="fechaSalida" class="form-label">Fecha Salida</label>
+                        <input type="date" class="form-control fecha" id="fechaSalida" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="numPersonas" class="form-label">N° Personas</label>
+                        <input type="number" class="form-control personas" id="numPersonas" required>
+                    </div>
+                </div>
+                <div class="col-md-3 button-container">
+                    <button type="submit" class="btn btn-success w-100">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!---------------------- FIN BUSCAR ---------------------->
 
     <!---------------------- iNICIO SECTION SERVICIOS ---------------------->
 
-    <section class="services section-padding" id="Servicios">
+    <section id="Servicios" class="services section-padding" >
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-header text-center text-white pb-5">
+                    <div class="servicios-contenedor section-header text-center text-white pb-5">
                         <h2>Nuestros Servicios</h2>
                         <p>
                             Ofrecemos una variedad de servicios para garantizar que tu estancia sea cómoda y memorable. Desde habitaciones lujosamente amuebladas hasta un servicio de atención al cliente excepcional, nuestro objetivo es hacer que te sientas como en casa. Wi-Fi gratuito en todas nuestras instalaciones.¡Ven y experimenta la hospitalidad de primera clase!
@@ -184,14 +195,13 @@
     </section>
     <!---------------------- FIN SECTION SERVICIOS ---------------------->
 
+    <!---------------------- INICIO SECTION HABITACIONES ---------------------->
 
-    <!---------------------- INICIO SECTION PORTFOLIO ---------------------->
-
-    <section class="portfolio section-padding">
+    <section id="Habitaciones" class="portfolio section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-header text-center text-white pb-5">
+                    <div class="habitaciones-contenedor section-header text-center text-white pb-5">
                         <h2>Habitaciones</h2>
                         <p>
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis labore facere cum maiores deserunt, exercitationem nisi non nihil nobis harum, atque cupiditate et dolorem magni iste? Similique iusto obcaecati beatae! 
@@ -259,7 +269,7 @@
 
     <!---------------------- INICIO SECTION CONTACTO ---------------------->
 
-    <section class="contact section-padding" id="contacto">
+    <section id="contacto" class="contact section-padding" >
         <div class="container mt-5 mb-5">
             
             <div class="row">
