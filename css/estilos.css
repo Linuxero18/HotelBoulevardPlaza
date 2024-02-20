@@ -3,6 +3,7 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #161815;
     color: white;
+    margin-top: 56px;
 }
 a{
     text-decoration: none;
@@ -35,14 +36,13 @@ a{
 }
 
 .navbar-brand {
-    font-size: 23px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .navbar-nav .nav-link {
-    font-size: 18px;
+    font-size: 16px;
     margin-right: 20px;
-    
 }
 
 /*////////////////////// Estilos del carrusel //////////////////////*/
@@ -53,7 +53,7 @@ a{
 
 .carousel-item {
     position: relative;
-    max-height: 780px; /* Ajusta este valor según tus necesidades */
+    max-height: 750px; /* Ajusta este valor según tus necesidades */
 }
 
 .carousel-content {
@@ -76,12 +76,6 @@ a{
 .carousel-content p {
     font-size: 1rem;
     color: white; /* Color del texto */
-}
-
-/*////////////////////// Estilos de la sección Buscar //////////////////////*/
-
-.form-section{
-    padding: 10px;
 }
 
 /*////////////////////// Estilos de la sección Servicios //////////////////////*/
@@ -150,6 +144,7 @@ a{
 
 /*////////////////////// Estilos del formulario //////////////////////*/
 .form-section {
+    padding: 10px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -170,13 +165,7 @@ a{
 }
 
 .form-control {
-    width: 100%;
     padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    background-color: #f8f9fa;
-    color: #495057;
 }
 
 .container-fluid.bg-success {
@@ -190,13 +179,23 @@ a{
 @media (max-width: 767px) {
     /* Estilos de la barra de navegación en dispositivos móviles */
     .navbar-brand {
-        font-size: 18px;
+        font-size: 14px;
+    }
+
+    .navbar-brand img {
+        width: 60px;
+        height: 60px;
+    }
+    .navbar-toggler {
+        padding: 0px;
+        font-size: 16px;        
     }
 
     .navbar-nav .nav-link {
         font-size: 15px;
         margin-right: 8px;
     }
+
 
     /* Estilos de la sección "Servicios" en dispositivos móviles */
     .services h2 {

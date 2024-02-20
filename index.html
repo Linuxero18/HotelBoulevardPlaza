@@ -11,10 +11,10 @@
 <script>
     window.onload = function()
     {
-        var fecha = new Date(); 
-        var dia = fecha.getDate();
-        var mes = fecha.getMonth() + 1; 
-        var ano = fecha.getFullYear();
+        let fecha = new Date(); 
+        let dia = fecha.getDate();
+        let mes = fecha.getMonth() + 1; 
+        let ano = fecha.getFullYear();
     
         if(dia < 10) {
            dia = '0' + dia;} 
@@ -27,38 +27,39 @@
         document.getElementById("fechaSalida").setAttribute("min", fecha);
     }
 
-    
 </script>
 <body>
     <!---------------------- BARRA DE NAVEGACIÓN ---------------------->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a href="#" class="navbar-brand"><span class="color-hotel"><sup><img src="img/logo-empresa-removebg-preview.png" alt="" width="100" height="100"></sup>Hotel</span> Boulevard Plaza</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS" aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarS">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Servicios" class="nav-link">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Habitaciones" class="nav-link">Habitaciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contacto" class="nav-link">Contacto</a>
-                    </li>
-                </ul>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a href="#" class="navbar-brand"><span class="color-hotel"><sup><img src="img/logo-empresa-removebg-preview.png" alt="" width="100" height="100"></sup>Hotel</span> Boulevard Plaza</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS" aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarS">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Servicios" class="nav-link">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="habitaciones.html" class="nav-link">Habitaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contacto" class="nav-link">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <!---------------------- FIN BARRA DE NAVEGACIÓN ---------------------->
 
 
-    <!---------------------- INICIO DE SLIDER ---------------------->
+    <!---------------------- INICIO DE CAROUSEL ---------------------->
 
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -104,12 +105,12 @@
     
     
     
-    <!---------------------- FIN DE SLIDER ---------------------->
+    <!---------------------- FIN DE CAROUSEL ---------------------->
 
 
     <!---------------------- INICIO BUSCAR--------------------->
 
-    <section id="Buscar" class="form-section">
+    <form id="buscarForm" class="form-section" action="habitaciones.html">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -127,7 +128,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="numPersonas" class="form-label">N° Personas</label>
-                        <input type="number" class="form-control personas" id="numPersonas" min="1" max="6" required>
+                        <input type="number" class="form-control personas" id="numPersonas" min="1" max="5" required>
                     </div>
                 </div>
                 <div class="col-md-3 button-container">
@@ -135,7 +136,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </form>
 
     <!---------------------- FIN BUSCAR ---------------------->
 
@@ -268,7 +269,7 @@
             </div>
         </div>
     </section>
-    <!---------------------- FIN SECTION PORTFOLIO ---------------------->
+    <!---------------------- FIN SECTION HABITACIONES ---------------------->
         
 
     <!---------------------- INICIO SECTION CONTACTO ---------------------->
@@ -326,13 +327,11 @@
             <p class="text-white"><a href="">Inicia Sesión Admin</a></p>
             <div class="social-icons">
                 <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
     </footer>
     <!---------------------- FIN FOOTER ---------------------->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script></body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 </html>
