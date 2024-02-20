@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <script>
-    window.onload = function(){
+    window.onload = function()
+    {
         var fecha = new Date(); 
         var dia = fecha.getDate();
         var mes = fecha.getMonth() + 1; 
@@ -25,12 +26,14 @@
         document.getElementById("fechaEntrada").setAttribute("min", fecha);
         document.getElementById("fechaSalida").setAttribute("min", fecha);
     }
-    </script>
+
+    
+</script>
 <body>
     <!---------------------- BARRA DE NAVEGACIÓN ---------------------->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a href="#" class="navbar-brand"><span class="text-success"><sup><img src="img/logo-empresa-removebg-preview.png" alt="" width="100" height="100"></sup>Hotel</span> Boulevard Plaza</a>
+            <a href="#" class="navbar-brand"><span class="color-hotel"><sup><img src="img/logo-empresa-removebg-preview.png" alt="" width="100" height="100"></sup>Hotel</span> Boulevard Plaza</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS" aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -124,11 +127,11 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="numPersonas" class="form-label">N° Personas</label>
-                        <input type="number" class="form-control personas" id="numPersonas" required>
+                        <input type="number" class="form-control personas" id="numPersonas" min="1" max="6" required>
                     </div>
                 </div>
                 <div class="col-md-3 button-container">
-                    <button type="submit" class="btn btn-success w-100">Buscar</button>
+                    <button type="submit" class="btn w-100">Buscar</button>
                 </div>
             </div>
         </div>

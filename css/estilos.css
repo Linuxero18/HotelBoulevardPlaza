@@ -4,14 +4,13 @@ body {
     background-color: #161815;
     color: white;
 }
-
-a {
-    color: white;
+a{
     text-decoration: none;
+    color: #20aa25;
 }
 
-a:hover {
-    text-decoration: underline;
+.color-hotel, .nav-item a:hover{
+    color: #48A04B;
 }
 
 /*////////////////////// Estilo del botón //////////////////////*/
@@ -19,14 +18,14 @@ a:hover {
     padding: 12px 24px;
     margin-top: 30px;
     color: #fff;
-    border: none;
+    background: #48A04B;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
 
 .btn:hover {
-    background-color: success;
+    background-color: #20aa25;
 }
 
 /*////////////////////// Estilos de la barra de navegación //////////////////////*/
@@ -91,14 +90,14 @@ a:hover {
     max-height: 100%;
 }
 
-.servicios-contenedor, .habitaciones-contenedor, .section-header{
-    background-color: rgba(81, 150, 97, 0.2); /* Fondo transparente oscuro */
+.servicios-contenedor, .habitaciones-contenedor{
+    background-color: rgba(72, 160, 75, 0.3); /* Fondo transparente oscuro */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
-    margin-bottom: 40px;    
+    padding: 30px;
+    margin-bottom: 30px;    
 }
 
 .services h2 {
