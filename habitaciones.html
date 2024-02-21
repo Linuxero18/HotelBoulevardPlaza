@@ -56,6 +56,10 @@
 
 
     <!---------------------- INICIO HABITACIONES DISPONIBLES ---------------------->
+    <div id="mensajeNoHabitaciones" class="container mt-4" style="display: none;">
+        <p class="alert alert-warning">Lo sentimos, no se encontraron habitaciones disponibles para los criterios de búsqueda seleccionados.</p>
+    </div>
+
     <div class="habitaciones-dispo container">
         <div class="cartas-habitaciones row pb-4 ">
             <!--CARD 1-->
@@ -136,9 +140,12 @@
     <!---------------------- FIN HABITACIONES DISPONIBLES ---------------------->
 
     <!---------------------- iNICIO FORMULARIO RESERVAR ---------------------->
-
-    <div class="container">
-        <form id="formularioReserva" class="mt-4">
+    <div id="mensajeReservaExitosa" class="container mt-4" style="display: none;">
+        <h4>¡Reserva Exitosa!</h4>
+        <p>Su reserva ha sido confirmada. Su código de reserva es: <span id="codigoReserva"></span></p>
+    </div>
+    <div id="formularioReserva" class="container mt-4" style="display: none;">
+        <form>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -200,23 +207,55 @@
                 </div>
             </div>
             <div class="text-center p-3">
-                <button type="submit" class="btn btn-primary">Enviar Reserva</button>
+                <button type="submit" class="btn btn-primary" id="btnEnviarReserva">Enviar Reserva</button>
             </div>
         </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
     <script>
         $(document).ready(function () {
-            // Función para mostrar/ocultar el formulario de reserva
-            function mostrarFormularioReserva() {
+            function mostrarMensajeNoHabitaciones() {
+                $('#mensajeNoHabitaciones').show();
+            }
+    
+            // Función para mostrar/ocultar el formulario de reserva con animación
+            function toggleFormularioReserva() {
                 $('#formularioReserva').slideToggle();
+                // Oculta el mensaje de reserva exitosa cuando se muestra el formulario
+                $('#mensajeReservaExitosa').hide();
             }
     
             // Asocia la función al botón "Reservar" de cada tarjeta
-            $('.btn-reservar').click(function () {
-                mostrarFormularioReserva();
+            $('.btn-reservar').click(function (event) {
+                event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+                toggleFormularioReserva();
             });
+    
+            // Manejar el envío del formulario de reserva
+            $('#formularioReserva').submit(function (event) {
+                event.preventDefault(); // Evitar el envío normal del formulario
+    
+                // Aquí agregar la lógica para procesar la reserva, generar un código, etc.
+    
+                // Mostrar el mensaje de reserva exitosa y el código de reserva
+                $('#mensajeReservaExitosa').show();
+                // Puedes generar un código de reserva de alguna manera y mostrarlo en el span
+                var codigoReserva = generarCodigoReserva();
+                $('#codigoReserva').text(codigoReserva);
+                
+                // Otra opción: si tienes un servicio backend que maneja reservas, puedes hacer una solicitud AJAX aquí
+            });
+    
+            function generarCodigoReserva() {
+                // Lógica para generar un código de reserva (puedes personalizar según tus necesidades)
+                return 'ABC123';
+            }
+    
+            if ($('.habitaciones-dispo .col-md-4:visible').length === 0) {
+                mostrarMensajeNoHabitaciones();
+            }
         });
     </script>
 
