@@ -151,96 +151,81 @@
 
     <!---------------------- INICIO BUSCAR--------------------->
 
-    <form id="buscarForm" class="form-section" action="habitaciones.html">
-<<<<<<< HEAD
-        <div class="container">
-            <h3 class="pb-4">Buscar Habitaciones</h3>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
-                        <input type="date" class="form-control fecha" id="fechaEntrada" required>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="fechaSalida" class="form-label">Fecha Salida</label>
-                        <input type="date" class="form-control fecha" id="fechaSalida" required>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group
-                    ">
-                    <label for="fechaSalida" class="form-label">N° Personas</label>
-                    <select class="form-control" name="" id="numPersonas">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="col-md-3 button-container">
-                    <button type="submit" class="btn w-100">Buscar</button>
-                </div>
-=======
+    <form id="buscarForm" class="form-section" action="habitaciones.html" method="get">
       <div class="container">
-        <h3 class="pb-4">Buscar Habitaciones</h3>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="fechaEntrada" class="form-label">Tipo</label>
-              <select name="" id="" class="form-control form-select">
-                <option value="simple">Simple</option>
-                <option value="doble">Doble</option>
-                <option value="superior">Superior</option>
-              </select>
->>>>>>> c05ffc04ccc4e9e1da31ed752e99250293e00743
+          <h3 class="pb-4">Buscar Habitaciones</h3>
+          <div class="row">
+              <div class="col-md-2">
+                  <div class="form-group">
+                      <label for="tipoHabitacion" class="form-label">Tipo</label>
+                      <select id="tipoHabitacion" class="form-control form-select">
+                          <option value="simple">Simple</option>
+                          <option value="doble">Doble</option>
+                          <option value="superior">Superior</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
+                      <input
+                          type="date"
+                          class="form-control fecha"
+                          id="fechaEntrada"
+                          required
+                      />
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for="fechaSalida" class="form-label">Fecha Salida</label>
+                      <input
+                          type="date"
+                          class="form-control fecha"
+                          id="fechaSalida"
+                          required
+                      />
+                  </div>
+              </div>
+              <div class="col-md-2">
+                  <div class="form-group">
+                      <label for="numPersonas" class="form-label">N° Personas</label>
+                      <select class="form-control" name="" id="numPersonas">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="col-md-2 button-container">
+                <button type="button" class="btn w-100" onclick="realizarBusqueda()">Buscar</button>
             </div>
           </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
-              <input
-                type="date"
-                class="form-control fecha"
-                id="fechaEntrada"
-                required
-              />
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <label for="fechaSalida" class="form-label">Fecha Salida</label>
-              <input
-                type="date"
-                class="form-control fecha"
-                id="fechaSalida"
-                required
-              />
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="form-group">
-              <label for="numPersonas" class="form-label">N° Personas</label>
-              <input
-                type="number"
-                class="form-control personas"
-                id="numPersonas"
-                min="1"
-                max="5"
-                required
-              />
-            </div>
-          </div>
-          <div class="col-md-3 button-container">
-            <button type="submit" class="btn w-100">Buscar</button>
-          </div>
-        </div>
       </div>
-    </form>
+  </form>
+  
+
+    <!-- Script para construir la URL con los valores del formulario y redirigir a habitaciones.html -->
+    <script>
+    function realizarBusqueda() {
+        var tipoHabitacion = document.getElementById('tipoHabitacion').value;
+        var fechaEntrada = document.getElementById('fechaEntrada').value;
+        var fechaSalida = document.getElementById('fechaSalida').value;
+        var numPersonas = document.getElementById('numPersonas').value;
+
+        // Construir la URL con los parámetros de búsqueda
+        var url = 'habitaciones.html' +
+                  '?tipoHabitacion=' + encodeURIComponent(tipoHabitacion) +
+                  '&fechaEntrada=' + encodeURIComponent(fechaEntrada) +
+                  '&fechaSalida=' + encodeURIComponent(fechaSalida) +
+                  '&numPersonas=' + encodeURIComponent(numPersonas);
+
+        // Redirigir a habitaciones.html con los parámetros de búsqueda
+        window.location.href = url;
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!---------------------- FIN BUSCAR ---------------------->
 

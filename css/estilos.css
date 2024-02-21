@@ -306,22 +306,3 @@ header {
     flex-direction: column;
     justify-content: space-between;
 }
-
-.filtro {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-}
-
-.filtro label {
-    font-weight: bold;
-}
-
-.filtro .form-control {
-    margin-bottom: 10px;
-}
-
-.filtro button {
-    margin-top: 10px;
-}
