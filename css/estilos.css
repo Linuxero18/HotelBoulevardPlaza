@@ -4,6 +4,7 @@ body {
     background-color: #161815;
     color: white;
     margin-top: 56px;
+    padding: 0px;
 }
 a{
     text-decoration: none;
@@ -31,8 +32,8 @@ a{
 
 /*////////////////////// Estilos de la barra de navegación //////////////////////*/
 
-.navbar{
-    padding: 0px 0px;
+header{
+    padding-bottom: 40px;
 }
 
 .navbar-brand {
@@ -53,7 +54,7 @@ a{
 
 .carousel-item {
     position: relative;
-    max-height: 750px; /* Ajusta este valor según tus necesidades */
+    max-height: 872px; /* Ajusta este valor según tus necesidades */
 }
 
 .carousel-content {
