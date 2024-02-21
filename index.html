@@ -126,12 +126,20 @@
                         <input type="date" class="form-control fecha" id="fechaSalida" required>
                     </div>
                 </div>
+
                 <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="numPersonas" class="form-label">N° Personas</label>
-                        <input type="number" class="form-control personas" id="numPersonas" min="1" max="5" required>
+                    <div class="form-group
+                    ">
+                    <label for="fechaSalida" class="form-label">N° Personas</label>
+                    <select class="form-control" name="" id="numPersonas">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                        </select>
                     </div>
                 </div>
+                
                 <div class="col-md-3 button-container">
                     <button type="submit" class="btn w-100">Buscar</button>
                 </div>

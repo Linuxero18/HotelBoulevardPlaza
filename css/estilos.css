@@ -1,21 +1,25 @@
-/*////////////////////// Estilos generales //////////////////////*/
+/* Estilos generales */
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #161815;
     color: white;
     margin-top: 56px;
-    padding: 0px;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
-a{
+
+a {
     text-decoration: none;
     color: #20aa25;
 }
 
-.color-hotel, .nav-item a:hover{
+.color-hotel,
+.nav-item a:hover {
     color: #48A04B;
 }
 
-/*////////////////////// Estilo del botón //////////////////////*/
+/* Estilo del botón */
 .btn {
     padding: 12px 24px;
     margin-top: 30px;
@@ -30,9 +34,8 @@ a{
     background-color: #20aa25;
 }
 
-/*////////////////////// Estilos de la barra de navegación //////////////////////*/
-
-header{
+/* Estilos de la barra de navegación */
+header {
     padding-bottom: 40px;
 }
 
@@ -46,7 +49,7 @@ header{
     margin-right: 20px;
 }
 
-/*////////////////////// Estilos del carrusel //////////////////////*/
+/* Estilos del carrusel */
 .carousel {
     border-radius: 8px;
     overflow: hidden;
@@ -79,20 +82,21 @@ header{
     color: white; /* Color del texto */
 }
 
-/*////////////////////// Estilos de la sección Servicios //////////////////////*/
+/* Estilos de la sección Servicios */
 .services {
     padding: 40px 10px;
     max-height: 100%;
 }
 
-.servicios-contenedor, .habitaciones-contenedor{
+.servicios-contenedor,
+.habitaciones-contenedor {
     background-color: rgba(72, 160, 75, 0.3); /* Fondo transparente oscuro */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 30px;
-    margin-bottom: 30px;    
+    margin-bottom: 30px;
 }
 
 .services h2 {
@@ -114,10 +118,11 @@ header{
     font-size: 16px;
 }
 
-/*////////////////////// Estilos de la sección Habitaciones //////////////////////*/
+/* Estilos de la sección Habitaciones */
 .portfolio {
     padding: 40px 10px;
 }
+
 .portfolio h2 {
     font-size: 36px;
     margin-bottom: 20px;
@@ -132,18 +137,17 @@ header{
     font-size: 16px;
 }
 
-/*////////////////////// Estilos de la sección Contacto //////////////////////*/
+/* Estilos de la sección Contacto */
 .contact {
     padding: 20px 10px;
 }
 
 .contact h2 {
     font-size: 36px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-
-/*////////////////////// Estilos del formulario //////////////////////*/
+/* Estilos del formulario */
 .form-section {
     padding: 10px;
     margin-top: 30px;
@@ -152,7 +156,7 @@ header{
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin:  auto;
 }
 
 .form-group {
@@ -170,14 +174,16 @@ header{
 }
 
 .container-fluid.bg-success {
-    padding: 20px; 
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-/*////////////////////// Estilos responsivos //////////////////////*/
+/* Estilos responsivos */
 @media (max-width: 767px) {
+    body{
+        margin-top: 0px;
+    }
     /* Estilos de la barra de navegación en dispositivos móviles */
     .navbar-brand {
         font-size: 14px;
@@ -187,9 +193,10 @@ header{
         width: 60px;
         height: 60px;
     }
+
     .navbar-toggler {
-        padding: 0px;
-        font-size: 16px;        
+        padding: 0;
+        font-size: 16px;
     }
 
     .navbar-nav .nav-link {
@@ -197,10 +204,18 @@ header{
         margin-right: 8px;
     }
 
-
     /* Estilos de la sección "Servicios" en dispositivos móviles */
+    .services {
+        margin: 0px;
+        padding: 0px;
+    }
+
     .services h2 {
-        font-size: 24px;
+        font-size: 20px;
+        
+    }
+    .services p{
+        font-size: 14px;
     }
 
     .card-body i {
@@ -213,11 +228,19 @@ header{
 
     .card-body p {
         font-size: 14px;
+        padding-bottom: 5px;
     }
 
     /* Estilos de la sección "Habitaciones" en dispositivos móviles */
     .portfolio h2 {
-        font-size: 24px;
+        font-size: 20px;
+    }
+    .portfolio  {
+        margin: 0px;
+        padding-top: 25px;
+    }
+    .portfolio p{
+        font-size: 14px;
     }
 
     .card-body lead {
@@ -226,7 +249,10 @@ header{
 
     /* Estilos de la sección "Contacto" en dispositivos móviles */
     .contact h2 {
-        font-size: 24px;
+        font-size: 20px;
+    }
+    .contact p {
+        font-size: 14px;
     }
 
     /* Estilos del carrusel en dispositivos móviles */
@@ -242,4 +268,60 @@ header{
     .carousel-content p {
         font-size: 0.7rem;
     }
+}
+
+
+/* -------------------------- Estilos para la pagina Habitaciones-------------------------- */
+
+.habitaciones{
+    padding: 30px 0px 0px;
+    max-height: 100%;
+}
+
+.cartas-habitaciones{
+    padding-top: 0px;
+}
+
+/* Agrega una clase para ocultar elementos */
+.oculto {
+    display: none;
+}
+
+/* Establece una altura fija para las tarjetas */
+.card {
+    height: 100%; /* Puedes ajustar este valor según tus necesidades */
+}
+
+/* Asegura que la imagen dentro de la tarjeta se ajuste a la altura */
+.card-img-top {
+    height: 50%; /* Puedes ajustar este valor según tus necesidades */
+    object-fit: cover;
+}
+
+/* Ajusta la altura del cuerpo de la tarjeta según el contenido */
+.card-body {
+    height: 50%; /* Puedes ajustar este valor según tus necesidades */
+    overflow: hidden; /* Evita que el contenido desborde */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filtro {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.filtro label {
+    font-weight: bold;
+}
+
+.filtro .form-control {
+    margin-bottom: 10px;
+}
+
+.filtro button {
+    margin-top: 10px;
 }
