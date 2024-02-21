@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Boulevard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <style>
+      .custom-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+
+        margin: 0;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <!---------------------- BARRA DE NAVEGACIÓN ---------------------->
+    <div>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a href="#" class="navbar-brand"
+            ><span class="color-hotel"
+              ><sup
+                ><img
+                  src="img/logo-empresa-removebg-preview.png"
+                  alt=""
+                  width="100"
+                  height="100" /></sup
+              >Hotel</span
+            >
+            Boulevard Plaza</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarS"
+            aria-controls="navbarS"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarS">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a href="#" class="nav-link">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a href="#Servicios" class="nav-link">Servicios</a>
+              </li>
+              <li class="nav-item">
+                <a href="habitaciones.html" class="nav-link">Habitaciones</a>
+              </li>
+              <li class="nav-item">
+                <a href="#contacto" class="nav-link">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!---------------------- FIN BARRA DE NAVEGACIÓN ---------------------->
+
+    <!---------------------- INICIO DE CAROUSEL ---------------------->
+
+    <div
+      id="carouselExample"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      style="height: 200px !important"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/home-1.jpg" class="d-block w-100 img-fluid" alt="..." />
+        </div>
+      </div>
+    </div>
+
+    <!---------------------- FIN DE CAROUSEL ---------------------->
+
+    <!---------------------- INICIO DE TITULO RECLAMACIONES ---------------------->
+
+    <div class="" style="background-color: #48a04b">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="custom-heading">
+            <img
+              src="img/comentario.png"
+              alt=""
+              height="30px"
+              width="30px"
+              style="padding-right: 5px"
+            />
+            Libro de Reclamaciones
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <!---------------------- FIN DE TITULO RECLAMACIONES ---------------------->
+
+    <!---------------------- INICIO DE DATOS LEGALES ---------------------->
+
+    <div
+      class="card text-bg-success mb-3"
+      style="background-color: #212529 !important"
+    >
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi bi-building"></i> HAPPY GROUP S.R.LTDA.
+        </h5>
+        <h6>
+          <i class="bi bi-geo-alt" style="font-size: medium"></i> AV. SAN MARTIN
+          NRO. 340 UCAYALI - CORONEL PORTILLO - CALLERIA
+        </h6>
+        <br />
+        <p class="card-text">
+          De acuerdo a la Ley N° 29733, Ley de Protección de Datos Personales y
+          su Reglamento, el usuario da su consentimiento para el tratamiento de
+          sus datos personales, los cuales son incorporados en el banco de datos
+          de Hotel Boulevard Plaza, con la finalidad de absolver sus consultas y
+          brindarles información publicitaria, dándoles usos que garantizan su
+          seguridad y confidencialidad.
+        </p>
+      </div>
+    </div>
+    <!---------------------- FIN DE DATOS LEGALES ---------------------->
+
+    <!---------------------- INICIO SECTION CONTACTO ---------------------->
+
+    <section id="contacto" class="contact section-padding">
+      <!-- ini -->
+      <div class="row m-0">
+        <div class="col-lg-12" style="padding-left: 20%; padding-right: 20%">
+          <div class="alert alert-success" role="alert">
+            Porfavor ingrese los datos solicitados
+          </div>
+
+          <div class="row m-0">
+            <div class="col-md-12 p-0 pt-4 pb-4">
+              <form class="bg-dark p-4 m-auto">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Nombres"
+                        id="nombres"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Apellidos"
+                        id="apellidos"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="input-group mb-3">
+                      <select name="" id="tipoDoc" class="">
+                        <option value="0">DNI</option>
+                        <option value="1">Pasaporte</option>
+                        <option value="2">Carnet de Extranjeria</option>
+                      </select>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Ingrese Nº de documento"
+                        id="nroDoc"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Dirección"
+                        id="direccion"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Telefono"
+                        id="telefono"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Correo"
+                        id="correo"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <textarea
+                        class="form-control"
+                        placeholder="Mensaje"
+                        id="mensaje"
+                        rows="3"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    
+                      <select name="reclamo" id="reclamo" class="form-control">
+                        <option value="0">--Seleccione la categoría de su reclamo--</option>
+                        <option value="1">Queja</option>
+                        <option value="2">Sugerencia</option>
+                        <option value="3">Reclamo</option>
+                      </select>
+                    
+                  </div>
+
+                  <button class="btn btn-success btn-lg btn-block mt-3" type="button" onclick="generarReclamo()">
+                    Enviar
+                  </button>
+                 
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- fin -->
+      </div>
+    </section>
+    <!---------------------- FIN SECTION CONTACTO ---------------------->
+
+    <!---------------------- INICIO FOOTER ---------------------->
+
+    <footer class="footer bg-dark p-3 text-center">
+      <div class="container">
+        <p class="text-white">Hotel Boulevard Plaza &copy; 2024</p>
+        <p class="text-white"><a href="">Inicia Sesión Admin</a></p>
+        <div class="social-icons">
+          <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+    <!---------------------- FIN FOOTER ---------------------->
+    <script src="scripts/script.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

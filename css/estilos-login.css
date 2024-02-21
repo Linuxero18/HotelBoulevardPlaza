@@ -8,11 +8,11 @@
 
 @font-face {
     font-family: 'San Francisco';
-    src: url('fuente/SanFran-Reg.otf') format('OpenType');
+    src: url('../fuente/SanFran-Reg.otf') format('OpenType');
 }
 
 body{
-    background-image: url("img/fondo-login.jpg"); /* url de la imagen */
+    background-image: url("../img/fondo-login.jpg"); /* url de la imagen */
     background-size: cover; /* que cubra toda la pantalla */
     background-repeat: no-repeat; /*no se repite el fondo*/
     background-position: center; /*la imagen en el centro*/

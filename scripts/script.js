@@ -75,11 +75,37 @@ function credenciales(evento){
     var contra = document.getElementById("contra").value;
 
     if(correo === "piter" && contra === "123"){ //credenciales
-        window.location.href = "cuerpo_web/index.html"; //redireccón a otra pagina
+        window.location.href = "index.html"; //redireccón a otra pagina
     } 
     else
     {
     alert("Correo o contraseña incorrectos")//mensaje de credenciales incorrectas
+    }
+}
+
+function generarReclamo(){
+    var nombre = document.getElementById("nombres").value;
+    var apellido = document.getElementById("apellidos").value;
+    var correo = document.getElementById("correo").value;
+    var telefono = document.getElementById("telefono").value;
+    var mensaje = document.getElementById("mensaje").value;
+
+    if(nombre === "" || apellido === "" || correo === "" || telefono === "" || mensaje === ""){
+        Swal.fire({
+            icon: "error",
+            title: "Alerta!",
+            text: "Todos los campos son obligatorios!",
+            confirmButtonColor: "#48a04b"
+          });
+    }
+    else
+    {
+        Swal.fire({
+            title: "Tu reclamo se ha generado correctamente!",
+            text: "su numero es #1234556!",
+            icon: "success",
+            confirmButtonColor: "#48a04b"
+          });
     }
 }
 
