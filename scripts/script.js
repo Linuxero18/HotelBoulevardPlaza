@@ -75,7 +75,7 @@ function credenciales(evento){
     var contra = document.getElementById("contra").value;
 
     if(correo === "piter" && contra === "123"){ //credenciales
-        window.location.href = "index.html"; //redireccón a otra pagina
+        window.location.href = "page_admins.html"; //redireccón a otra pagina
     } 
     else
     {
