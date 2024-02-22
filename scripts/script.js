@@ -83,6 +83,8 @@ function credenciales(evento){
     }
 }
 
+
+//Esta funcion es para generar un reclamo
 function generarReclamo(){
     var nombre = document.getElementById("nombres").value;
     var apellido = document.getElementById("apellidos").value;
