@@ -25,6 +25,8 @@ app.post('/login', function(peticion,respuesta) {
 app.get('/home', function(peticion,respuesta) {
     respuesta.sendFile(__dirname + '/public/index.html');
 });
+
+
 app.listen(3000, function(peticion,respuesta) {
     console.log('server running on port 3000');
 });
