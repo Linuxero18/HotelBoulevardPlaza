@@ -20,6 +20,36 @@ app.post('/login', function(peticion,respuesta) {
     });
 });
 
+app.post('/registrarReclamo', function(peticion,respuesta) {
+    var fecha = new Date();
+    var nombres = peticion.body.nombres;
+    var apellidos = peticion.body.apellidos;
+    var tipo_documento = peticion.body.tipo_documento;
+    var documento = peticion.body.documento;
+    var direccion = peticion.body.direccion;
+    var telefono = peticion.body.telefono;
+    var correo = peticion.body.correo;
+    var mensaje = peticion.body.mensaje;
+    var tipo_reclamo = peticion.body.tipo_reclamo;
+
+    db.query('INSERT INTO persona (nombres, apellidos, tipo_doc, numero_doc, direccion, telefono, correo) VALUES (?,?,?,?,?,?,?)', [nombres, apellidos, tipo_documento, documento, direccion, telefono, correo], function(error, resultado) {
+        if (error) {
+            console.log(error);
+            console.log('Error al registrar la persona');
+        } else {
+            db.query('INSERT INTO libro_reclamos (fecha_reclamo,datos_cliente,descripcion_reclamo,tipo_reclamo,estado) VALUES (?,?,?,?,?)', [fecha,resultado.insertId, mensaje, tipo_reclamo,1 ], function(error, resultado) {
+                if (error) {
+                    console.log(error);
+                    console.log('Error al registrar el reclamo');
+                } else {
+                    console.log('Reclamo registrado correctamente');
+                }
+            });
+        }
+        respuesta.end();
+    });
+});
+
 
 
 app.get('/home', function(peticion,respuesta) {

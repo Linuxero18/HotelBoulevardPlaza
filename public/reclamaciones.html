@@ -25,7 +25,6 @@
         margin: 0;
       }
     </style>
-    
   </head>
   <body>
     <!---------------------- BARRA DE NAVEGACIÓN ---------------------->
@@ -153,7 +152,7 @@
 
           <div class="row m-0">
             <div class="col-md-12 p-0 pt-4 pb-4">
-              <form class="bg-dark p-4 m-auto">
+              <form action="/registrarReclamo" method="post" class="bg-dark p-4 m-auto">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="mb-3">
@@ -161,7 +160,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Nombres"
-                        id="nombres"
+                        name="nombres"
                       />
                     </div>
                   </div>
@@ -171,23 +170,23 @@
                         type="text"
                         class="form-control"
                         placeholder="Apellidos"
-                        id="apellidos"
+                        name="apellidos"
                       />
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="input-group mb-3">
-                      <select name="" id="tipoDoc" class="">
-                        <option value="0">DNI</option>
-                        <option value="1">Pasaporte</option>
-                        <option value="2">Carnet de Extranjeria</option>
+                      <select name="tipo_documento" id="tipoDoc" class="">
+                        <option value="DNI">DNI</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="CE">Carnet de Extranjeria</option>
                       </select>
                       <input
                         type="text"
                         class="form-control"
                         placeholder="Ingrese Nº de documento"
-                        id="nroDoc"
+                        name="documento"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
                       />
@@ -199,7 +198,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Dirección"
-                        id="direccion"
+                        name="direccion"
                       />
                     </div>
                   </div>
@@ -209,7 +208,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Telefono"
-                        id="telefono"
+                        name="telefono"
                       />
                     </div>
                   </div>
@@ -219,7 +218,7 @@
                         type="email"
                         class="form-control"
                         placeholder="Correo"
-                        id="correo"
+                        name="correo"
                       />
                     </div>
                   </div>
@@ -228,26 +227,28 @@
                       <textarea
                         class="form-control"
                         placeholder="Mensaje"
-                        id="mensaje"
+                        name="mensaje"
                         rows="3"
                       ></textarea>
                     </div>
                   </div>
                   <div class="col-md-12">
-                    
-                      <select name="reclamo" id="reclamo" class="form-control">
-                        <option value="0">--Seleccione la categoría de su reclamo--</option>
-                        <option value="1">Queja</option>
-                        <option value="2">Sugerencia</option>
-                        <option value="3">Reclamo</option>
-                      </select>
-                    
+                    <select name="tipo_reclamo" id="reclamo" class="form-control">
+                      <option value="0">
+                        --Seleccione la categoría de su reclamo--
+                      </option>
+                      <option value="2">Queja</option>
+                      <option value="3">Sugerencia</option>
+                      <option value="1">Reclamo</option>
+                    </select>
                   </div>
 
-                  <button class="btn btn-success btn-lg btn-block mt-3" type="button" onclick="generarReclamo()">
+                  <button
+                    class="btn btn-success btn-lg btn-block mt-3"
+                    type="submit"
+                  >
                     Enviar
                   </button>
-                 
                 </div>
               </form>
             </div>
@@ -271,7 +272,7 @@
       </div>
     </footer>
     <!---------------------- FIN FOOTER ---------------------->
-    <script src="scripts/script.js" ></script>
+    <script src="scripts/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
