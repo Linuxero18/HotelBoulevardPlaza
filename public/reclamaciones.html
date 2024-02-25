@@ -152,7 +152,7 @@
 
           <div class="row m-0">
             <div class="col-md-12 p-0 pt-4 pb-4">
-              <form action="/registrarReclamo" method="post" class="bg-dark p-4 m-auto">
+              <form id="formReclamo" class="bg-dark p-4 m-auto">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="mb-3">
@@ -160,6 +160,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Nombres"
+                        id="nombres"
                         name="nombres"
                       />
                     </div>
@@ -170,6 +171,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Apellidos"
+                        id="apellidos"
                         name="apellidos"
                       />
                     </div>
@@ -186,6 +188,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Ingrese Nº de documento"
+                        id="documento"
                         name="documento"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
@@ -198,6 +201,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Dirección"
+                        id="direccion"
                         name="direccion"
                       />
                     </div>
@@ -208,6 +212,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Telefono"
+                        id="telefono"
                         name="telefono"
                       />
                     </div>
@@ -215,9 +220,10 @@
                   <div class="col-md-12">
                     <div class="mb-3">
                       <input
-                        type="email"
+                        type="text"
                         class="form-control"
                         placeholder="Correo"
+                        id="correo"
                         name="correo"
                       />
                     </div>
@@ -227,6 +233,7 @@
                       <textarea
                         class="form-control"
                         placeholder="Mensaje"
+                        id="mensaje"
                         name="mensaje"
                         rows="3"
                       ></textarea>
@@ -246,11 +253,17 @@
                   <button
                     class="btn btn-success btn-lg btn-block mt-3"
                     type="submit"
+                    id="btnEnviar"
+                    
                   >
                     Enviar
                   </button>
+                   <!-- </button>onclick="return validarFormulario()" -->
                 </div>
               </form>
+            </div>
+            <div class="text-center">
+              <a href="">¿Ya ingresaste una consulta o reclamo? Haz click aquí para ver su estado</a>
             </div>
           </div>
         </div>
@@ -272,7 +285,7 @@
       </div>
     </footer>
     <!---------------------- FIN FOOTER ---------------------->
-    <script src="scripts/script.js"></script>
+    <script src="/scripts/script_reclamos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
