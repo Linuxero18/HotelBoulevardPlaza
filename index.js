@@ -1,3 +1,6 @@
+//Autor: Robert Diaz
+//Este es el documento del servidor, el cual se encarga de manejar las peticiones del cliente y realizar las consultas a la base de datos
+
 var express = require('express');
 var db = require('./bd.js');
 var app = express();
@@ -109,12 +112,12 @@ app.post('/registrarReclamo', function(peticion, respuesta) {
 
 
 
-
+//Este metodo carga la pagina principal
 app.get('/home', function(peticion,respuesta) {
     respuesta.sendFile(__dirname + '/public/index.html');
 });
 
-
+//Este metodo establece el puerto en el que se ejecutara el servidor
 app.listen(3000, function(peticion,respuesta) {
     console.log('server running on port 3000');
 });
