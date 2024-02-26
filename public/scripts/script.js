@@ -5,11 +5,11 @@ document.getElementById("form_log").addEventListener("submit", credenciales)
 window.addEventListener("resize", ancho_pagina)
 
 //Variables de cada clase
-var formulario_login = document.querySelector(".formulario_login")
-var formulario_registrarse = document.querySelector(".formulario_registrarse")
-var contenedor_login_registrarse = document.querySelector(".contenedor_login-registrarse")
-var caja_login = document.querySelector(".caja-login")
-var caja_registrarse = document.querySelector(".caja-registrarse")
+let formulario_login = document.querySelector(".formulario_login")
+let formulario_registrarse = document.querySelector(".formulario_registrarse")
+let contenedor_login_registrarse = document.querySelector(".contenedor_login-registrarse")
+let caja_login = document.querySelector(".caja-login")
+let caja_registrarse = document.querySelector(".caja-registrarse")
 
 function ancho_pagina() {
     if (window.innerWidth > 850) {

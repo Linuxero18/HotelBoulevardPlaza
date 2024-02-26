@@ -210,13 +210,13 @@
       });
     
       function realizarBusqueda() {
-        var tipoHabitacion = document.getElementById('tipoHabitacion').value;
-        var fechaEntrada = document.getElementById('fechaEntrada').value;
-        var fechaSalida = document.getElementById('fechaSalida').value;
-        var numPersonas = document.getElementById('numPersonas').value;
+        let tipoHabitacion = document.getElementById('tipoHabitacion').value;
+        let fechaEntrada = document.getElementById('fechaEntrada').value;
+        let fechaSalida = document.getElementById('fechaSalida').value;
+        let numPersonas = document.getElementById('numPersonas').value;
     
         // Construir la URL con los parámetros de búsqueda
-        var url = 'habitaciones.html' +
+        let url = 'habitaciones.html' +
           '?tipoHabitacion=' + encodeURIComponent(tipoHabitacion) +
           '&fechaEntrada=' + encodeURIComponent(fechaEntrada) +
           '&fechaSalida=' + encodeURIComponent(fechaSalida) +

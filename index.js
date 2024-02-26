@@ -1,9 +1,9 @@
 //Autor: Robert Diaz
 //Este es el documento del servidor, el cual se encarga de manejar las peticiones del cliente y realizar las consultas a la base de datos
 
-var express = require('express');
-var db = require('./bd.js');
-var app = express();
+let express = require('express');
+let db = require('./bd.js');
+let app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
@@ -12,8 +12,8 @@ app.use(express.static('public'));
 
 //Este metodo maneja la funcionalidad del login
 app.post('/login', function(peticion,respuesta) {
-    var usuario = peticion.body.correo;
-    var password = peticion.body.contra;
+    let usuario = peticion.body.correo;
+    let password = peticion.body.contra;
     console.log(usuario);
     console.log(password);
     db.query('SELECT * FROM usuario WHERE usuario = ? AND password = ?', [usuario, password], function(error, resultado) {

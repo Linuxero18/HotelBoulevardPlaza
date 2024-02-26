@@ -2,22 +2,22 @@
 // Fecha: 25 de Febrero de 2024
 
 document.addEventListener("DOMContentLoaded", function () {
-    var formulario = document.getElementById("formReclamo");
+    let formulario = document.getElementById("formReclamo");
     
 
     formulario.addEventListener("submit", function (event) {
         event.preventDefault(); // Evitar el envío del formulario por defecto
 
         // Obtener los valores de los campos del formulario
-        var nombres = document.getElementById("nombres").value;
-        var apellidos = document.getElementById("apellidos").value;
-        var tipoDoc = document.getElementById("tipoDoc").value;
-        var documento = document.getElementById("documento").value.trim();
-        var direccion = document.getElementById("direccion").value;
-        var telefono = document.getElementById("telefono").value.trim();
-        var correo = document.getElementById("correo").value.trim();
-        var mensaje = document.getElementById("mensaje").value;
-        var reclamo = document.getElementById("reclamo").value;
+        let nombres = document.getElementById("nombres").value;
+        let apellidos = document.getElementById("apellidos").value;
+        let tipoDoc = document.getElementById("tipoDoc").value;
+        let documento = document.getElementById("documento").value.trim();
+        let direccion = document.getElementById("direccion").value;
+        let telefono = document.getElementById("telefono").value.trim();
+        let correo = document.getElementById("correo").value.trim();
+        let mensaje = document.getElementById("mensaje").value;
+        let reclamo = document.getElementById("reclamo").value;
 
         //Realizar la validación de los campos
         if (nombres === "" || apellidos === "" || tipoDoc === "" || documento === "" || direccion === "" || telefono === "" || correo === "" || mensaje === "" || reclamo === "0") {

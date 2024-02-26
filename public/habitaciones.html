@@ -104,27 +104,27 @@
         $(document).ready(function () {
             // Función para obtener parámetros de la URL
             function obtenerParametroURL(nombre) {
-                var url = new URL(window.location.href);
+                let url = new URL(window.location.href);
                 return url.searchParams.get(nombre);
             }
 
             // Obtener los valores de búsqueda de la URL
-            var tipoSeleccionado = obtenerParametroURL('tipoHabitacion');
-            var fechaEntrada = obtenerParametroURL('fechaEntrada');
-            var fechaSalida = obtenerParametroURL('fechaSalida');
-            var numPersonas = obtenerParametroURL('numPersonas');
+            let tipoSeleccionado = obtenerParametroURL('tipoHabitacion');
+            let fechaEntrada = obtenerParametroURL('fechaEntrada');
+            let fechaSalida = obtenerParametroURL('fechaSalida');
+            let numPersonas = obtenerParametroURL('numPersonas');
 
             // Ocultar todas las cartas
             $('.habitaciones-dispo .col-md-4').hide();
 
             // Mostrar la carta correspondiente a la búsqueda
             $('.habitaciones-dispo .col-md-4[data-tipo="' + tipoSeleccionado + '"]').each(function () {
-                var carta = $(this);
+                let carta = $(this);
 
                 // Obtener los atributos de la carta
-                var cartaFechaInicio = carta.data('fecha-entrada');
-                var cartaFechaFin = carta.data('fecha-salida');
-                var cartaNumPersonas = carta.data('num-personas');
+                let cartaFechaInicio = carta.data('fecha-entrada');
+                let cartaFechaFin = carta.data('fecha-salida');
+                let cartaNumPersonas = carta.data('num-personas');
 
                 // Comparar con los valores del formulario
                 if (
@@ -242,7 +242,7 @@
                 // Mostrar el mensaje de reserva exitosa y el código de reserva
                 $('#mensajeReservaExitosa').show();
                 // Puedes generar un código de reserva de alguna manera y mostrarlo en el span
-                var codigoReserva = generarCodigoReserva();
+                let codigoReserva = generarCodigoReserva();
                 $('#codigoReserva').text(codigoReserva);
                 
                 // Otra opción: si tienes un servicio backend que maneja reservas, puedes hacer una solicitud AJAX aquí
