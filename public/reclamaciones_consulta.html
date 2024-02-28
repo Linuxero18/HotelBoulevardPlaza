@@ -109,9 +109,9 @@
 
   <!---------------------- OPCIONES PARA SELECCIONAR TIPO DE DOCUMENTO ---------------------->
 
-  <div class="container">
+  <div class="container pt-1 pb-1 mt-1 mb-1">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="opcion1" id="opcion1" checked />
+      <input class="form-check-input" type="radio" name="opcion" id="opcion1" checked />
       <label class="form-check-label" for="opcion1">
         Buscar por Documento, Número y Apellido
       </label>
@@ -145,9 +145,9 @@
   </div>
 
 
-  <div class="container">
+  <div class="container pt-1 pb-1 mt-1 mb-1">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="opcion2" id="opcion2" />
+      <input class="form-check-input" type="radio" name="opcion" id="opcion2" />
       <label class="form-check-label" for="opcion2">
         Buscar por Número de Reclamo
       </label>
@@ -160,13 +160,55 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container pt-1 pb-1 mt-1 mb-1">
     <div class="row">
       <div class="col-md-8 p-4">
-        <button type="button" class="btn btn-success" id="btnBuscar" name="btnBuscar">Buscar</button>
+        <button type="button" class="btn btn-success" onclick="fetchData()" id="btnBuscar" name="btnBuscar">Buscar</button>
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="miModalBueno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: aqua;">Estado de Reclamo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span id="texto" style="color: aqua;">
+
+        </span>
+      </div>
+      <div class="modal-footer pt-1 pb-1 mt-1 mb-1">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="miModalMalo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: aqua;">Estado de Reclamo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span id="texto" style="color: aqua;">
+
+        </span>
+      </div>
+      <div class="modal-footer pt-1 pb-1 mt-1 mb-1">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
 
   <!---------------------- FIN FORMULARIO ---------------------->
 
@@ -183,7 +225,7 @@
     </div>
   </footer>
   <!---------------------- FIN FOOTER ---------------------->
-  <script src="/scripts/script_reclamos.js"></script>
+  <script src="./scripts/script_reclamos_busqueda.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

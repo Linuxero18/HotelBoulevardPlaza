@@ -3,6 +3,7 @@
 
 let express = require('express');
 let db = require('./bd.js');
+const getConnection = require('./bd.js');
 let app = express();
 
 app.use(express.json());
@@ -108,6 +109,50 @@ app.post('/registrarReclamo', function(peticion, respuesta) {
 
 
     
+
+// app.get('/search', async (req, res) => {
+//     try {
+//         const idNumber = (req.query.id).substring(5);
+//         console.log(idNumber);
+//         const con = await getConnection();
+//         const [rows, fields] = await con.query(`
+//             SELECT lr.fecha_reclamo, lr.descripcion_reclamo, lr.tipo_reclamo, lr.codigo_reclamo, 
+//                    p.nombres, p.apellidos, p.tipo_doc, p.numero_doc
+//             FROM libro_reclamos lr
+//             JOIN persona p ON lr.datos_cliente = p.idPersona
+//             WHERE lr.idReclamo = ?
+//         `, [idNumber]);
+
+//         res.json(rows);
+//     } catch (error) {
+//         console.error('Error:', error);
+//         res.status(500).send('Ocurrió un error al realizar la consulta');
+//     }
+// });
+
+app.get('/search', (req, res) => {
+    const idNumber = req.query.id; // El valor del parámetro id
+    console.log(idNumber);
+    db.query(`
+        SELECT lr.fecha_reclamo, lr.codigo_reclamo,  lr.estado
+        FROM libro_reclamos lr
+        WHERE lr.idReclamo = ?`, 
+        [idNumber], 
+        (error, results) => {
+            if (error) {
+                console.error('Error:', error);
+                res.status(500).send('Ocurrió un error al realizar la consulta');
+                return;
+            }
+            
+            if (results.length > 0) {
+                res.json(results);
+            } else {
+                res.status(404).send('No se encontraron datos');
+            }
+        }
+    );
+});
 
 
 
