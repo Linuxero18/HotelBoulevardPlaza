@@ -107,11 +107,11 @@
 
   <!---------------------- INICIO FORMULARIO---------------------->
 
-  <!---------------------- OPCIONES PARA SELECCIONAR TIPO DE DOCUMENTO ---------------------->
+  <!---------------------- RADIO BUTTON Y CAMPOS PARA BUSCAR POR TIPO DE DOCUMENTO, NUMERO DE DOCUMENTO Y APELLIDO(S) ---------------------->
 
   <div class="container pt-1 pb-1 mt-1 mb-1">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="opcion" id="opcion1" checked />
+      <input class="form-check-input" type="radio" name="opcion" id="opcion1" onchange="manejarCampos()" checked />
       <label class="form-check-label" for="opcion1">
         Buscar por Documento, Número y Apellido
       </label>
@@ -143,11 +143,14 @@
       </div>
     </div>
   </div>
+ <!---------------------- FIN RADIO BUTTON Y CAMPOS PARA BUSCAR POR TIPO DE DOCUMENTO, NUMERO DE DOCUMENTO Y APELLIDO(S) ---------------------->
 
 
+  <!---------------------- RADIO BUTTON Y CAMPOS PARA BUSCAR POR NUMERO DE RECLAMO ---------------------->
+  
   <div class="container pt-1 pb-1 mt-1 mb-1">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="opcion" id="opcion2" />
+      <input class="form-check-input" type="radio" name="opcion" id="opcion2" onchange="manejarCampos()" />
       <label class="form-check-label" for="opcion2">
         Buscar por Número de Reclamo
       </label>
@@ -155,7 +158,7 @@
     <div class="row">
       <div class="col-md-4">
         <br>
-        <input type="text" class="form-control" id="numero_reclamo" name="numero_reclamo" placeholder="Número de Reclamo" required />
+        <input type="text" class="form-control" id="numero_reclamo" name="numero_reclamo" placeholder="Número de Reclamo" required disabled />
       </div>
     </div>
   </div>
@@ -167,48 +170,8 @@
       </div>
     </div>
   </div>
+<!---------------------- FIN RADIO BUTTON Y CAMPOS PARA BUSCAR POR NUMERO DE RECLAMO ---------------------->
 
-  <!-- Modal -->
-<div class="modal fade" id="miModalBueno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: aqua;">Estado de Reclamo</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <span id="texto" style="color: aqua;">
-
-        </span>
-      </div>
-      <div class="modal-footer pt-1 pb-1 mt-1 mb-1">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-       
-      </div>
-    </div>
-  </div>
-</div>
-
- <!-- Modal -->
- <div class="modal fade" id="miModalMalo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: aqua;">Estado de Reclamo</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <span id="texto" style="color: aqua;">
-
-        </span>
-      </div>
-      <div class="modal-footer pt-1 pb-1 mt-1 mb-1">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-       
-      </div>
-    </div>
-  </div>
-</div>
 
   <!---------------------- FIN FORMULARIO ---------------------->
 
