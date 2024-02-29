@@ -19,7 +19,7 @@ app.post('/login', function (peticion, respuesta) {
     console.log(password);
     db.query('SELECT * FROM usuario WHERE usuario = ? AND password = ?', [usuario, password], function (error, resultado) {
         if (resultado.length > 0) {
-            respuesta.redirect('/home');
+            respuesta.redirect('/home_admin');
         } else {
             respuesta.send('Usuario o contraseña incorrectos');
         }
@@ -191,6 +191,10 @@ app.post('/search', (req, res) => {
 //Este metodo carga la pagina principal
 app.get('/home', function (peticion, respuesta) {
     respuesta.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/home_admin', function (peticion, respuesta) {
+    respuesta.sendFile(__dirname + '/public/page_admin.html');
 });
 
 //Este metodo establece el puerto en el que se ejecutara el servidor
