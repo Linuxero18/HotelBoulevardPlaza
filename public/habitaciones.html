@@ -55,92 +55,104 @@
 
 
 
-    <!---------------------- INICIO HABITACIONES DISPONIBLES ---------------------->
-    <div id="mensajeNoHabitaciones" class="container mt-4" style="display: none;">
-        <p class="alert alert-warning">Lo sentimos, no se encontraron habitaciones disponibles para los criterios de búsqueda seleccionados.</p>
-    </div>
+<!---------------------- INICIO HABITACIONES DISPONIBLES ---------------------->
+<div id="mensajeNoHabitaciones" class="container mt-4" style="display: none;">
+    <p class="alert alert-warning">Lo sentimos, no se encontraron habitaciones disponibles para los criterios de búsqueda seleccionados.</p>
+</div>
 
-    <div class="habitaciones-dispo container">
-        <div class="cartas-habitaciones row pb-4 ">
-            <!--CARD 1-->
-            <div class="col-md-4" data-tipo="superior" data-fecha-entrada="2024-01-01" data-fecha-salida="2024-02-29" data-num-personas="5">
-                <div class="card text-dark text-center bg-lihgt p-2">
-                    <img src="img/home-1.jpg" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Habitación Superior</h5>
-                        <p class="card-text">Nuestras Habitacio 20% de tos por noche: acumule 10 noches y obtenga un 50% de descuento en su próxima reserva.</p>
-                        <a href="#" class="btn btn-reservar">Reservar</a>
-                    </div>
+<div class="habitaciones-dispo container">
+    <div class="cartas-habitaciones row pb-4">
+
+        <div class="col-md-4" data-tipo="superior" data-fecha-entrada="2024-01-01" data-fecha-salida="2024-04-29" data-num-personas="5">
+            <div class="card text-dark text-center bg-light p-2">
+                <img src="img/home-1.jpg" alt="" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Habitación Superior</h5>
+                    <p class="card-text">Nuestras Habitaciones Superiores cuentan con comodidades de lujo.</p>
+                    <hr>
+                    <p class="card-text">Desde $320 por noche</p>
+                    <a href="#" class="btn btn-reservar mt-auto">Reservar</a>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4" data-tipo="simple" data-fecha-entrada="2024-01-01" data-fecha-salida="2024-02-29" data-num-personas="3">
-                <div class="card text-dark text-center bg-lihgt p-2">
-                    <img src="img/home-2.jpg" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Habitación Simple</h5>
-                        <p class="card-text">Nuestras Habitaciones Simples cuentan con aire acondicionado, Wifi free, agua caliente y además TV LCD de 32"con cable.</p>
-                        <a href="#" class="btn btn-reservar">Reservar</a>
-                    </div>
+        <div class="col-md-4" data-tipo="simple" data-fecha-entrada="2024-01-01" data-fecha-salida="2024-03-25" data-num-personas="3">
+            <div class="card text-dark text-center bg-light p-2">
+                <img src="img/home-2.jpg" alt="" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Habitación Simple</h5>
+                    <p class="card-text">Nuestras Habitaciones Simples cuentan con servicios básicos.</p>
+                    <hr>
+                    <p class="card-text">Desde $130 por noche</p>
+                    <a href="#" class="btn btn-reservar mt-auto">Reservar</a>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4" data-tipo="doble" data-fecha-entrada="2024-01-01" data-fecha-salida="2024-02-29" data-num-personas="4">
-                <div class="card text-dark text-center bg-lihgt p-2">
-                    <img src="img/home-3.jpg" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Habitación Doble</h5>
-                        <p class="card-text">Nuestras Habitaciones Dobles cuentan con aire acondicionado, Wifi free, agua caliente y además TV LCD de 32"con cable.</p>
-                        <a href="#" class="btn btn-reservar ">Reservar</a>
-                    </div>
+        <div class="col-md-4" data-tipo="doble" data-fecha-entrada="2024-01-01" data-fecha-salida="2024-04-29" data-num-personas="4">
+            <div class="card text-dark text-center bg-light p-2">
+                <img src="img/home-3.jpg" alt="" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Habitación Doble</h5>
+                    <p class="card-text">Nuestras Habitaciones Dobles ofrecen espacio adicional.</p>
+                    <hr>
+                    <p class="card-text">Desde $250 por noche</p>
+                    <a href="#" class="btn btn-reservar mt-auto">Reservar</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Script para controlar la visibilidad de las cartas -->
+<script>
+    $(document).ready(function () {
+        // Función para obtener parámetros de la URL
+        function obtenerParametroURL(nombre) {
+            let url = new URL(window.location.href);
+            return url.searchParams.get(nombre);
+        }
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- Script para controlar la visibilidad de las cartas -->
-    <script>
-        $(document).ready(function () {
-            // Función para obtener parámetros de la URL
-            function obtenerParametroURL(nombre) {
-                let url = new URL(window.location.href);
-                return url.searchParams.get(nombre);
+        // Obtener los valores de búsqueda de la URL
+        let tipoSeleccionado = obtenerParametroURL('tipoHabitacion');
+        let fechaEntrada = obtenerParametroURL('fechaEntrada');
+        let fechaSalida = obtenerParametroURL('fechaSalida');
+        let numPersonas = obtenerParametroURL('numPersonas');
+
+        // Ocultar todas las cartas
+        $('.habitaciones-dispo .col-md-4').hide();
+
+        // Mostrar las cartas correspondientes a la búsqueda
+        $('.habitaciones-dispo .col-md-4').each(function () {
+            let carta = $(this);
+
+            // Obtener los atributos de la carta
+            let cartaTipo = carta.data('tipo');
+            let cartaFechaInicio = carta.data('fecha-entrada');
+            let cartaFechaFin = carta.data('fecha-salida');
+            let cartaNumPersonas = carta.data('num-personas');
+
+            // Comparar con los valores del formulario
+            if (
+                (tipoSeleccionado === 'cualquiera' || tipoSeleccionado === cartaTipo) &&
+                (cartaFechaInicio === '' || fechaEntrada >= cartaFechaInicio) &&
+                (cartaFechaFin === '' || fechaSalida <= cartaFechaFin) &&
+                (cartaNumPersonas === '' || numPersonas <= cartaNumPersonas)
+            ) {
+                carta.show();
             }
-
-            // Obtener los valores de búsqueda de la URL
-            let tipoSeleccionado = obtenerParametroURL('tipoHabitacion');
-            let fechaEntrada = obtenerParametroURL('fechaEntrada');
-            let fechaSalida = obtenerParametroURL('fechaSalida');
-            let numPersonas = obtenerParametroURL('numPersonas');
-
-            // Ocultar todas las cartas
-            $('.habitaciones-dispo .col-md-4').hide();
-
-            // Mostrar la carta correspondiente a la búsqueda
-            $('.habitaciones-dispo .col-md-4[data-tipo="' + tipoSeleccionado + '"]').each(function () {
-                let carta = $(this);
-
-                // Obtener los atributos de la carta
-                let cartaFechaInicio = carta.data('fecha-entrada');
-                let cartaFechaFin = carta.data('fecha-salida');
-                let cartaNumPersonas = carta.data('num-personas');
-
-                // Comparar con los valores del formulario
-                if (
-                    (cartaFechaInicio === '' || fechaEntrada >= cartaFechaInicio) &&
-                    (cartaFechaFin === '' || fechaSalida <= cartaFechaFin) &&
-                    (cartaNumPersonas === '' || numPersonas <= cartaNumPersonas)
-                ) {
-                    carta.show();
-                }
-            });
         });
-    </script>
+
+        // Mostrar mensaje si no se encontraron habitaciones
+        if ($('.habitaciones-dispo .col-md-4:visible').length === 0) {
+            $('#mensajeNoHabitaciones').show();
+        }
+    });
+</script>
     <!---------------------- FIN HABITACIONES DISPONIBLES ---------------------->
 
     <!---------------------- iNICIO FORMULARIO RESERVAR ---------------------->
-    <div id="mensajeReservaExitosa" class="container mt-4" style="display: none;">
+    <div id="mensajeReservaExitosa" class="container mt-4 text-center" style="display: none;">
         <h4>¡Reserva Exitosa!</h4>
         <p>Su reserva ha sido confirmada. Su código de reserva es: <span id="codigoReserva"></span></p>
     </div>
@@ -160,7 +172,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="documento">Documento:</label>
-                        <input type="text" id="documento" name="documento" class="form-control" required>
+                        <input type="text" id="documento" name="documento" class="form-control" required pattern="[0-9]{8}" title="Ingrese 8 números">
                     </div>
                 </div>
             </div>
@@ -168,13 +180,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nombre">Nombres:</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Ingrese solo letras">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="apellidos">Apellidos:</label>
-                        <input type="text" id="apellidos" name="apellidos" class="form-control" required>
+                        <input type="text" id="apellidos" name="apellidos" class="form-control" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Ingrese solo letras">
                     </div>
                 </div>
             </div>
@@ -182,13 +194,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="telefono">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                        <input type="tel" id="telefono" name="telefono" class="form-control" required pattern="[0-9]{9}" title="Ingrese 9 números">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" class="form-control" required>
+                        <input type="text" id="direccion" name="direccion" class="form-control" required pattern=".*" title="Ingrese una dirección válida">
                     </div>
                 </div>
             </div>
@@ -196,13 +208,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="fechaLlegada">Fecha de Llegada:</label>
-                        <input type="date" id="fechaLlegada" name="fechaLlegada" class="form-control" required>
+                        <input type="date" id="fechaLlegada" name="fechaLlegada" class="form-control" required min="<?php echo date('Y-m-d'); ?>" onchange="actualizarFechaSalidaMin()">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="fechaSalida">Fecha de Salida:</label>
-                        <input type="date" id="fechaSalida" name="fechaSalida" class="form-control" required>
+                        <input type="date" id="fechaSalida" name="fechaSalida" class="form-control" required min="<?php echo date('Y-m-d'); ?>">
                     </div>
                 </div>
             </div>
@@ -229,7 +241,7 @@
     
             // Asocia la función al botón "Reservar" de cada tarjeta
             $('.btn-reservar').click(function (event) {
-                event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+                event.preventDefault(); 
                 toggleFormularioReserva();
             });
     
@@ -241,7 +253,6 @@
     
                 // Mostrar el mensaje de reserva exitosa y el código de reserva
                 $('#mensajeReservaExitosa').show();
-                // Puedes generar un código de reserva de alguna manera y mostrarlo en el span
                 let codigoReserva = generarCodigoReserva();
                 $('#codigoReserva').text(codigoReserva);
                 
@@ -256,7 +267,40 @@
             if ($('.habitaciones-dispo .col-md-4:visible').length === 0) {
                 mostrarMensajeNoHabitaciones();
             }
-        });
+
+    // Validaciones adicionales usando JavaScript
+    $('#documento').on('input', function () {
+        // Limitar la longitud del documento a 10 caracteres
+        if ($(this).val().length > 10) {
+            $(this).val($(this).val().slice(0, 10));
+        }
+    });
+    });
+
+    // Configurar la fecha mínima de llegada al día actual
+    window.onload = function () {
+        let fecha = new Date();
+        let dia = fecha.getDate();
+        let mes = fecha.getMonth() + 1;
+        let ano = fecha.getFullYear();
+
+        if (dia < 10) {
+            dia = "0" + dia;
+        }
+
+        if (mes < 10) {
+            mes = "0" + mes;
+        }
+
+        fecha = ano + "-" + mes + "-" + dia;
+        document.getElementById("fechaLlegada").setAttribute("min", fecha);
+    };
+
+    // Actualizar la fecha mínima de salida al seleccionar una fecha de llegada
+    function actualizarFechaSalidaMin() {
+        let fechaEntrada = document.getElementById("fechaLlegada").value;
+        document.getElementById("fechaSalida").setAttribute("min", fechaEntrada);
+    }
     </script>
 
     <!---------------------- iNICIO FOOTER ---------------------->
