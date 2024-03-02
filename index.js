@@ -185,6 +185,28 @@ app.post('/search', (req, res) => {
     });
 });
 
+//Este metodo maneja la funcionalidad de busqueda de habitaciones segun el formulario del index.html
+
+app.get('/habitaciones', (req, res) => {
+    let { tipoHabitacion, fechaEntrada, fechaSalida, numPersonas } = req.query;
+
+    // Convertir fechas a objetos Date
+    fechaEntrada = new Date(fechaEntrada);
+    fechaSalida = new Date(fechaSalida);
+
+    // Buscar habitaciones que coincidan con los criterios
+    let query = `
+        SELECT * FROM habitacion
+        WHERE tipo_habitacion = ?
+        AND aforo >= ?
+    `;
+
+    db.query(query, [tipoHabitacion, numPersonas], (err, result) => {
+        if (err) throw err;
+        res.json(result);
+        console.log(result);
+    });
+});
 
 
 
