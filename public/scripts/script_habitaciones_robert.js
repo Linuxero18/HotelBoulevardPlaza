@@ -34,6 +34,15 @@ let idClientes = [];
 //Almacenacenamiento de los id de las habitaciones seleccionadas
 let idHabitaciones = [];
 
+//Cuenta cuantas habitaciones tipo simple se han seleccionado
+let contadorHabitacionSimple = 0;
+
+//Cuenta cuantas habitaciones tipo doble se han seleccionado
+let contadorHabitacionDoble = 0;
+
+//Cuenta cuantas habitaciones tipo superior se han seleccionado
+let contadorHabitacionSuperior = 0;
+
 //Costo total de la reserva
 let costoTotalConIGV = 0;
 
@@ -228,6 +237,7 @@ window.onload = function () {
             tarjetas.forEach(function (tarjeta) {
                 // Accede a los valores del dataset
                 tipo = tarjeta.dataset.tipo;
+                console.log(tipo);
                 fechaEntrada = new Date(tarjeta.dataset.fechaEntrada);
                 fechaSalida = new Date(tarjeta.dataset.fechaSalida);
                 numAdultos = tarjeta.dataset.numAdultos;
@@ -239,6 +249,18 @@ window.onload = function () {
                 if (cantidadHabitaciones != 0) {
                     tiposHabitacionesCant = tiposHabitacionesCant + cantidadHabitaciones + " " + tiposHabitacion[tipo] + " ,";
                     totalprecio = (totalprecio + precio_dia) * cantidadHabitaciones;
+                    
+                    if(tarjeta.dataset.tipo === "1"){
+                        contadorHabitacionSimple +=1;
+                    }
+                    else if(tarjeta.dataset.tipo === "2"){
+                        contadorHabitacionDoble +=1;
+                    }
+                    else if(tarjeta.dataset.tipo === "3"){
+                        contadorHabitacionSuperior +=1;
+                    }
+                        
+
                 }
 
 
@@ -253,8 +275,8 @@ window.onload = function () {
             // aforo = div.dataset.aforo;
             // precio_dia = div.dataset.precio_dia;
             // console.log(tipo, /*fechaEntrada, fechaSalida,*/ numPersonas, aforo, precio_dia);
-
-
+            
+            
 
             //Muestra la habitacion seleccionada
             let habitacionSeleccionada = document.getElementById('tipoHabitacionMostrar');
@@ -262,7 +284,7 @@ window.onload = function () {
 
             //Calcular y mostrar la duración de la estancia
             let diasEstancia = calcularEstancia(fechaEntrada, fechaSalida);
-            console.log(diasEstancia);
+            console.log("Estos son los dias de estancia: " + diasEstancia);
             let mostrarEstancia = document.getElementById('duracionEstanciaMostrar');
             if (diasEstancia === 1) {
                 mostrarEstancia.innerHTML = 'Duración de la estadia: ' + diasEstancia + ' noche';
@@ -386,31 +408,24 @@ botonContinuarReserva.addEventListener('click', async function (event) {
                     }).then(async (result) => {
                         if (result.value) {
                             formularioReservaHabitacion.reset(); // Resetear el formulario una vez que se ha insertado el reclamo correctamente
-                            console.log(data.idPersona);
+                            obtenerIdsHabitaciones();
+                            console.log(idHabitaciones);
+                            
                             idPersonas.push(data.idPersona);
                             console.log("estos son los id de las personas: " + idPersonas[0]);
                             numeroHuesped++;
-                            console.log(numeroHuesped);
                             if (numeroHuesped > adultosTotales) {
                                 botonContinuarReserva.innerHTML = '';
                                 botonContinuarReserva.innerHTML = 'Finalizar Reserva';
 
-                                let j = 1;
-                                dataCompleta.forEach(habitacion => {
-                                    let cantidadHabitaciones = parseInt(document.getElementById("cantHab" + j + "").value);
-                                    if (cantidadHabitaciones != 0) {
-                                        for (let i = 0; i < cantidadHabitaciones; i++) {
-                                            idHabitaciones.push(habitacion.idHabitacion);
-                                        }
-                                    }
-                                });
                                 let errorOcurrido = false;
                                 let codigoReserva = generarCodigoReserva();
 
+                                let x = 0;
                                 for (let controladorPersona = 0; controladorPersona < idPersonas.length && !errorOcurrido; controladorPersona++) {
                                     await registrarPersonaComoCliente(idPersonas[controladorPersona], errorOcurrido, idClientes);
-                                    if (!errorOcurrido) {
-                                        await registrarReserva(idClientes[controladorPersona], idHabitaciones[controladorPersona], codigoReserva, errorOcurrido);
+                                    for (let controladorHabitacion = 0; controladorHabitacion < idHabitaciones.length && !errorOcurrido; controladorHabitacion++) {
+                                        await registrarReserva(idClientes[controladorPersona], idHabitaciones[controladorHabitacion], codigoReserva, errorOcurrido);
                                     }
                                 }
                                 console.log("Me sali del while");
@@ -466,6 +481,9 @@ async function registrarPersonaComoCliente(idPersona, errorOcurrido) {
 }
 
 async function registrarReserva(idCliente, idHabitacion, codigoReserva, errorOcurrido) {
+
+    
+
     let fecha_reserva = new Date();
     let fecha_in = new Date(dataCompleta[0].fechaEntrada);
     let fecha_out = new Date(dataCompleta[0].fechaSalida);
@@ -536,6 +554,34 @@ function generarCodigoReserva() {
     return codigo;
 }
 
+function obtenerIdsHabitaciones(){
+    let habitacionesSeleccionadas = {
+        simple: 0,
+        doble: 0,
+        superior: 0
+    };
+    
+    if (contadorHabitacionSimple > 0) {
+        habitacionesSeleccionadas.simple = 1;
+    }
+    
+    if (contadorHabitacionDoble > 0) {
+        habitacionesSeleccionadas.doble = 2;
+    }
+    
+    if (contadorHabitacionSuperior > 0) {
+        habitacionesSeleccionadas.superior = 3;
+    }
+
+    let filtroDeIds = dataCompleta.filter(habitacion => habitacion.tipo_habitacion === habitacionesSeleccionadas.simple || habitacion.tipo_habitacion === habitacionesSeleccionadas.doble || habitacion.tipo_habitacion === habitacionesSeleccionadas.superior);
+
+    //Recorrer la data filtrada y hacerle push a un array con los ids de las habitaciones
+    for (let i = 0; i < filtroDeIds.length; i++) {
+        idHabitaciones.push(filtroDeIds[i].idHabitacion);
+    }
+    console.log(filtroDeIds);
+    console.log(habitacionesSeleccionadas);
+}
 
 
 

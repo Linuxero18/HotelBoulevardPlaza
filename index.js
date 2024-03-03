@@ -146,16 +146,26 @@ app.get('/habitaciones', (req, res) => {
 
     // Convertir fechas a objetos Date
     fechaEntrada = new Date(fechaEntrada);
+    console.log(fechaEntrada.toISOString().slice(0,10));
     fechaSalida = new Date(fechaSalida);
+    console.log(fechaSalida.toISOString().slice(0,10));
 
     // Buscar habitaciones que coincidan con los criterios
     let query = `
-        SELECT * FROM habitacion
-        WHERE aforo >= ? 
-        AND estado = 1
-    `;
+    SELECT habitacion.idHabitacion, habitacion.numero, habitacion.piso, habitacion.descripcion, 
+    habitacion.precio_dia, habitacion.tipo_habitacion, habitacion.aforo, habitacion.estado
+    FROM habitacion
+    WHERE habitacion.aforo >= ?
+    AND habitacion.estado = 1
+    AND NOT EXISTS (
+    SELECT *
+    FROM reserva
+    WHERE reserva.idHabitacion = habitacion.idHabitacion
+    AND NOT (reserva.fecha_out <= ? OR reserva.fecha_in >= ?)
+    )
+`;
 
-    db.query(query, [numPersonas], (err, result) => {
+    db.query(query, [numPersonas, fechaEntrada, fechaSalida], (err, result) => {
         if (err) throw err;
 
         // Añade el número de personas a cada habitación en el resultado
@@ -190,7 +200,7 @@ app.post('/registrarpersonareserva', (req, res) => {
 
         if (result.length > 0) {
             // Si la persona ya está registrada, devuelve un mensaje de éxito sin hacer nada más
-            res.json({ status: 'success', idPersona: result[0].idPersona});
+            res.json({ status: 'success', idPersona: result[0].idPersona });
         } else {
             // Si la persona no está registrada, procede a insertarla
             let queryInsert = `
@@ -235,7 +245,7 @@ app.post('/registrarpersonacliente', (req, res) => {
 
         if (result.length > 0) {
             // Si el cliente ya está registrado, devuelve un mensaje de éxito sin hacer nada más
-            res.json({ status: 'success', message: 'El cliente ya está registrado', idCliente: result[0].id_cliente});
+            res.json({ status: 'success', message: 'El cliente ya está registrado', idCliente: result[0].id_cliente });
             console.log(result[0].id_cliente);
         } else {
             // Si el cliente no está registrado, procede a insertarlo
@@ -260,21 +270,35 @@ app.post('/registrarpersonacliente', (req, res) => {
 
 //Este metodo registra las reservas
 app.post('/registrarreserva', (req, res) => {
-    let {codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado } = req.body;
-    let query = `
+    let { codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado } = req.body;
+    let queryReserva = `
         INSERT INTO reserva (codigo_reserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
-    db.query(query, [codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado], (err, result) => {
+    db.query(queryReserva, [codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado], (err, result) => {
         if (err) {
             console.error('Error al registrar la reserva:', err);
             res.status(500).json({ error: 'Error al registrar la reserva' });
             return;
         }
 
-        res.json({ status: 'success', idReserva: result.insertId });
-        
+        // Actualiza el estado de la habitación
+        let queryHabitacion = `
+            UPDATE habitacion
+            SET estado = 1
+            WHERE idHabitacion = ?
+        `;
+
+        db.query(queryHabitacion, [idHabitacion], (err, result) => {
+            if (err) {
+                console.error('Error al actualizar el estado de la habitación:', err);
+                res.status(500).json({ error: 'Error al actualizar el estado de la habitación' });
+                return;
+            }
+
+            res.json({ status: 'success', idReserva: result.insertId });
+        });
     });
 });
 
