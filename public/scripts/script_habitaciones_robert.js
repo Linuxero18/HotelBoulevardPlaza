@@ -1,22 +1,47 @@
 
+
+
+
 let tiposHabitacion = {
     1: 'Habitación Simple',
     2: 'Habitación Doble',
     3: 'Habitación Superior'
 };
 
-let listaHabitaciones = [];
 
-let botonAñadirHabitacion = document.getElementById('agregarHabitacion');
 
-let contarClicks = 0;
+//Este es el div que oculta y muestra el resumen de la estadía
 let divHabitaciones = document.getElementById('habitaciones');
 
+//Esta es la data sin filtrar, se usa para poder determinar cuales habitaciones se asignan a la reserva
 let dataCompleta = recuperarDatos();
+console.log(dataCompleta);
+
+//Variable que controla cuantos huespedes van en la reserva y asi pedir sus datos
+let huespedesTotales = dataCompleta[0].numAdultos + dataCompleta[0].numNinos;
+
+//Variable que cuenta cuantos adultos hay en la reserva
+let adultosTotales = dataCompleta[0].numAdultos;
+//Contador para controlar el numero de veces que se mostrara el formulario de huespedes
+let numeroHuesped = 1;
+
+//Almacenamiento de id de personas
+let idPersonas = [];
+
+//Almacenamiento de id de clientes
+let idClientes = [];
+
+//Almacenacenamiento de los id de las habitaciones seleccionadas
+let idHabitaciones = [];
+
+//Costo total de la reserva
+let costoTotalConIGV = 0;
+
+
+
 
 function recuperarDatos() {
     let data = JSON.parse(localStorage.getItem('habitaciones'));
-    console.log(data);
     return data;
 }
 
@@ -65,9 +90,9 @@ function crearTarjetaHabitacion(habitacion, contador) {
     div.dataset.numPersonas = habitacion.numPersonas;
     div.dataset.aforo = habitacion.aforo;
     div.dataset.precio_dia = habitacion.precio_dia;
-    console.log(habitacion.precio_dia) ;
+
     let cantidadMaxHab = dataCompleta.filter(habitacionx => habitacionx.tipo_habitacion === habitacion.tipo_habitacion);
-    console.log(cantidadMaxHab);
+
     div.innerHTML = `
             <div class="card text-dark text-center bg-light p-2">
                 <img src="img/home-2.jpg" alt="" class="card-img-top">
@@ -160,8 +185,6 @@ window.onload = function () {
     fechaSalida = new Date(datos[0].fechaSalida);
     let fechaEntradaMostrar = formatearFecha(fechaEntrada);
     let fechaSalidaMostrar = formatearFecha(fechaSalida);
-    console.log(fechaEntradaMostrar);
-    console.log(fechaSalidaMostrar);
 
     document.getElementById('fechaEntradaMostrar').innerHTML += fechaEntradaMostrar;
     document.getElementById('fechaSalidaMostrar').innerHTML += fechaSalidaMostrar;
@@ -184,7 +207,7 @@ window.onload = function () {
 
         // Añade el evento de clic al botón
         btn.addEventListener('click', function (event) {
-            contarClicks++;
+
             event.preventDefault();
 
 
@@ -217,7 +240,7 @@ window.onload = function () {
                     tiposHabitacionesCant = tiposHabitacionesCant + cantidadHabitaciones + " " + tiposHabitacion[tipo] + " ,";
                     totalprecio = (totalprecio + precio_dia) * cantidadHabitaciones;
                 }
-                
+
 
                 j++;
                 // ... y así sucesivamente para los demás valores del dataset
@@ -235,7 +258,7 @@ window.onload = function () {
 
             //Muestra la habitacion seleccionada
             let habitacionSeleccionada = document.getElementById('tipoHabitacionMostrar');
-            habitacionSeleccionada.innerHTML = 'Tipo de habitacion: ' +  tiposHabitacionesCant;
+            habitacionSeleccionada.innerHTML = 'Tipo de habitacion: ' + tiposHabitacionesCant;
 
             //Calcular y mostrar la duración de la estancia
             let diasEstancia = calcularEstancia(fechaEntrada, fechaSalida);
@@ -263,7 +286,7 @@ window.onload = function () {
             igvMostrar.innerHTML = 'IGV(18%): ' + igv + ' S/.';
 
             //Calcular el costo total con IGV
-            let costoTotalConIGV = parseFloat(costoTotal) + parseFloat(igv);
+            costoTotalConIGV = parseFloat(costoTotal) + parseFloat(igv);
             let costoTotalConIGVMostrar = document.getElementById('mostrarCostoTotalConIGV');
             costoTotalConIGVMostrar.innerHTML = 'Total: ' + costoTotalConIGV + ' S/.';
 
@@ -282,36 +305,241 @@ window.onload = function () {
     });
 }
 
-function mostrarBotonAñadirHabitacion() {
-    if (contarClicks === 1) {
-        botonAñadirHabitacion.style.display = 'block';
+
+
+
+//Mostrar el formulario de reserva tras darle click al boton de reservar
+//Este es el div que oculta y muestra el formulario de huespedes
+let divFormulario = document.getElementById("divDelFormulario");
+//Este es el formulario que se muestra para ingresar los datos de los huespedes
+let formularioReservaHabitacion = document.getElementById('formularioReserva');
+//Este es el titulo que se muestra en el formulario de huespedes
+let tituloFormulario = document.getElementById('tituloFormHuespedes');
+
+let botonReservar = document.getElementById('continuarReserva');
+let botonContinuarReserva = document.getElementById('btnEnviarReserva');
+botonReservar.addEventListener('click', function (event) {
+    event.preventDefault();
+    divFormulario.style.display = 'block';
+    divFormulario.scrollIntoView({ behavior: "smooth" });
+    tituloFormulario.innerHTML = "";
+    tituloFormulario.innerHTML = 'Datos del Huesped';
+    botonContinuarReserva.innerHTML = '';
+    botonContinuarReserva.innerHTML = 'Registra Huesped';
+    //this.style.display = 'none';
+});
+
+
+botonContinuarReserva.addEventListener('click', async function (event) {
+    event.preventDefault();
+    if (numeroHuesped <= adultosTotales) {
+
+        console.log("NUmero de huespedes " + numeroHuesped);
+        console.log("Numero de adultos totales " + adultosTotales);
+
+        tituloFormulario.innerHTML = 'Datos del Huesped #' + numeroHuesped;
+        let nombres = document.getElementById('nombres').value;
+        let apellidos = document.getElementById('apellidos').value;
+        let tipoDoc = document.getElementById('tipoDocumento').value;
+        let documento = document.getElementById('documento').value;
+        let fechaNac = document.getElementById('fechaNacimiento').value;
+        let direccion = document.getElementById('direccion').value;
+        let telefono = document.getElementById('telefono').value;
+        let correo = document.getElementById('correo').value;
+
+
+        if (nombres === "" || apellidos === "" || tipoDoc === "" || documento === "" || fechaNac === "" || direccion === "" || telefono === "" || correo === "") {
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "Todos los campos son obligatorios!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+
+        fetch('registrarpersonareserva', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nombres: nombres,
+                apellidos: apellidos,
+                tipoDoc: tipoDoc,
+                documento: documento,
+                fechaNac: fechaNac,
+                direccion: direccion,
+                telefono: telefono,
+                correo: correo
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.status === 'success') {
+                    Swal.fire({
+                        title: `Huesped registrado correctamente!`,
+                        text: "Si hay mas huespedes adultos, por favor registrelos",
+                        icon: "success",
+                        confirmButtonColor: "#48a04b"
+                    }).then(async (result) => {
+                        if (result.value) {
+                            formularioReservaHabitacion.reset(); // Resetear el formulario una vez que se ha insertado el reclamo correctamente
+                            console.log(data.idPersona);
+                            idPersonas.push(data.idPersona);
+                            console.log("estos son los id de las personas: " + idPersonas[0]);
+                            numeroHuesped++;
+                            console.log(numeroHuesped);
+                            if (numeroHuesped > adultosTotales) {
+                                botonContinuarReserva.innerHTML = '';
+                                botonContinuarReserva.innerHTML = 'Finalizar Reserva';
+
+                                let j = 1;
+                                dataCompleta.forEach(habitacion => {
+                                    let cantidadHabitaciones = parseInt(document.getElementById("cantHab" + j + "").value);
+                                    if (cantidadHabitaciones != 0) {
+                                        for (let i = 0; i < cantidadHabitaciones; i++) {
+                                            idHabitaciones.push(habitacion.idHabitacion);
+                                        }
+                                    }
+                                });
+                                let errorOcurrido = false;
+                                let codigoReserva = generarCodigoReserva();
+
+                                for (let controladorPersona = 0; controladorPersona < idPersonas.length && !errorOcurrido; controladorPersona++) {
+                                    await registrarPersonaComoCliente(idPersonas[controladorPersona], errorOcurrido, idClientes);
+                                    if (!errorOcurrido) {
+                                        await registrarReserva(idClientes[controladorPersona], idHabitaciones[controladorPersona], codigoReserva, errorOcurrido);
+                                    }
+                                }
+                                console.log("Me sali del while");
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error al registrar el huesped!",
+                        text: "puede que ya tenga una reserva activa, comuniquese con nosotros para mas informacion!",
+                        confirmButtonColor: "#48a04b"
+                    });
+                }
+            })
+            .catch((error) => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error!",
+                    text: "Error al registrar el huesped" + error,
+                    confirmButtonColor: "#48a04b"
+                });
+                console.error('Error:', error);
+            });
+    }
+});
+
+async function registrarPersonaComoCliente(idPersona, errorOcurrido) {
+    try {
+        let response = await fetch('registrarpersonacliente', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                idpersona: idPersona
+            })
+        });
+
+        let data = await response.json();
+
+        if (data.status === 'success') {
+            console.log('Persona registrada como cliente');
+            idClientes.push(data.idCliente);
+        } else {
+            console.log('Error al registrar persona como cliente');
+            errorOcurrido = true; // Cambiar la variable de control a true si ocurre un error
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        errorOcurrido = true;
     }
 }
 
-function reactivarBotones() {
-
-    botonAñadirHabitacion.addEventListener('click', function (event) {
-        event.preventDefault();
-        let botonesHabitaciones = document.querySelectorAll('.btn-reservar');
-        botonesHabitaciones.forEach(boton => {
-            if (boton !== this) {
-                boton.classList.remove('disabled');
-                boton.innerHTML = 'Seleccionar';
-            }
+async function registrarReserva(idCliente, idHabitacion, codigoReserva, errorOcurrido) {
+    let fecha_reserva = new Date();
+    let fecha_in = new Date(dataCompleta[0].fechaEntrada);
+    let fecha_out = new Date(dataCompleta[0].fechaSalida);
+    //let costoTotalConIGV = parseFloat(document.getElementById('costoTotalMostrar').innerHTML);
+    let observacion = "Reserva realizada desde la web";
+    let estado = 1;
+    try {
+        let response = await fetch('registrarreserva', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                codigoReserva: codigoReserva,
+                idHabitacion: idHabitacion,
+                idCliente: idCliente,
+                fecha_reserva: fecha_reserva,
+                fecha_in: fecha_in,
+                fecha_out: fecha_out,
+                costo_total: costoTotalConIGV,
+                observacion: observacion,
+                estado: estado
+            })
         });
-    });
 
+        let data = await response.json();
+
+        if (data.status === 'success') {
+            Swal.fire({
+                title: `Su Reserva se ha realizado Exitosamente!`,
+                text: "su numero de reserva es: " + codigoReserva + ", también se lo enviaremos por correo electronico!",
+                icon: "success",
+                confirmButtonColor: "#48a04b"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'index.html';
+                }
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "Error al registrar la reserva",
+                confirmButtonColor: "#48a04b"
+            });
+            errorOcurrido = true; // Cambiar la variable de control a true si ocurre un error
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: "Error al registrar la reserva" + error,
+            confirmButtonColor: "#48a04b"
+        });
+        console.error('Error:', error);
+        errorOcurrido = true;
+    }
 }
 
-//Mostrar el formulario de reserva tras darle click al boton de reservar
-let botonReservar = document.getElementById('continuarReserva');
-let formularioReserva = document.getElementById('formularioReserva');
-botonReservar.addEventListener('click', function (event) {
-    event.preventDefault();
-    formularioReserva.style.display = 'block';
-    formularioReserva.scrollIntoView({ behavior: "smooth"});
-    //this.style.display = 'none';
-});
+function generarCodigoReserva() {
+    let codigo = '';
+    let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+    for (let i = 0; i < 6; i++) {
+        codigo += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+
+    return codigo;
+}
+
+
+
+
+
 
 
 

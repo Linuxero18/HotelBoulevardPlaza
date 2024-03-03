@@ -38,6 +38,7 @@ app.post('/registrarReclamo', function (peticion, respuesta) {
     let tipo_documento = peticion.body.tipo_documento;
     let documento = peticion.body.documento;
     let direccion = peticion.body.direccion;
+    let fechaNac = peticion.body.fechanac;
     let telefono = peticion.body.telefono;
     let correo = peticion.body.correo;
     let mensaje = peticion.body.mensaje;
@@ -71,13 +72,13 @@ app.post('/registrarReclamo', function (peticion, respuesta) {
                 });
 
             } else { // Validar que los campos obligatorios no estén vacíos
-                if (!nombres || !apellidos || !tipo_documento || !documento || !direccion || !telefono || !correo || !mensaje || !tipo_reclamo) {
+                if (!nombres || !apellidos || !tipo_documento || !documento || !fechaNac || !direccion || !telefono || !correo || !mensaje || !tipo_reclamo) {
                     respuesta.status(400).send({ error: 'Todos los campos son obligatorios.' });
                     return;
                 }
                 // Si la persona no existe, entonces la insertamos junto con el reclamo
 
-                db.query('INSERT INTO persona (nombres, apellidos, tipo_doc, numero_doc, direccion, telefono, correo) VALUES (?,?,?,?,?,?,?)', [nombres, apellidos, tipo_documento, documento, direccion, telefono, correo], function (error, resultadoPersona) {
+                db.query('INSERT INTO persona (nombres, apellidos, tipo_doc, numero_doc, fecha_nacimiento, direccion, telefono, correo) VALUES (?,?,?,?,?,?,?,?)', [nombres, apellidos, tipo_documento, documento, fechaNac, direccion, telefono, correo], function (error, resultadoPersona) {
                     if (error) {
                         console.log(error);
                         console.log('Error al registrar la persona');
@@ -141,7 +142,7 @@ app.post('/search', (req, res) => {
 //Este metodo maneja la funcionalidad de busqueda de habitaciones segun el formulario del index.html
 
 app.get('/habitaciones', (req, res) => {
-    let { fechaEntrada, fechaSalida, numAdultos, numNinos,numPersonas } = req.query;
+    let { fechaEntrada, fechaSalida, numAdultos, numNinos, numPersonas } = req.query;
 
     // Convertir fechas a objetos Date
     fechaEntrada = new Date(fechaEntrada);
@@ -169,6 +170,111 @@ app.get('/habitaciones', (req, res) => {
 
         res.json(habitacionesConNumPersonas);
         //console.log(habitacionesConNumPersonas);
+    });
+});
+
+
+///Este metodo registra las personas de la reserva
+app.post('/registrarpersonareserva', (req, res) => {
+    let { nombres, apellidos, tipoDoc, documento, fechaNac, direccion, telefono, correo } = req.body;
+
+    // Primero, verifica si ya existe una persona con el mismo número de documento
+    let queryCheck = `SELECT idPersona FROM persona WHERE numero_doc = ?`;
+
+    db.query(queryCheck, [documento], (err, result) => {
+        if (err) {
+            console.error('Error al verificar la persona:', err);
+            res.status(500).json({ error: 'Error al verificar la persona' });
+            return;
+        }
+
+        if (result.length > 0) {
+            // Si la persona ya está registrada, devuelve un mensaje de éxito sin hacer nada más
+            res.json({ status: 'success', idPersona: result[0].idPersona});
+        } else {
+            // Si la persona no está registrada, procede a insertarla
+            let queryInsert = `
+                INSERT INTO persona (nombres, apellidos, tipo_doc, numero_doc, fecha_nacimiento, direccion, telefono, correo)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            `;
+
+            db.query(queryInsert, [nombres, apellidos, tipoDoc, documento, fechaNac, direccion, telefono, correo], (err, result) => {
+                if (err) {
+                    console.error('Error al registrar la persona:', err);
+                    res.status(500).json({ error: 'Error al registrar la persona' });
+                    return;
+                }
+
+                res.json({ status: 'success', idPersona: result.insertId });
+            });
+        }
+    });
+});
+
+
+//Este metodo registra las personas como clientes
+app.post('/registrarpersonacliente', (req, res) => {
+    let { idpersona } = req.body;
+
+    // Comprobar si idpersona está definido
+    if (!idpersona) {
+        console.error('Error: idpersona no está definido');
+        res.status(400).json({ error: 'idpersona no está definido' });
+        return;
+    }
+
+    // Primero, verifica si ya existe un cliente con el mismo id_persona
+    let queryCheck = `SELECT id_cliente FROM cliente WHERE id_persona = ?`;
+
+    db.query(queryCheck, [idpersona], (err, result) => {
+        if (err) {
+            console.error('Error al verificar el cliente:', err);
+            res.status(500).json({ error: 'Error al verificar el cliente' });
+            return;
+        }
+
+        if (result.length > 0) {
+            // Si el cliente ya está registrado, devuelve un mensaje de éxito sin hacer nada más
+            res.json({ status: 'success', message: 'El cliente ya está registrado', idCliente: result[0].id_cliente});
+            console.log(result[0].id_cliente);
+        } else {
+            // Si el cliente no está registrado, procede a insertarlo
+            let codigoCliente = idpersona.toString().padStart(6, '0');
+            let queryInsert = `
+                INSERT INTO cliente (id_persona, codigo_cliente)
+                VALUES (?, ?)
+            `;
+
+            db.query(queryInsert, [idpersona, codigoCliente], (err, result) => {
+                if (err) {
+                    console.error('Error al registrar el cliente:', err);
+                    res.status(500).json({ error: 'Error al registrar el cliente' });
+                    return;
+                }
+
+                res.json({ status: 'success', idCliente: result.insertId });
+            });
+        }
+    });
+});
+
+//Este metodo registra las reservas
+app.post('/registrarreserva', (req, res) => {
+    let {codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado } = req.body;
+    let query = `
+        INSERT INTO reserva (codigo_reserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    db.query(query, [codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado], (err, result) => {
+        if (err) {
+            console.error('Error al registrar la reserva:', err);
+            res.status(500).json({ error: 'Error al registrar la reserva' });
+            return;
+        }
+
+        res.json({ status: 'success', idReserva: result.insertId });
+        
     });
 });
 

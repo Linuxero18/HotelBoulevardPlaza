@@ -172,3 +172,62 @@ function añadirHabitacion(event) {
 
 // Puede que necesites adaptar algunos nombres de variables o estructuras
 // específicas de tu implementación original para integrar estos cambios.
+
+
+
+
+
+botonContinuarReserva.addEventListener('click', async function (event) {
+    // ... el resto de tu código ...
+
+    if (data.status === 'success') {
+        Swal.fire({
+            title: `Huesped #${numeroHuesped} registrado correctamente!`,
+            icon: "success",
+            confirmButtonColor: "#48a04b"
+        }).then((result) => {
+            if (result.value) {
+                formularioReservaHabitacion.reset();
+                console.log(data.idPersona);
+                idPersonas.push(data.idPersona);
+                console.log("estos son los id de las personas: " + idPersonas[0]);
+                numeroHuesped++;
+                console.log(numeroHuesped);
+                if (numeroHuesped > adultosTotales) {
+                    botonContinuarReserva.innerHTML = '';
+                    botonContinuarReserva.innerHTML = 'Finalizar Reserva';
+
+                    // Mover la lógica de finalización de la reserva aquí
+                    let j = 1;
+                    dataCompleta.forEach(habitacion => {
+                        let cantidadHabitaciones = parseInt(document.getElementById("cantHab" + j + "").value);
+                        if (cantidadHabitaciones != 0) {
+                            for (let i = 0; i < cantidadHabitaciones; i++) {
+                                idHabitaciones.push(habitacion.idHabitacion);
+                            }
+                        }
+                    });
+                    let errorOcurrido = false;
+
+                    for (let controlador = 0; controlador < idPersonas.length && !errorOcurrido; controlador++) {
+                        registrarPersonaComoCliente(idPersonas[controlador], errorOcurrido, idClientes);
+                        for (let controlador = 0; controlador < idClientes.length && !errorOcurrido; controlador++) {
+                            registrarReserva(idClientes[controlador], idHabitaciones[controlador], errorOcurrido);
+                        }
+                    }
+                    console.log("Me sali del while");
+                }
+            }
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: data.message,
+            confirmButtonColor: "#48a04b"
+        });
+    }
+})
+.catch((error) => {
+    console.error('Error:', error);
+});

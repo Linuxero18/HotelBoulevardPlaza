@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let nombres = document.getElementById("nombres").value;
         let apellidos = document.getElementById("apellidos").value;
         let tipoDoc = document.getElementById("tipoDoc").value;
+        let fechaNac = document.getElementById("fechaNacimiento").value;
         let documento = document.getElementById("documento").value.trim();
         let direccion = document.getElementById("direccion").value;
         let telefono = document.getElementById("telefono").value.trim();
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let reclamo = document.getElementById("reclamo").value;
 
         //Realizar la validación de los campos
-        if (nombres === "" || apellidos === "" || tipoDoc === "" || documento === "" || direccion === "" || telefono === "" || correo === "" || mensaje === "" || reclamo === "0") {
+        if (nombres === "" || apellidos === "" || tipoDoc === "" || fechaNac == "" || documento === "" || direccion === "" || telefono === "" || correo === "" || mensaje === "" || reclamo === "0") {
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     tipo_documento: tipoDoc,
                     documento: documento,
                     direccion: direccion,
+                    fechanac: fechaNac,
                     telefono: telefono,
                     correo: correo,
                     mensaje: mensaje,
