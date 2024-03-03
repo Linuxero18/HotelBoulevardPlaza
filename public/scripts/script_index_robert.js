@@ -28,23 +28,96 @@ function obtenerFechaActual() {
     return ano + "-" + mes + "-" + dia;
 }
 
+// Función para crear selectores de edad de niños
+function crearSelectoresEdad(cantidad) {
+    const container = document.getElementById('edades-niños-container');
+    container.innerHTML = ''; // Limpiar el contenido anterior
+
+    for (let i = 0; i < cantidad; i++) {
+        let div = document.createElement('div');
+        div.className = 'col-md-2';
+        const label = document.createElement('label');
+        label.textContent = `Edad del niño ${i + 1}: `;
+
+        const selectorEdad = document.createElement('select');
+        selectorEdad.id = `edad-niño-${i + 1}`;
+        selectorEdad.className = 'form-select';
+        selectorEdad.name = `edad-niño-${i + 1}`;
+        // Agregar opciones para las edades (por ejemplo, de 1 a 12 años)
+        for (let edad = 0; edad <= 12; edad++) {
+            const option = document.createElement('option');
+            option.value = edad;
+            if (edad === 1) {
+                option.textContent = edad + ' año';
+            }
+            else {
+                option.textContent = edad + ' años';
+            }
+            selectorEdad.appendChild(option);
+        }
+
+        container.appendChild(div);
+        div.appendChild(label);
+        div.appendChild(selectorEdad);
+        div.appendChild(document.createElement('br')); // Salto de línea entre cada selector
+    }
+}
+
+// Event listener para el cambio en la cantidad de niños
+document.getElementById('numNinos').addEventListener('change', function () {
+    const cantidad = parseInt(this.value);
+    crearSelectoresEdad(cantidad);
+});
+
+// Llamar a la función inicialmente para configurar los selectores de edad
+crearSelectoresEdad(0); // Configuración inicial, sin niños
+
+
 let formularioBusqueda = document.getElementById('buscarForm');
 formularioBusqueda.addEventListener('submit', function (event) {
     event.preventDefault();
 
     // Obtener los valores de búsqueda del formulario
-    let tipoSeleccionado = document.getElementById('tipoHabitacion').value;
+    //let tipoSeleccionado = document.getElementById('tipoHabitacion').value;
     let fechaEntrada = document.getElementById('fechaEntrada').value;
     let fechaSalida = document.getElementById('fechaSalida').value;
-    let numPersonas = document.getElementById('numPersonas').value;
+    //let numPersonas = document.getElementById('numPersonas').value;
+    let numAdultos = document.getElementById('numAdultos').value;
+    let numNinos = document.getElementById('numNinos').value;
+    let numPersonas = numAdultos;
+    const div = document.getElementById('edades-niños-container');
+    const edades = div.querySelectorAll('select');
+    for (let i = 0; i < edades.length; i++) {
+        console.log(edades[i].value);
+        if (edades[i].value === '0') {
+            alert('Por favor, seleccione la edad de todos los niños');
+            return;
+        }
+        else if (edades[i].value >= '6') {
+            numPersonas = parseInt(numPersonas) + 1;
+        }
+    }
 
-    fetch('http://localhost:3000/habitaciones?tipoHabitacion=' + tipoSeleccionado + '&fechaEntrada=' + fechaEntrada + '&fechaSalida=' + fechaSalida + '&numPersonas=' + numPersonas)
+    fetch('http://localhost:3000/habitaciones?fechaEntrada=' + fechaEntrada + '&fechaSalida=' + fechaSalida + '&numAdultos=' + numAdultos + '&numNinos=' + numNinos + '&numPersonas=' + numPersonas)
         .then(response => response.json())
         .then(data => {
+            const seenTypes = {};
+
+            // Filtrar los datos para que solo quede una habitación de cada tipo
+            const filteredData = data.filter(habitacion => {
+                if (seenTypes[habitacion.tipo_habitacion]) {
+                    // Si ya hemos visto este tipo de habitación, no lo incluyas en los datos filtrados
+                    return false;
+                } else {
+                    // Si no hemos visto este tipo de habitación, márcalo como visto y inclúyelo en los datos filtrados
+                    seenTypes[habitacion.tipo_habitacion] = true;
+                    return true;
+                }
+            });
             // Almacena los datos en el localStorage
             localStorage.setItem('habitaciones', JSON.stringify(data));
 
-            console.log(data);
+            console.log(filteredData);
 
             // Redirige a la otra página
             window.location.href = 'habitaciones.html';

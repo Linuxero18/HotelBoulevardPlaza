@@ -108,53 +108,6 @@ app.post('/registrarReclamo', function (peticion, respuesta) {
 });
 
 
-
-
-// app.get('/search', async (req, res) => {
-//     try {
-//         const idNumber = (req.query.id).substring(5);
-//         console.log(idNumber);
-//         const con = await getConnection();
-//         const [rows, fields] = await con.query(`
-//             SELECT lr.fecha_reclamo, lr.descripcion_reclamo, lr.tipo_reclamo, lr.codigo_reclamo, 
-//                    p.nombres, p.apellidos, p.tipo_doc, p.numero_doc
-//             FROM libro_reclamos lr
-//             JOIN persona p ON lr.datos_cliente = p.idPersona
-//             WHERE lr.idReclamo = ?
-//         `, [idNumber]);
-
-//         res.json(rows);
-//     } catch (error) {
-//         console.error('Error:', error);
-//         res.status(500).send('Ocurrió un error al realizar la consulta');
-//     }
-// });
-
-// app.get('/search', (req, res) => {
-//     const idNumber = req.query.id; // El valor del parámetro id
-//     console.log(idNumber);
-//     db.query(`
-//         SELECT lr.fecha_reclamo, lr.codigo_reclamo,  lr.estado
-//         FROM libro_reclamos lr
-//         WHERE lr.idReclamo = ?`, 
-//         [idNumber], 
-//         (error, results) => {
-//             if (error) {
-//                 console.error('Error:', error);
-//                 res.status(500).send('Ocurrió un error al realizar la consulta');
-//                 return;
-//             }
-
-//             if (results.length > 0) {
-//                 res.json(results);
-//             } else {
-//                 res.status(404).send('No se encontraron datos');
-//             }
-//         }
-//     );
-// });
-
-
 //Este metodo maneja la funcionalidad de buscar un reclamo
 app.post('/search', (req, res) => {
     const { tipo_documento, numero_documento, apellidos, numero_reclamo } = req.body;
@@ -188,7 +141,7 @@ app.post('/search', (req, res) => {
 //Este metodo maneja la funcionalidad de busqueda de habitaciones segun el formulario del index.html
 
 app.get('/habitaciones', (req, res) => {
-    let { tipoHabitacion, fechaEntrada, fechaSalida, numPersonas } = req.query;
+    let { fechaEntrada, fechaSalida, numAdultos, numNinos,numPersonas } = req.query;
 
     // Convertir fechas a objetos Date
     fechaEntrada = new Date(fechaEntrada);
@@ -197,14 +150,25 @@ app.get('/habitaciones', (req, res) => {
     // Buscar habitaciones que coincidan con los criterios
     let query = `
         SELECT * FROM habitacion
-        WHERE tipo_habitacion = ?
-        AND aforo >= ?
+        WHERE aforo >= ? 
+        AND estado = 1
     `;
 
-    db.query(query, [tipoHabitacion, numPersonas], (err, result) => {
+    db.query(query, [numPersonas], (err, result) => {
         if (err) throw err;
-        res.json(result);
-        console.log(result);
+
+        // Añade el número de personas a cada habitación en el resultado
+        let habitacionesConNumPersonas = result.map(habitacion => ({
+            ...habitacion,
+            numAdultos: numAdultos,
+            numNinos: numNinos,
+            numPersonas: numPersonas,
+            fechaEntrada: fechaEntrada,
+            fechaSalida: fechaSalida
+        }));
+
+        res.json(habitacionesConNumPersonas);
+        //console.log(habitacionesConNumPersonas);
     });
 });
 

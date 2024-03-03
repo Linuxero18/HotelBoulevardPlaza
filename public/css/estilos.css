@@ -275,30 +275,12 @@ header {
 
 /* -------------------------- Estilos para la pagina Habitaciones-------------------------- */
 
-.habitaciones{
-    padding: 30px 0px 0px;
-    max-height: 100%;
-}
-
-.cartas-habitaciones{
-    padding-top: 0px;
-}
 
 /* Agrega una clase para ocultar elementos */
 .oculto {
     display: none;
 }
 
-/* Establece una altura fija para las tarjetas */
-.card {
-    height: 100%; /* Puedes ajustar este valor según tus necesidades */
-}
-
-/* Asegura que la imagen dentro de la tarjeta se ajuste a la altura */
-.card-img-top {
-    height: 50%; /* Puedes ajustar este valor según tus necesidades */
-    object-fit: cover;
-}
 
 /* Ajusta la altura del cuerpo de la tarjeta según el contenido */
 .card-body {
@@ -308,3 +290,130 @@ header {
     flex-direction: column;
     justify-content: space-between;
 }
+
+/* #contenedor-de-tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+
+.btn.disabled {
+    pointer-events: none; /* Deshabilita los clics y el hover */
+    opacity: 0.6; /* Hace que el botón parezca deshabilitado */
+}
+
+.titulo-busqueda{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* -------------------------- Estilos para el carrito del aside-------------------------- */
+
+.container-habitaciones-checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #ad1d1d;
+    color: black;
+
+}
+
+.reservation-cart-container_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid #161815;
+    padding: 30px;
+    background-color: #f9f9f9; /*controla el fondo del carrito*/
+    display: none;
+}
+
+.reservation-cart-container_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+    padding-bottom: 0px;
+    /* background-color: red */
+}
+
+.reservation-cart-container_header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reservation-cart-container_hotelDetails{
+    margin-top: 1px;
+    padding: 5px;
+    border-bottom: 1px solid #161815;
+}
+
+.reservation-cart-container_productsList {
+    list-style-type: none;
+    padding: 0;
+    border-bottom: 1px solid #161815;
+    /*esto es un list no un div*/
+}
+
+.reservation-cart-container_productDetails{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.reservation-cart-container_dates{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+.reservation-cart-container_guests{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.reservation-cart-container_roomRate{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.reservation-cart-container_price{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 5px;
+
+}
+.price-summary_container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-top: 0px;
+    /* background-color: #ad1d1d; */
+}
+.reservation-cart-container_taxesAndFeesHeader{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 30px;
+    /* background-color: #ad1d1d; */
+}
+
+.agregarHabitacion{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-left: 80%;
+    display: none;
+}
+

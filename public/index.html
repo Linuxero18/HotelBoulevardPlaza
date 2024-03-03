@@ -104,17 +104,6 @@
     <div class="container">
       <h3 class="pb-4">Buscar Habitaciones</h3>
       <div class="row">
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="tipoHabitacion" class="form-label">Tipo</label>
-            <select id="tipoHabitacion" class="form-control form-select">
-              <option value="4">Cualquiera</option>
-              <option value="1">Simple</option>
-              <option value="2">Doble</option>
-              <option value="3">Superior</option>
-            </select>
-          </div>
-        </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
@@ -129,19 +118,24 @@
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <label for="numPersonas" class="form-label">N° Personas</label>
-            <select class="form-control" name="" id="numPersonas">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="4">5</option>
-            </select>
+            <label for="numAdultos" class="form-label">N° de Adultos</label>
+            <input type="number" class="form-control" id="numAdultos" min="1" max="30" value="1">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="numNinos" class="form-label">N° de Niños</label>
+            <input type="number" class="form-control" id="numNinos" min="0" max="15" value="0">
           </div>
         </div>
         <div class="col-md-2 button-container">
           <button type="submit" class="btn w-100">Buscar</button>
         </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row" id="edades-niños-container">
+        
       </div>
     </div>
   </form>
