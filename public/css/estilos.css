@@ -275,6 +275,13 @@ header {
 /* -------------------------- Estilos para la pagina Habitaciones-------------------------- */
 
 
+@media (max-width: 768px) {
+    .cartas-habitaciones {
+        flex-direction: column;
+    }
+}
+
+
 /* Agrega una clase para ocultar elementos */
 .oculto {
     display: none;

@@ -115,7 +115,7 @@ function crearTarjetaHabitacion(habitacion, contador) {
                     <p class="card-text">Desde ${habitacion.precio_dia} S/. por noche</p>
                     <div class="input-group mb-3">
                         <input type="number" value="0" min="0" max="${cantidadMaxHab.length}" id="cantHab${contador}" class="form-control" placeholder="Ingrese cantidad de habitaciones" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <a href="#" class="btn btn-reservar mt-auto disabled" id="btnHab${contador}">Seleccionar</a>
+                        <a href="#" class="btn btn-reservar mt-auto">Seleccionar</a>
                     </div>
                     
                 </div>
@@ -123,8 +123,6 @@ function crearTarjetaHabitacion(habitacion, contador) {
         `;
     return div;
 }
-
-
 
 
 
@@ -153,7 +151,6 @@ window.onload = function () {
 
     // data es un array con los datos de las habitaciones
     let contador = 1;
-    
     datosFiltrados.forEach(habitacion => {
         let div = crearTarjetaHabitacion(habitacion, contador);
         contador++;
@@ -214,6 +211,7 @@ window.onload = function () {
 
                 j++;
                 
+
             });
             
             
@@ -266,27 +264,8 @@ window.onload = function () {
 
         });
     });
-    probandini = Object.keys(tiposHabitacion).length;
-    console.log(probandini);
-    for (let i = 1; i <= 4; i++) {
-        desactivarBoton(i);
-    }
-
-    
 }
 
-
-function desactivarBoton(contador) {
-    document.getElementById(`cantHab${contador}`).addEventListener('change', function() {
-        let desactivarBtn = document.getElementById(`btnHab${contador}`);
-        if (this.value >= 1) {
-            desactivarBtn.classList.remove('disabled');
-        }
-        else {
-            desactivarBtn.classList.add('disabled');
-        }
-    });
-}
 
 //Funcion para calcular la mayoria de edad y validar el formulario
 function calcularEdad(fechaNac) {
