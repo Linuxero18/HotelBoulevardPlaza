@@ -1,6 +1,18 @@
 // Autor: Robert Diaz
 // Fecha: 25 de Febrero de 2024
 
+function calcularEdad(fechaNac) {
+    let fechaNacimiento = new Date(fechaNac);
+    let fechaActual = new Date();
+    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+    let mes = fechaActual.getMonth() - fechaNacimiento.getMonth();
+
+    if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+    }
+    return edad;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     let formulario = document.getElementById("formReclamo");
     
@@ -28,6 +40,60 @@ document.addEventListener("DOMContentLoaded", function () {
                 text: "Todos los campos son obligatorios!",
                 confirmButtonColor: "#48a04b"
             });
+        }
+        if (tipoDoc=="DNI" && documento.length < 8 || tipoDoc=="CE" && documento.length < 9 || tipoDoc=="Pasaporte" && documento.length < 8){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "La longitud del numero de documento ingresado es incorrecto! (DNI: 8 digitos, CE: 9 digitos, PASAPORTE: 8 digitos)",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(validator.isNumeric(documento) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "El numero de documento no debe contener letras!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(validator.isAlpha(nombres) == false || validator.isAlpha(apellidos) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "Los nombres y apellidos no pueden contener numeros!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(telefono.length < 9 || validator.isNumeric(telefono) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "El numero de telefono no es valido!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(validator.isEmail(correo) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "El correo electronico no es valido!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(calcularEdad(fechaNac) < 18){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "La fecha de nacimiento no es valida!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
         }
 
         else 

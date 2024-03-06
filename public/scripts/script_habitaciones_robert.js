@@ -48,12 +48,13 @@ let costoTotalConIGV = 0;
 
 
 
-
+//Esta funcion trae todos los datos de habitaciones de la base de datos
 function recuperarDatos() {
     let data = JSON.parse(localStorage.getItem('habitaciones'));
     return data;
 }
 
+//Y esta filtra las habitaciones para que solo se muestre una de cada tipo
 function filtrarDatos(data) {
     const seenTypes = {};
     const dataFiltrada = data.filter(habitacion => {
@@ -67,14 +68,16 @@ function filtrarDatos(data) {
     return dataFiltrada;
 }
 
+//Aqui formateo la fecha para que se muestre de manera mas legible
 function formatearFecha(fecha) {
     let fechaFormateada = new Date(fecha);
     let opciones = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
     return fechaFormateada.toLocaleDateString('es-ES', opciones);
 }
 
+
+//Aqui calculo la duracion de la estadia
 function calcularEstancia(fechaEntrada, fechaSalida) {
-    // Asegúrate de que las fechas son objetos Date
     if (!(fechaEntrada instanceof Date) || !(fechaSalida instanceof Date)) {
         return NaN;
     }
@@ -121,67 +124,9 @@ function crearTarjetaHabitacion(habitacion, contador) {
     return div;
 }
 
-function recorrerTarjetasHabitaciones(tarjetas) {
-    // Itera sobre las tarjetas
-    tarjetas.forEach(function (tarjeta) {
-        // Accede a los valores del dataset
-        let tipo = tarjeta.dataset.tipo;
-        let fechaEntrada = tarjeta.dataset.fechaEntrada;
-        let fechaSalida = tarjeta.dataset.fechaSalida;
-        let numAdultos = tarjeta.numAdultos;
-        let numNinos = tarjeta.numNinos;
-        let numPersonas = tarjeta.numPersonas;
-        let aforo = tarjeta.aforo;
-        let precio_dia = tarjeta.precio_dia;
-        // ... y así sucesivamente para los demás valores del dataset
-    });
-}
-
-function deshabilitarOtrosBotones() {
-    //Deshabilitar los otros botones
-    let botones = document.querySelectorAll('.btn');
-    botones.forEach(boton => {
-        if (boton !== this) {
-            boton.classList.add('disabled');
-        }
-    });
-}
-
-function alterarBotones(btn) {
-
-    // Cambia el contenido del botón a un icono de verificación
-    btn.innerHTML = '<i class="fas fa-check fa-sm"></i>';
-
-    //this.classList.remove('btn-primary');
-    //this.classList.add('btn-success');
-    btn.removeAttribute('href');
-    btn.classList.add('disabled'); // Añade una clase 'disabled'
-
-    deshabilitarOtrosBotones();
-}
-
-
-
-
-
-
 
 
 window.onload = function () {
-    // // Recupera los datos del localStorage
-    // let data = JSON.parse(localStorage.getItem('habitaciones'));
-    // console.log(data);
-    // const seenTypes = {};
-    // const dataFiltrada = data.filter(habitacion => {
-    //     if (seenTypes[habitacion.tipo_habitacion]) {
-    //         // Si ya hemos visto este tipo de habitación, no lo incluyas en los datos filtrados
-    //         return false;
-    //     } else {
-    //         // Si no hemos visto este tipo de habitación, márcalo como visto y inclúyelo en los datos filtrados
-    //         seenTypes[habitacion.tipo_habitacion] = true;
-    //         return true;
-    //     }
-    // });
     let datos = recuperarDatos();
     let datosFiltrados = filtrarDatos(datos);
     let contenedor = document.getElementById('contenedor-de-tarjetas');
@@ -265,16 +210,10 @@ window.onload = function () {
 
 
                 j++;
-                // ... y así sucesivamente para los demás valores del dataset
+                
 
             });
-            // tipo = div.dataset.tipo;
-            // //let fechaEntrada = div.dataset.fechaEntrada;
-            // //let fechaSalida = div.dataset.fechaSalida;
-            // numPersonas = div.dataset.numPersonas;
-            // aforo = div.dataset.aforo;
-            // precio_dia = div.dataset.precio_dia;
-            // console.log(tipo, /*fechaEntrada, fechaSalida,*/ numPersonas, aforo, precio_dia);
+            
             
             
 
@@ -328,6 +267,19 @@ window.onload = function () {
 }
 
 
+//Funcion para calcular la mayoria de edad y validar el formulario
+function calcularEdad(fechaNac) {
+    let fechaNacimiento = new Date(fechaNac);
+    let fechaActual = new Date();
+    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+    let mes = fechaActual.getMonth() - fechaNacimiento.getMonth();
+
+    if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+    }
+    return edad;
+}
+
 
 
 //Mostrar el formulario de reserva tras darle click al boton de reservar
@@ -370,6 +322,10 @@ botonContinuarReserva.addEventListener('click', async function (event) {
         let correo = document.getElementById('correo').value;
 
 
+        console.log("Datos:");
+        console.log(nombres, apellidos, tipoDoc, documento, fechaNac, direccion, telefono, correo);
+
+
         if (nombres === "" || apellidos === "" || tipoDoc === "" || documento === "" || fechaNac === "" || direccion === "" || telefono === "" || correo === "") {
             Swal.fire({
                 icon: "error",
@@ -379,6 +335,61 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
+        if (tipoDoc=="DNI" && documento.length < 8 || tipoDoc=="CE" && documento.length < 9 || tipoDoc=="Pasaporte" && documento.length < 8){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "La longitud del numero de documento ingresado es incorrecto! (DNI: 8 digitos, CE: 9 digitos, PASAPORTE: 8 digitos)",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(validator.isNumeric(documento) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "El numero de documento no debe contener letras!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(validator.isAlpha(nombres) == false || validator.isAlpha(apellidos) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "Los nombres y apellidos no pueden contener numeros!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(telefono.length < 9 || validator.isNumeric(telefono) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "El numero de telefono no es valido!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(validator.isEmail(correo) == false){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "El correo electronico no es valido!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        if(calcularEdad(fechaNac) < 18){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "La fecha de nacimiento no es valida!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
+        
 
         fetch('registrarpersonareserva', {
             method: 'POST',
