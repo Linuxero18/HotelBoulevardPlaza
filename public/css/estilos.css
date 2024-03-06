@@ -416,3 +416,10 @@ header {
     margin-left: 80%;
     display: none;
 }
+
+/*esta propiedad la estoy agregando el 06 de marzo para poder deshabilitar el boton seleccionar a la hora de las reservas y evitar que 
+el usuario seleccione 0 habitaciones*/
+.disabled {
+    pointer-events: none;
+    color: gray;
+}
