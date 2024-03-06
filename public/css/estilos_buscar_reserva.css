@@ -1,0 +1,118 @@
+/******* Ajustes Generales ********/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+body 
+    {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-height: 100vh; /* Establece la altura mínima del cuerpo al 100% de la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+    }
+
+main
+    {
+    margin-top: 126px;	
+    border-top: 1px solid #48A04B;
+    border-bottom: 1px solid #48A04B;
+    flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible en el contenedor flex (el cuerpo) */
+    }
+
+/******* Estilos de los contenedores ********/
+
+.Contenedor-Buscar
+    {
+    background-color: #232323;
+    color: white;
+    }
+
+.encabezado-Buscar 
+    {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 100px;
+    font-size: 16px;
+    }
+
+.Cuerpo-Buscar 
+    {
+    height: 480px;
+    }
+
+/******* Estilos de las Indicaciones ********/
+.indicaciones-Buscar 
+    {
+    height: 100%; 
+    padding: 20px 5px 10px 50px; 
+    }
+
+.indicaciones-Buscar h3 
+    {
+    color: #20aa25; 
+    margin-bottom: 10px; 
+    }
+
+.indicaciones-Buscar ul 
+    {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding-left: 0px;
+    }
+
+.indicaciones-Buscar li 
+    {
+    margin-bottom: 8px; 
+    padding-left: 0px;
+    }
+
+.indicaciones-Buscar a 
+    {
+    color: #20aa25; 
+    }
+
+.indicaciones-Buscar a:hover 
+    {
+    text-decoration: underline; /* Subrayado al pasar el mouse sobre el enlace */
+    }
+
+/******* Estilos del formulario ********/
+
+.formulario-Buscar
+    {
+    height: 100%;
+    padding: 10px 50px 10px 50px;
+    }
+
+.boton-formulario{
+    text-align: end;
+}
+
+.formulario-Buscar button
+    {
+    padding: 7px 75px;
+    margin-top: 5px;
+    color: #fff;
+    background: #20aa25;
+    border-radius: 15px;
+    cursor: pointer;    
+    }
+
+/******* Estilos del footer ********/
+.footer
+    {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    }
+
+.footer a 
+    {
+    text-decoration: none;
+    color: #20aa25;
+    }
