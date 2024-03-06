@@ -582,11 +582,3 @@ function obtenerIdsHabitaciones(){
     console.log(filtroDeIds);
     console.log(habitacionesSeleccionadas);
 }
-
-
-
-
-
-
-
-

@@ -4,7 +4,9 @@ let con = mysql.createConnection({
     host: "localhost",
     database: "hotelbd",
     user: "root",
-    password: ""
+    password: "",
+    port: 3307, // Cambia esto al puerto que has configurado
+
 });
 
 con.connect(function(err) {
