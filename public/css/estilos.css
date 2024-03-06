@@ -83,6 +83,10 @@ header {
     color: white; /* Color del texto */
 }
 
+.form-label{
+    font-size: 13px;
+}
+
 /* Estilos de la sección Servicios */
 .services {
     padding: 40px 10px;
@@ -273,14 +277,6 @@ header {
 
 
 /* -------------------------- Estilos para la pagina Habitaciones-------------------------- */
-
-
-@media (max-width: 768px) {
-    .cartas-habitaciones {
-        flex-direction: column;
-    }
-}
-
 
 /* Agrega una clase para ocultar elementos */
 .oculto {
