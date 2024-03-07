@@ -347,7 +347,8 @@ botonContinuarReserva.addEventListener('click', async function (event) {
         console.log(nombres, apellidos, tipoDoc, documento, fechaNac, direccion, telefono, correo);
 
 
-        if (nombres === "" || apellidos === "" || tipoDoc === "" || documento === "" || fechaNac === "" || direccion === "" || telefono === "" || correo === "") {
+        //Realizar la validación de los campos
+        if (nombres === "" || apellidos === "" || tipoDoc === "" || fechaNac == "" || documento === "" || direccion === "" || telefono === "" || correo === "") {
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
@@ -356,7 +357,7 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
-        if (tipoDoc=="DNI" && documento.length < 8 || tipoDoc=="CE" && documento.length < 9 || tipoDoc=="Pasaporte" && documento.length < 8){
+        if ((tipoDoc=="DNI" && (documento.length < 8 || documento.length  > 9)) || (tipoDoc=="CE" && (documento.length < 9 || documento.length  > 9)) || (tipoDoc=="PASAPORTE" && (documento.length < 8 || documento.length  > 8))){
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
@@ -374,7 +375,8 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
-        if(validator.isAlpha(nombres) == false || validator.isAlpha(apellidos) == false){
+        // || validator.isAlpha(apellidos, ' ') == false
+        if(validator.isAlpha(nombres,'es-ES',{ignore:' '}) == false ){
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
@@ -383,11 +385,11 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
-        if(telefono.length < 9 || validator.isNumeric(telefono) == false){
+        if((telefono.length < 9 || telefono.length >9 ) || validator.isNumeric(telefono) == false){
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
-                text: "El numero de telefono no es valido!",
+                text: "El numero de telefono no es valido! ( deben ser 9 digitos y solo numeros!)",
                 confirmButtonColor: "#48a04b"
             });
             return;
@@ -396,7 +398,7 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
-                text: "El correo electronico no es valido!",
+                text: "El formato de correo electronico no es valido!",
                 confirmButtonColor: "#48a04b"
             });
             return;
@@ -405,11 +407,12 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
-                text: "La fecha de nacimiento no es valida!",
+                text: "La fecha de nacimiento no es valida, eres menor de edad!",
                 confirmButtonColor: "#48a04b"
             });
             return;
         }
+
         
 
         fetch('registrarpersonareserva', {
