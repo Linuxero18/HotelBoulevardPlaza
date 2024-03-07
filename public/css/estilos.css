@@ -8,7 +8,6 @@ body {
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Establece el alto mínimo al 100% de la altura visible del viewport */
 }
 
 a {
@@ -82,6 +81,10 @@ header {
 .carousel-content p {
     font-size: 1rem;
     color: white; /* Color del texto */
+}
+
+.form-label{
+    font-size: 13px;
 }
 
 /* Estilos de la sección Servicios */
@@ -275,7 +278,6 @@ header {
 
 /* -------------------------- Estilos para la pagina Habitaciones-------------------------- */
 
-
 /* Agrega una clase para ocultar elementos */
 .oculto {
     display: none;
@@ -302,6 +304,12 @@ header {
     opacity: 0.6; /* Hace que el botón parezca deshabilitado */
 }
 
+.text-habitaciones{
+    background-color: #48a04b4d;
+    padding: 40px 0px 10px 0px;
+
+}
+
 .titulo-busqueda{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -310,116 +318,87 @@ header {
 
 /* -------------------------- Estilos para el carrito del aside-------------------------- */
 
-.container-habitaciones-checkout{
+.container-habitaciones-checkout {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center; /* Corregido */
     padding: 20px;
     margin: 20px 0;
     background-color: #161815;
-    color: black;
+    color: white; /* Corregido */
+}
 
+.aside-reservation {
+    height: auto; /* Ajustado a altura automática */
+    overflow: auto; /* Añadido desplazamiento automático */
 }
 
 .reservation-cart-container_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border: 1px solid #161815;
-    padding: 30px;
-    background-color: #f9f9f9; /*controla el fondo del carrito*/
-    display: none;
+    color: #fff;
+    background-color: #4d4d4d44;
+    border-radius: 10px;
+    padding: 15px;
+    display: none; /* Ajustado */
+    flex-direction: column; /* Ajustado */
 }
 
-.reservation-cart-container_body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 20px;
-    padding-bottom: 0px;
-    /* background-color: red */
+.reservation-cart-container_body {
+    padding: 12px;
+    padding-bottom: 0;
 }
 
 .reservation-cart-container_header {
     text-align: center;
-    margin-bottom: 20px;
 }
 
-.reservation-cart-container_hotelDetails{
-    margin-top: 1px;
+.reservation-cart-container_hotelDetails {
+    margin-top: 5px;
     padding: 5px;
-    border-bottom: 1px solid #161815;
+    border-bottom: 1px solid #20aa25;
 }
 
 .reservation-cart-container_productsList {
     list-style-type: none;
-    padding: 0;
-    border-bottom: 1px solid #161815;
-    /*esto es un list no un div*/
+    padding: 10px 0;
+    border-bottom: 1px solid #20aa25;
+    /* Eliminada la propiedad list-style-type */
 }
 
-.reservation-cart-container_productDetails{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 10px;
-}
-
-.reservation-cart-container_dates{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-bottom: 5px;
-}
-.reservation-cart-container_guests{
+.reservation-cart-container_productDetails,
+.reservation-cart-container_dates,
+.reservation-cart-container_guests,
+.reservation-cart-container_roomRate,
+.reservation-cart-container_price {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     margin-bottom: 5px;
 }
 
-.reservation-cart-container_roomRate{
+.price-summary_container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    margin-bottom: 5px;
+    padding-left: 9px;
+    padding-top: 0;
 }
 
-.reservation-cart-container_price{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-bottom: 5px;
-
-}
-.price-summary_container{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    padding-left: 30px;
-    padding-top: 0px;
-    /* background-color: #ad1d1d; */
-}
-.reservation-cart-container_taxesAndFeesHeader{
+.reservation-cart-container_taxesAndFeesHeader {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     margin-bottom: 30px;
-    /* background-color: #ad1d1d; */
 }
 
-.agregarHabitacion{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-bottom: 10px;
-    margin-left: 80%;
-    display: none;
+.reservation-button {
+    text-align: center;
 }
 
-/*esta propiedad la estoy agregando el 06 de marzo para poder deshabilitar el boton seleccionar a la hora de las reservas y evitar que 
-el usuario seleccione 0 habitaciones*/
 .disabled {
     pointer-events: none;
     color: gray;
+}
+
+.contenedor-huesped{
+    background-color: #4d4d4d44;
 }

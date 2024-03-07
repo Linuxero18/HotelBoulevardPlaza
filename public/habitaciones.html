@@ -48,10 +48,10 @@
 
 
     <!---------------------- INICIO TEXTO HABITACIONES ---------------------->
-    <div class="habitaciones container-fluid">
-        <div class="row">
+    <div class="text-habitaciones container-fluid">
+        <div class="container">
             <div class="col-md-12">
-                <div class="servicios-contenedor section-header text-center text-white pb-3">
+                <div class="section-header text-center text-white pb-1">
                     <h3 class="titulo-busqueda">Resultados de Búsqueda</h3>
                 </div>
             </div>
@@ -62,15 +62,15 @@
 
     <!---------------------- INICIO HABITACIONES DISPONIBLES ---------------------->
     <div class="container-habitaciones-checkout">
-        <div class="row">
-            <main class="col-md-12" id="habitaciones">
+        <div class=" caontainer row">
+            <main class="col-md-8" id="habitaciones">
                 <div class="habitaciones-dispo">
                     <div class="cartas-habitaciones row pb-4" id="contenedor-de-tarjetas">
                         <!--aqui se generan las tarjetas de las habitaciones automaticamente-->
                     </div>
                 </div>
-            </main>
-            <aside class="col-md-4">
+            </main> 
+            <aside class="aside-reservation col-md-4">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="reservation-cart-container_box">
@@ -130,7 +130,7 @@
                                 <div class="price-summary_taxIncluded">
                                     <span>(impuestos incluidos)</span>
                                 </div>
-                                <div class="row">
+                                <div class="reservation-button row">
                                     <div class="col-md-12">
                                         <button class="btn btn-success" id="continuarReserva">Continuar con Reserva</button>
                                     </div>
@@ -144,83 +144,84 @@
     </div>
 
     <!---------------------- iNICIO FORMULARIO RESERVAR ---------------------->
-    <div id="divDelFormulario" class="container mt-4" style="display: none;">
-        <form id="formularioReserva">
-            <h1 id="tituloFormHuespedes">Registrar huesped </h1>
+    <div class="contenedor-huesped container-fluid">
+        <div id="divDelFormulario" class="formulario-huesped container mt-4 mb-4" style="display: none;">
+            <form id="formularioReserva">
+                <h1 class="text-center" id="tituloFormHuespedes">Registrar huesped </h1>
+    
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="tipoDocumento">Tipo de Documento:</label>
+                            <select id="tipoDocumento" name="tipoDocumento" class="form-control selectpicker" required>
+                                <option value="DNI">DNI</option>
+                                <option value="Pasaporte">Pasaporte</option>
+                                <option value="CE">Carnet de Extranjería</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="documento">Documento:</label>
+                            <input type="text" id="documento" name="documento" class="form-control" required
+                                pattern="[0-9]{8}" title="Ingrese 8 números">
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="tipoDocumento">Tipo de Documento:</label>
-                        <select id="tipoDocumento" name="tipoDocumento" class="form-control selectpicker" required>
-                            <option value="DNI">DNI</option>
-                            <option value="Pasaporte">Pasaporte</option>
-                            <option value="CE">Carnet de Extranjería</option>
-                        </select>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="nombre">Nombres:</label>
+                            <input type="text" id="nombres" name="nombres" class="form-control" required
+                                pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Ingrese solo letras">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" id="apellidos" name="apellidos" class="form-control" required
+                                pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Ingrese solo letras">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="documento">Documento:</label>
-                        <input type="text" id="documento" name="documento" class="form-control" required
-                            pattern="[0-9]{8}" title="Ingrese 8 números">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-control" required pattern="[0-9]{9}"
+                                title="Ingrese 9 números">
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="nombre">Nombres:</label>
-                        <input type="text" id="nombres" name="nombres" class="form-control" required
-                            pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Ingrese solo letras">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="apellidos">Apellidos:</label>
-                        <input type="text" id="apellidos" name="apellidos" class="form-control" required
-                            pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Ingrese solo letras">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="telefono">Teléfono:</label>
-                        <input type="tel" id="telefono" name="telefono" class="form-control" required pattern="[0-9]{9}"
-                            title="Ingrese 9 números">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" class="form-control" required pattern=".*"
-                            title="Ingrese una dirección válida">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                    <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="correo">Correo:</label>
-                    <input type="email" id="correo" name="correo" class="form-control" required>
-                </div>
-            </div>
 
-            <div class="text-center p-3">
-                <button type="submit" class="btn btn-primary" id="btnEnviarReserva">Enviar Reserva</button>
-            </div>
-        </form>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" name="direccion" class="form-control" required pattern=".*"
+                                title="Ingrese una dirección válida">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="correo">Correo:</label>
+                        <input type="email" id="correo" name="correo" class="form-control" required>
+                    </div>
+                </div>
+    
+                <div class="text-center p-3">
+                    <button type="submit" class="btn " id="btnEnviarReserva">Enviar Reserva</button>
+                </div>
+            </form>
+        </div>
     </div>
+    
 
     <!---------------------- iNICIO FOOTER ---------------------->
     <footer class="footer bg-dark p-3 text-center">
         <div class="container">
             <p class="text-white">Hotel Boulevard Plaza &copy; 2024</p>
-            <p class="text-white"><a href="">Inicia Sesión Admin</a></p>
             <div class="social-icons">
                 <a href="https://www.facebook.com/HOTELBOULEVARDPLAZA/" class="text-white"><i
                         class="bi bi-facebook"></i></a>
