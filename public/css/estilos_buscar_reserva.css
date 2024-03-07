@@ -1,37 +1,40 @@
 /******* Ajustes Generales ********/
+/* Restablece márgenes, rellenos y modelo de caja para todos los elementos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-
-
-body 
-    {
+  
+  body {
+    /* Configuración de fuente y diseño del cuerpo */
+    width: 100%;
+    height: 100vh;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    min-height: 100vh; /* Establece la altura mínima del cuerpo al 100% de la altura de la ventana */
     display: flex;
     flex-direction: column;
-    }
-
-main
-    {
-    margin-top: 126px;	
+  }
+  
+  main {
+    /* Espacio entre el header y el contenido principal */
+    margin-top: 126px;
     border-top: 1px solid #48A04B;
     border-bottom: 1px solid #48A04B;
     flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible en el contenedor flex (el cuerpo) */
-    }
-
-/******* Estilos de los contenedores ********/
-
-.Contenedor-Buscar
-    {
-    background-color: #232323;
+  }
+  
+  /******* Estilos de los contenedores ********/
+  .Contenedor-Buscar {
+    /* Estilos generales para el contenedor de búsqueda */
+    background-color: #353535;
     color: white;
-    }
-
-.encabezado-Buscar 
-    {
+    overflow: hidden;
+    border-radius: 20px;
+    margin-top: 30px;
+  }
+  
+  .encabezado-Buscar {
+    /* Estilos para el encabezado de búsqueda */
     height: 250px;
     display: flex;
     justify-content: center;
@@ -39,80 +42,181 @@ main
     flex-direction: column;
     padding: 100px;
     font-size: 16px;
-    }
-
-.Cuerpo-Buscar 
-    {
-    height: 480px;
-    }
-
-/******* Estilos de las Indicaciones ********/
-.indicaciones-Buscar 
-    {
-    height: 100%; 
-    padding: 20px 5px 10px 50px; 
-    }
-
-.indicaciones-Buscar h3 
-    {
-    color: #20aa25; 
-    margin-bottom: 10px; 
-    }
-
-.indicaciones-Buscar ul 
-    {
-    list-style-type: none; /* Elimina los puntos de la lista */
+    overflow: hidden;
+  }
+  
+  .Cuerpo-Buscar {
+    height: auto;
+    overflow: hidden;
+  }
+  
+  /******* Estilos de las Indicaciones ********/
+  .indicaciones-Buscar {
+    /* Estilos para las indicaciones de búsqueda */
+    height: 100%;
+    padding: 20px 5px 10px 50px;
+    overflow: hidden;
+  }
+  
+  .indicaciones-Buscar h3 {
+    /* Estilos para los títulos en las indicaciones */
+    color: #20aa25;
+    margin-bottom: 10px;
+  }
+  
+  .indicaciones-Buscar ul {
+    /* Estilos para las listas en las indicaciones */
+    list-style-type: none;
     padding-left: 0px;
-    }
-
-.indicaciones-Buscar li 
-    {
-    margin-bottom: 8px; 
+  }
+  
+  .indicaciones-Buscar li {
+    /* Estilos para los elementos de lista en las indicaciones */
+    margin-bottom: 8px;
     padding-left: 0px;
-    }
-
-.indicaciones-Buscar a 
-    {
-    color: #20aa25; 
-    }
-
-.indicaciones-Buscar a:hover 
-    {
-    text-decoration: underline; /* Subrayado al pasar el mouse sobre el enlace */
-    }
-
-/******* Estilos del formulario ********/
-
-.formulario-Buscar
-    {
+  }
+  
+  .indicaciones-Buscar a {
+    color: #20aa25;
+  }
+  
+  .indicaciones-Buscar a:hover {
+    text-decoration: underline;
+  }
+  
+  /******* Estilos del formulario ********/
+  .formulario-Buscar {
     height: 100%;
     padding: 10px 50px 10px 50px;
-    }
-
-.boton-formulario{
+    overflow: hidden;
+  }
+  
+  .boton-formulario {
+    /* Alineación del botón en el formulario */
     text-align: end;
-}
-
-.formulario-Buscar button
-    {
+  }
+  
+  .formulario-Buscar button {
     padding: 7px 75px;
     margin-top: 5px;
     color: #fff;
     background: #20aa25;
     border-radius: 15px;
-    cursor: pointer;    
-    }
-
-/******* Estilos del footer ********/
-.footer
-    {
+    cursor: pointer;
+  }
+  
+  /******* Estilos del footer ********/
+  .footer {
     background-color: #f8f9fa;
     padding: 20px;
     text-align: center;
-    }
-
-.footer a 
-    {
+  }
+  
+  .footer a {
     text-decoration: none;
     color: #20aa25;
+  }
+
+
+/* Estilos generales para la sección de resultados */
+#resultados {
+    padding: 40px 0;
+    overflow: hidden;
+
+}
+
+/* Estilos para el contenedor principal de resultados */
+.contenedor-resultado {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.contenedor-resultado, .row{
+    padding: 10px 20px 10px 20px;
+    overflow: hidden;
+
+}
+
+/* Estilos para el título de la sección de resultados */
+.contenedor-resultado h1 {
+    margin: 20px 0 20px 0;
+    text-align: center;
+}
+
+/* Estilos para los detalles de la reserva */
+.resultado {
+    padding: 15px;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+    margin: 10px 30px 10px 60px;
+    overflow: hidden
+}
+
+
+/* Estilos para el botón de acción */
+.botones-accion button {
+    padding: 8px 150px;
+    margin-top: 5px;
+    color: #fff;
+    background: #20aa25;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.botones-accion{
+    align-items: center;
+    text-align: center;
+}
+
+
+/* Estilos para pantallas más pequeñas (ejemplo: dispositivos móviles) */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 14px;
     }
+
+    .navbar-brand img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .navbar-toggler {
+        padding: 0;
+        font-size: 16px;
+    }
+
+    main{
+        margin-top: 80px;
+    }
+
+    .encabezado-Buscar {
+      padding: 20px; 
+      font-size: 14px;
+    }
+
+    .encabezado-Buscar h1 {
+      font-size:25px; 
+    }
+  
+    .indicaciones-Buscar {
+      padding: 30px 5px 10px 20px; 
+      font-size: 13px;
+    }
+
+    .indicaciones-Buscar h3{
+      font-size: 18px; 
+    }
+  
+    .formulario-Buscar {
+      padding: 10px 10px; 
+      font-size: 14px;
+    }
+  
+    .formulario-Buscar button {
+      padding: 7px 15px; 
+    }
+  }
+  

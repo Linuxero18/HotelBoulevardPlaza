@@ -47,15 +47,14 @@
   <section>
 
     <div class="Contenedor-Buscar container">
-
       <div class="encabezado-Buscar col-12 col-md-12 col-lg-12">
         <h1><b>Busca Tu Reserva</b></h1>
         <p>Si ya realizaste una reserva y no la encuentras o si necesitas confirmar que ya relizaste tu reserva puedes buscarla a traves del siguiente formulario, procura que todos tus datos sean validos esten en el formato correcto.</p>
       </div>
 
-      <div class="Cuerpo-Buscar row">
+      <div class="Cuerpo-Buscar row flex-md-row flex-column-reverse">
 
-        <div class="indicaciones-Buscar col-6 col-md-6 col-lg-6">
+        <div class="indicaciones-Buscar col-12 col-md-6 col-lg-6">
           <h3>Instrucciones para la Búsqueda</h3>
           <p><b>Por favor, sigue estas instrucciones para realizar una búsqueda exitosa:</b></p>
           <ul>
@@ -66,7 +65,7 @@
           <p>Si necesitas ayuda, no dudes en <a href="#contacto">contactarnos</a>.</p>
         </div>
         
-        <div class="formulario-Buscar col-6 col-md-6 col-lg-6">
+        <div class="formulario-Buscar col-12 col-md-6 col-lg-6">
           <form class="container p-3">
             <div class="mb-3">
               <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
@@ -89,14 +88,48 @@
               <input type="text" class="form-control" id="codigoReserva">
             </div>
             <div class="boton-formulario">
-              <button type="submit" class="btn">Buscar</button>
+              <button type="submit" class="botones-accion btn">Buscar</button>
             </div>
           </form>
         </div>
       </div>
-
     </div>
+
   </section>
+
+  <!-- Nueva sección de Resultados mejorada -->
+<section id="resultados">
+  <div class="contenedor-resultado container">
+    <h1>Resultado De Busqueda</h1>
+
+    <div class="row">
+      <!-- Información Personal -->
+      <div class="col-md-5 resultado">
+        <h4 class="info-personal"><span class="bi bi-person-badge-fill"></span> <b>Información Personal</b></h4>
+        <p><span class="bi bi-person-fill"></span> Nombre: Juan</p>
+        <p><span class="bi bi-person-fill"></span> Apellido: Pérez</p>
+        <p><span class="bi bi-credit-card-2-front-fill"></span> DNI: 12345678</p>
+        <p><span class="bi bi-calendar3-fill"></span> Fecha de Nacimiento: 1990-01-01</p>
+        <p><span class="bi bi-telephone-fill"></span> Contacto: +123456789</p>
+      </div>
+
+      <!-- Información de la Reserva -->
+      <div class="col-md-5 resultado">
+        <h4 class="info-reserva"><span class="bi bi-card-list"></span> <b>Información de la Reserva</b></h4>
+        <p><span class="bi bi-door-open-fill"></span> Codigo de Reserva: abcd123</p>
+        <p><span class="bi bi-tv-fill"></span> Tipo de Habitación: Suite</p>
+        <p><span class="bi bi-credit-card-2-back-fill"></span> Estado de pago: No Pagado</p>
+        <p class="fechaentrada"><span class="bi bi-calendar-check-fill"></span> Fecha de Entrada: 2024-03-15</p>
+        <p class="fechasalida"><span class="bi bi-calendar-x-fill"></span> Fecha de Salida: 2024-03-20</p>
+
+        <div class="botones-accion">
+          <button class="btn btn-success">Pagar Reserva</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
   </main>
 
   <footer class="footer bg-dark p-3 text-center">
