@@ -30,7 +30,8 @@
     color: white;
     overflow: hidden;
     border-radius: 20px;
-    margin-top: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
   }
   
   .encabezado-Buscar {
@@ -120,9 +121,9 @@
 
 /* Estilos generales para la sección de resultados */
 #resultados {
-    padding: 40px 0;
+    padding: 40px;
     overflow: hidden;
-
+    display: none;
 }
 
 /* Estilos para el contenedor principal de resultados */
@@ -219,4 +220,3 @@
       padding: 7px 15px; 
     }
   }
-  
