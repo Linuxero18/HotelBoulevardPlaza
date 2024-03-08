@@ -30,13 +30,13 @@
     color: white;
     overflow: hidden;
     border-radius: 20px;
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: 30px;
   }
   
   .encabezado-Buscar {
     /* Estilos para el encabezado de búsqueda */
-    height: 250px;
+    height: 210px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -105,6 +105,25 @@
     border-radius: 15px;
     cursor: pointer;
   }
+
+  .form-check-label {
+    color: white;
+    font-size: 15px;
+    
+  }
+
+  .form-check-input:checked {
+    background-color: #20aa25; 
+    border-color: #20aa25; 
+    box-shadow: 0 0 0 1px #48A04B; 
+  }
+
+  .form-check-input:active {
+    background-color: #ffff; 
+    border-color: #20aa25; 
+    box-shadow: 0 0 0 1px #20aa25; /
+}
+
   
   /******* Estilos del footer ********/
   .footer {
@@ -136,14 +155,14 @@
 }
 
 .contenedor-resultado, .row{
-    padding: 10px 20px 10px 20px;
+    padding: 30px;
     overflow: hidden;
 
 }
 
 /* Estilos para el título de la sección de resultados */
 .contenedor-resultado h1 {
-    margin: 20px 0 20px 0;
+    margin: 10px 0px 20px 0px;
     text-align: center;
 }
 

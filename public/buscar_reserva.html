@@ -43,62 +43,74 @@
     </nav>
   </header>
   <main class="bg-dark">
+
   <!-------------------- Inico Buscar Reserva -------------------->
   <section>
-
     <div class="Contenedor-Buscar container">
-      <div class="encabezado-Buscar col-12 col-md-12 col-lg-12">
-        <h1><b>Busca Tu Reserva</b></h1>
-        <p>Si ya realizaste una reserva y no la encuentras o si necesitas confirmar que ya relizaste tu reserva puedes buscarla a traves del siguiente formulario, procura que todos tus datos sean válidos y esten en el formato correcto.</p>
-      </div>
-
-      <div class="Cuerpo-Buscar row flex-md-row flex-column-reverse">
-
-        <div class="indicaciones-Buscar col-12 col-md-6 col-lg-6">
-          <h3>Instrucciones para la Búsqueda</h3>
-          <p><b>Por favor, sigue estas instrucciones para realizar una búsqueda exitosa:</b></p>
-          <ul>
-            <li>Selecciona el tipo de documento correspondiente.</li>
-            <li>Introduce el número de documento y apellidos tal como aparecen en tu reserva.</li>
-            <li>Ingresa el código de reserva si lo tienes.</li>
-          </ul>
-          <p>Si necesitas ayuda, no dudes en <a href="#contacto">contactarnos</a>.</p>
+        <div class="encabezado-Buscar col-12 col-md-12 col-lg-12">
+            <h1><b>Busca Tu Reserva</b></h1>
+            <p>Si ya realizaste una reserva y no la encuentras o si necesitas confirmar que ya realizaste tu reserva puedes buscarla a través del siguiente formulario. Procura que todos tus datos sean válidos y estén en el formato correcto.</p>
         </div>
-        
-        <div class="formulario-Buscar col-12 col-md-6 col-lg-6">
-          <form class="container p-3">
-            <div class="mb-3">
-              <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
-              <select class="form-select" id="tipoDocumentoBusqueda">
-                <option value="dni">DNI</option>
-                <option value="pasaporte">Carnet de Extranjería</option>
-                <option value="cedula">Pasaporte</option>
-              </select>
+
+        <div class="Cuerpo-Buscar row flex-md-row flex-column-reverse">
+            <div class="indicaciones-Buscar col-12 col-md-6 col-lg-6">
+                <h3>Instrucciones para la Búsqueda</h3>
+                <ul>
+                    <li>Selecciona el tipo de búsqueda.</li>
+                    <li>Selecciona el tipo de documento correspondiente.</li>
+                    <li>Ingresa el número de documento y tus apellidos.</li>
+                    <li>Si no tienes tu número de documento, puedes buscar tu reserva con el código de reserva.</li>
+                    
+                </ul>
+                <p>Si necesitas ayuda, no dudes en <a href="#contacto">contactarnos</a>.</p>
             </div>
-            <div class="mb-3">
-              <label for="numeroDocumento" class="form-label">Número de Documento</label>
-              <input type="text" class="form-control" id="numeroDocumentoBusqueda">
+
+            <div class="formulario-Buscar col-12 col-md-6 col-lg-6">
+                <form class="container p-3">
+
+                    <div class="mb-2 form-check">
+                        <input class="form-check-input" type="radio" name="tipoBusqueda" id="busquedaDocumento" value="documento" checked>
+                        <label class="form-check-label" for="busquedaDocumento"><b>Búsqueda por Documento</b></label>
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
+                        <select class="form-select" id="tipoDocumentoBusqueda">
+                            <option value="dni">DNI</option>
+                            <option value="pasaporte">Carnet de Extranjería</option>
+                            <option value="cedula">Pasaporte</option>
+                        </select>
+                    </div>
+                    <div class="mb-1">
+                        <label for="numeroDocumento" class="form-label">Número de Documento</label>
+                        <input type="text" class="form-control" id="numeroDocumentoBusqueda">
+                    </div>
+                    <div class="mb-4">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidosBusqueda">
+                    </div>
+
+
+                    <div class="mb-2 form-check">
+                      <input class="form-check-input" type="radio" name="tipoBusqueda" id="busquedaCodigo" value="reserva">
+                      <label class="form-check-label" for="busquedaCodigo"><b>Búsqueda por Codigo de Reserva</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="codigoReserva" class="form-label">Código de Reserva</label>
+                        <input type="text" class="form-control" id="codigoReservaBusqueda">
+                    </div>
+
+                    <div class="boton-formulario">
+                        <button type="submit" class="botones-accion btn" id="btnBuscarReserva">Buscar</button>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-              <label for="apellidos" class="form-label">Apellidos</label>
-              <input type="text" class="form-control" id="apellidosBusqueda">
-            </div>
-            <div class="mb-3">
-              <label for="codigoReserva" class="form-label">Código de Reserva</label>
-              <input type="text" class="form-control" id="codigoReservaBusqueda">
-            </div>
-            <div class="boton-formulario">
-              <button type="submit" class="botones-accion btn" id="btnBuscarReserva" >Buscar</button>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-
-  </section>
+</section>
 
   <!-- Nueva sección de Resultados mejorada -->
-<section id="resultados" style="display: block;">
+<section id="resultados" class="" style="display: block;">
   <div class="contenedor-resultado container">
     <h1>Resultado De Busqueda</h1>
 
@@ -123,12 +135,10 @@
         <p class="fechasalida"><span class="bi bi-calendar-x-fill"></span> Fecha de Salida: <span id="fechaOutResultado"></span></p>
         <p><span class="bi bi-tv-fill"></span> Costo Total: <span id="reservaCostoResultado"></span></p>
         <p><span class="bi bi-credit-card-2-back-fill"></span> Estado de pago: <span id="estadoResultado"></span></p>
-        
-
-        <div class="botones-accion">
-          <button class="btn btn-success">Pagar Reserva</button>
-        </div>
       </div>
+    </div>
+    <div class="botones-accion">
+      <button class="btn btn-success">Pagar Reserva</button>
     </div>
   </div>
 </section>
