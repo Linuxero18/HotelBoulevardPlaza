@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let busquedaDocumento = document.getElementById('busquedaDocumento').checked;
         let busquedaCodigo = document.getElementById('busquedaCodigo').checked;
         
-        //Revisar si la busqueda es por documento o por codigo
+        //Revisar si la busqueda es por documento o por codigo y validar de acuerdo a eso
         if (busquedaDocumento) {
             if (tipoDeDocumento === "" || numeroDeDocumento === "" || apellidos === "") {
                 Swal.fire({
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         
-
+        //Aqui estoy enviando nulos los parametros si es que los campos estan vacios
         tipoDeDocumento = tipoDeDocumento === "" ? null : tipoDeDocumento;
         numeroDeDocumento = numeroDeDocumento === "" ? null : numeroDeDocumento;
         apellidos = apellidos === "" ? null : apellidos;
