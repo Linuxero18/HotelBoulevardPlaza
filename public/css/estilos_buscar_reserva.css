@@ -123,7 +123,7 @@
 #resultados {
     padding: 40px;
     overflow: hidden;
-    display: none;
+    /*display: none;*/
 }
 
 /* Estilos para el contenedor principal de resultados */
@@ -153,7 +153,7 @@
     border: 1px solid #c4c4c4;
     border-radius: 10px;
     margin: 10px 30px 10px 60px;
-    overflow: hidden
+    overflow: hidden;
 }
 
 
