@@ -15,7 +15,7 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a href="#" class="navbar-brand"><span class="color-hotel"><sup><img src="img/logo-empresa-removebg-preview.png"
+        <a href="index.html" class="navbar-brand"><span class="color-hotel"><sup><img src="img/logo-empresa-removebg-preview.png"
                 alt="" width="100" height="100" /></sup>Hotel</span>
           Boulevard Plaza</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS"
@@ -25,16 +25,16 @@
         <div class="collapse navbar-collapse" id="navbarS">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a href="#" class="nav-link">Inicio</a>
+              <a href="index.html" class="nav-link">Inicio</a>
             </li>
             <li class="nav-item">
-              <a href="#Servicios" class="nav-link">Servicios</a>
+              <a href="index.html#Servicios" class="nav-link">Servicios</a>
             </li>
             <li class="nav-item">
-              <a href="#contacto" class="nav-link">Contacto</a>
+              <a href="index.html#contacto" class="nav-link">Contacto</a>
             </li>
             <li class="nav-item">
-              <a href="#buscar_reserva" class="nav-link">Buscar Reserva</a>
+              <a href="buscar_reserva.html" class="nav-link">Buscar Reserva</a>
             </li>
 
           </ul>
@@ -49,7 +49,7 @@
     <div class="Contenedor-Buscar container">
       <div class="encabezado-Buscar col-12 col-md-12 col-lg-12">
         <h1><b>Busca Tu Reserva</b></h1>
-        <p>Si ya realizaste una reserva y no la encuentras o si necesitas confirmar que ya relizaste tu reserva puedes buscarla a traves del siguiente formulario, procura que todos tus datos sean validos esten en el formato correcto.</p>
+        <p>Si ya realizaste una reserva y no la encuentras o si necesitas confirmar que ya relizaste tu reserva puedes buscarla a traves del siguiente formulario, procura que todos tus datos sean válidos y esten en el formato correcto.</p>
       </div>
 
       <div class="Cuerpo-Buscar row flex-md-row flex-column-reverse">
@@ -69,7 +69,7 @@
           <form class="container p-3">
             <div class="mb-3">
               <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
-              <select class="form-select" id="tipoDocumento">
+              <select class="form-select" id="tipoDocumentoBusqueda">
                 <option value="dni">DNI</option>
                 <option value="pasaporte">Carnet de Extranjería</option>
                 <option value="cedula">Pasaporte</option>
@@ -77,18 +77,18 @@
             </div>
             <div class="mb-3">
               <label for="numeroDocumento" class="form-label">Número de Documento</label>
-              <input type="text" class="form-control" id="numeroDocumento">
+              <input type="text" class="form-control" id="numeroDocumentoBusqueda">
             </div>
             <div class="mb-3">
               <label for="apellidos" class="form-label">Apellidos</label>
-              <input type="text" class="form-control" id="apellidos">
+              <input type="text" class="form-control" id="apellidosBusqueda">
             </div>
             <div class="mb-3">
               <label for="codigoReserva" class="form-label">Código de Reserva</label>
-              <input type="text" class="form-control" id="codigoReserva">
+              <input type="text" class="form-control" id="codigoReservaBusqueda">
             </div>
             <div class="boton-formulario">
-              <button type="submit" class="botones-accion btn">Buscar</button>
+              <button type="submit" class="botones-accion btn" id="btnBuscarReserva" >Buscar</button>
             </div>
           </form>
         </div>
@@ -98,7 +98,7 @@
   </section>
 
   <!-- Nueva sección de Resultados mejorada -->
-<section id="resultados">
+<section id="resultados" style="display: block;">
   <div class="contenedor-resultado container">
     <h1>Resultado De Busqueda</h1>
 
@@ -106,21 +106,24 @@
       <!-- Información Personal -->
       <div class="col-md-5 resultado">
         <h4 class="info-personal"><span class="bi bi-person-badge-fill"></span> <b>Información Personal</b></h4>
-        <p><span class="bi bi-person-fill"></span> Nombre: Juan</p>
-        <p><span class="bi bi-person-fill"></span> Apellido: Pérez</p>
-        <p><span class="bi bi-credit-card-2-front-fill"></span> DNI: 12345678</p>
-        <p><span class="bi bi-calendar3-fill"></span> Fecha de Nacimiento: 1990-01-01</p>
-        <p><span class="bi bi-telephone-fill"></span> Contacto: +123456789</p>
+        <p><span class="bi bi-person-fill"></span> Nombre: <span id="nombresResultado"></span></p>
+        <p><span class="bi bi-person-fill"></span> Apellido: <span id="apellidosResultado"></span></p>
+        <p><span class="bi bi-credit-card-2-front-fill"></span> <span id="tipoDocResultado"></span>: <span id="documentoResultado"></span></p>
+        <p><span class="bi bi-calendar3-fill"></span> Fecha de Nacimiento: <span id="fechaNacResultado"></span></p>
+        <p><span class="bi bi-telephone-fill"></span> Contacto: <span id="telefonoResultado"></span></p>
       </div>
 
       <!-- Información de la Reserva -->
       <div class="col-md-5 resultado">
         <h4 class="info-reserva"><span class="bi bi-card-list"></span> <b>Información de la Reserva</b></h4>
-        <p><span class="bi bi-door-open-fill"></span> Codigo de Reserva: abcd123</p>
-        <p><span class="bi bi-tv-fill"></span> Tipo de Habitación: Suite</p>
-        <p><span class="bi bi-credit-card-2-back-fill"></span> Estado de pago: No Pagado</p>
-        <p class="fechaentrada"><span class="bi bi-calendar-check-fill"></span> Fecha de Entrada: 2024-03-15</p>
-        <p class="fechasalida"><span class="bi bi-calendar-x-fill"></span> Fecha de Salida: 2024-03-20</p>
+        <p><span class="bi bi-door-open-fill"></span> Codigo de Reserva: <span id="reservaCodResultado"></span></p>
+        <p><span class="bi bi-door-open-fill"></span> Fecha de Reserva: <span id="reservaFechaResultado"></span></p>
+        <p><span class="bi bi-tv-fill"></span> Tipo de Habitación: <span id="tipoHabResultado"></span></p>
+        <p class="fechaentrada"><span class="bi bi-calendar-check-fill"></span> Fecha de Entrada: <span id="fechaInResultado"></span></p>
+        <p class="fechasalida"><span class="bi bi-calendar-x-fill"></span> Fecha de Salida: <span id="fechaOutResultado"></span></p>
+        <p><span class="bi bi-tv-fill"></span> Costo Total: <span id="reservaCostoResultado"></span></p>
+        <p><span class="bi bi-credit-card-2-back-fill"></span> Estado de pago: <span id="estadoResultado"></span></p>
+        
 
         <div class="botones-accion">
           <button class="btn btn-success">Pagar Reserva</button>
@@ -145,5 +148,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
   crossorigin="anonymous"></script>
+  <script src="./scripts/script_buscar_reserva.js"></script>
 </body>
 </html>

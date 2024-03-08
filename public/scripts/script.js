@@ -1,7 +1,7 @@
 //Acciones 
 document.getElementById("btn_registrarse").addEventListener("click", registrarse)
 document.getElementById("btn_iniciar_sesion").addEventListener("click", iniciar)
-document.getElementById("form_log").addEventListener("submit", credenciales)
+//document.getElementById("form_log").addEventListener("submit", credenciales)
 window.addEventListener("resize", ancho_pagina)
 
 //Variables de cada clase

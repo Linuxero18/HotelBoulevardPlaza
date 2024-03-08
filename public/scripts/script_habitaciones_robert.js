@@ -2,6 +2,7 @@
 
 
 
+
 let tiposHabitacion = {
     1: 'Habitación Simple',
     2: 'Habitación Doble',
@@ -156,8 +157,22 @@ window.onload = function () {
         contador++;
         contenedor.appendChild(div);
 
-        // Selecciona el botón que acabas de añadir
+        // Selecciona el botón que se acaba de crear
         let btn = div.querySelector('.btn');
+        // Selecciona el input que se acaba de crear
+        let input = div.querySelector('input');
+        //Le añadimos la clase para deshabilitarlo, esto esta en la hoja de CSS estilos.css
+        btn.classList.add('disabled');
+        
+
+        //deshabilita el boton si la cantidad de habitaciones es 0 y lo habilita si es mayor a 0
+        input.addEventListener('change', function () {
+            if (input.value === '0') {
+                btn.classList.add('disabled');
+            } else {
+                btn.classList.remove('disabled');
+            }
+        });
 
         // Añade el evento de clic al botón
         btn.addEventListener('click', function (event) {
@@ -326,7 +341,8 @@ botonContinuarReserva.addEventListener('click', async function (event) {
         console.log(nombres, apellidos, tipoDoc, documento, fechaNac, direccion, telefono, correo);
 
 
-        if (nombres === "" || apellidos === "" || tipoDoc === "" || documento === "" || fechaNac === "" || direccion === "" || telefono === "" || correo === "") {
+        //Realizar la validación de los campos
+        if (nombres === "" || apellidos === "" || tipoDoc === "" || fechaNac == "" || documento === "" || direccion === "" || telefono === "" || correo === "") {
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
@@ -335,7 +351,7 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
-        if (tipoDoc=="DNI" && documento.length < 8 || tipoDoc=="CE" && documento.length < 9 || tipoDoc=="Pasaporte" && documento.length < 8){
+        if ((tipoDoc=="DNI" && (documento.length < 8 || documento.length  > 9)) || (tipoDoc=="CE" && (documento.length < 9 || documento.length  > 9)) || (tipoDoc=="PASAPORTE" && (documento.length < 8 || documento.length  > 8))){
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
@@ -353,7 +369,8 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
-        if(validator.isAlpha(nombres) == false || validator.isAlpha(apellidos) == false){
+        // || validator.isAlpha(apellidos, ' ') == false
+        if(validator.isAlpha(nombres,'es-ES',{ignore:' '}) == false ){
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
@@ -362,11 +379,11 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
-        if(telefono.length < 9 || validator.isNumeric(telefono) == false){
+        if((telefono.length < 9 || telefono.length >9 ) || validator.isNumeric(telefono) == false){
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
-                text: "El numero de telefono no es valido!",
+                text: "El numero de telefono no es valido! ( deben ser 9 digitos y solo numeros!)",
                 confirmButtonColor: "#48a04b"
             });
             return;
@@ -375,7 +392,7 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
-                text: "El correo electronico no es valido!",
+                text: "El formato de correo electronico no es valido!",
                 confirmButtonColor: "#48a04b"
             });
             return;
@@ -384,11 +401,12 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             Swal.fire({
                 icon: "error",
                 title: "Alerta!",
-                text: "La fecha de nacimiento no es valida!",
+                text: "La fecha de nacimiento no es valida, eres menor de edad!",
                 confirmButtonColor: "#48a04b"
             });
             return;
         }
+
         
 
         fetch('registrarpersonareserva', {
@@ -565,12 +583,15 @@ function generarCodigoReserva() {
     return codigo;
 }
 
-function obtenerIdsHabitaciones(){
+function obtenerIdsHabitaciones2(){
+
     let habitacionesSeleccionadas = {
         simple: 0,
         doble: 0,
         superior: 0
     };
+
+    console.log(contadorHabitacionSimple, contadorHabitacionDoble, contadorHabitacionSuperior);
     
     if (contadorHabitacionSimple > 0) {
         habitacionesSeleccionadas.simple = 1;
@@ -589,7 +610,29 @@ function obtenerIdsHabitaciones(){
     //Recorrer la data filtrada y hacerle push a un array con los ids de las habitaciones
     for (let i = 0; i < filtroDeIds.length; i++) {
         idHabitaciones.push(filtroDeIds[i].idHabitacion);
+        console.log(filtroDeIds[i].idHabitacion);
     }
     console.log(filtroDeIds);
     console.log(habitacionesSeleccionadas);
+}
+
+//Copilot
+
+function obtenerIdsHabitaciones() {
+    let habitacionesSeleccionadas = {
+        simple: [],
+        doble: [],
+        superior: []
+    };
+
+    // Filtrar las habitaciones por tipo y seleccionar la cantidad correcta
+    habitacionesSeleccionadas.simple = dataCompleta.filter(habitacion => habitacion.tipo_habitacion === 1).slice(0, contadorHabitacionSimple);
+    habitacionesSeleccionadas.doble = dataCompleta.filter(habitacion => habitacion.tipo_habitacion === 2).slice(0, contadorHabitacionDoble);
+    habitacionesSeleccionadas.superior = dataCompleta.filter(habitacion => habitacion.tipo_habitacion === 3).slice(0, contadorHabitacionSuperior);
+
+    // Concatenar las habitaciones seleccionadas y obtener los IDs
+    let habitaciones = [...habitacionesSeleccionadas.simple, ...habitacionesSeleccionadas.doble, ...habitacionesSeleccionadas.superior];
+    idHabitaciones = habitaciones.map(habitacion => habitacion.idHabitacion);
+
+    console.log(idHabitaciones);
 }

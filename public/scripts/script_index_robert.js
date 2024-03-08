@@ -101,76 +101,11 @@ formularioBusqueda.addEventListener('submit', function (event) {
     fetch('http://localhost:3000/habitaciones?fechaEntrada=' + fechaEntrada + '&fechaSalida=' + fechaSalida + '&numAdultos=' + numAdultos + '&numNinos=' + numNinos + '&numPersonas=' + numPersonas)
         .then(response => response.json())
         .then(data => {
-            const seenTypes = {};
-
-            // Filtrar los datos para que solo quede una habitación de cada tipo
-            const filteredData = data.filter(habitacion => {
-                if (seenTypes[habitacion.tipo_habitacion]) {
-                    // Si ya hemos visto este tipo de habitación, no lo incluyas en los datos filtrados
-                    return false;
-                } else {
-                    // Si no hemos visto este tipo de habitación, márcalo como visto y inclúyelo en los datos filtrados
-                    seenTypes[habitacion.tipo_habitacion] = true;
-                    return true;
-                }
-            });
             // Almacena los datos en el localStorage
             localStorage.setItem('habitaciones', JSON.stringify(data));
-
-            console.log(filteredData);
 
             // Redirige a la otra página
             window.location.href = 'habitaciones.html';
         })
         .catch(error => console.error('Error:', error));
 });
-
-
-
-
-// fetch('http://localhost:3000/habitaciones?tipoHabitacion=' + tipoSeleccionado + '&fechaEntrada=' + fechaEntrada + '&fechaSalida=' + fechaSalida + '&numPersonas=' + numPersonas)
-//         .then(response => response.json())
-//         .then(data => {
-//             // Aquí puedes procesar el array de habitaciones y actualizar tu página
-//             // Obtén el contenedor de las tarjetas
-//             var contenedor = document.getElementById('contenedor-de-tarjetas');
-
-//             // Elimina las tarjetas preexistentes
-//             contenedor.innerHTML = '';
-
-//             // data es un array con los datos de las habitaciones
-//             data.forEach(habitacion => {
-//                 // Crea un nuevo elemento div para la habitación
-//                 var div = document.createElement('div');
-//                 div.className = 'col-md-4';
-//                 div.dataset.tipo = habitacion.tipo;
-//                 div.dataset.fechaEntrada = habitacion.fechaEntrada;
-//                 div.dataset.fechaSalida = habitacion.fechaSalida;
-//                 div.dataset.numPersonas = habitacion.numPersonas;
-
-//                 // Mapea los números a los nombres de las habitaciones
-//                 var tiposHabitacion = {
-//                     1: 'Habitación Simple',
-//                     2: 'Habitación Doble',
-//                     3: 'Habitación Superior'
-//                 };
-
-//                 // Llena el div con el HTML de la tarjeta
-//                 div.innerHTML = `
-//                 <div class="card text-dark text-center bg-light p-2">
-//                     <img src="img/home-2.jpg" alt="" class="card-img-top">
-//                     <div class="card-body">
-//                         <h5 class="card-title">${tiposHabitacion[habitacion.tipo_habitacion]}</h5>
-//                         <p class="card-text">${habitacion.descripcion}</p>
-//                         <hr>
-//                         <p class="card-text">Desde $${habitacion.precio} por noche</p>
-//                         <a href="#" class="btn btn-reservar mt-auto">Reservar</a>
-//                     </div>
-//                 </div>
-//             `;
-
-//                 // Añade el div al contenedor
-//                 contenedor.appendChild(div);
-//             });
-//         })
-//         .catch(error => console.error('Error:', error));

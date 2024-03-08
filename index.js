@@ -302,6 +302,36 @@ app.post('/registrarreserva', (req, res) => {
     });
 });
 
+//Este metodo busca las reservas segun el codigo de reserva o segun los apellidos y el numero y tipo de documento
+app.post('/buscarreserva', (req, res) => {
+    const { tipo_documento, numero_documento, apellidos, codigo_reserva } = req.body;
+    let sqlQuery;
+    let queryParams;
+    // Construir la consulta SQL en función de los parámetros recibidos
+    if (tipo_documento && numero_documento && apellidos) {
+        sqlQuery = 'SELECT r.codigo_reserva, r.fecha_reserva, r.fecha_in, r.fecha_out, r.costo_total, r.observacion, r.estado, h.numero, h.piso, h.descripcion, h.precio_dia, h.tipo_habitacion, h.aforo, p.nombres, p.apellidos, p.tipo_doc, p.numero_doc, p.fecha_nacimiento, p.telefono FROM reserva r JOIN habitacion h ON r.idHabitacion = h.idHabitacion JOIN cliente c ON r.idCliente = c.id_cliente JOIN persona p ON c.id_persona = p.idPersona WHERE (p.tipo_doc = ? AND p.numero_doc = ?) OR apellidos = ?';
+        queryParams = [tipo_documento, numero_documento, apellidos];
+    } else if (codigo_reserva) {
+        sqlQuery = 'SELECT r.codigo_reserva, r.fecha_reserva, r.fecha_in, r.fecha_out, r.costo_total, r.observacion, r.estado, h.numero, h.piso, h.descripcion, h.precio_dia, h.tipo_habitacion, h.aforo, p.nombres, p.apellidos, p.tipo_doc, p.numero_doc, p.fecha_nacimiento, p.telefono FROM reserva r JOIN habitacion h ON r.idHabitacion = h.idHabitacion JOIN cliente c ON r.idCliente = c.id_cliente JOIN persona p ON c.id_persona = p.idPersona WHERE r.codigo_reserva = ?';
+        queryParams = [codigo_reserva];
+    }
+
+    db.query(sqlQuery, queryParams, (error, results) => {
+        if (error) {
+            console.error('Error al realizar la consulta:', error);
+            res.status(500).json({ error: 'Error al realizar la consulta a la base de datos' });
+            return;
+        }
+
+        // Enviar los resultados de la consulta
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.status(404).send('No se encontraron datos');
+        }
+    });
+});
+
 
 
 //Este metodo carga la pagina principal
