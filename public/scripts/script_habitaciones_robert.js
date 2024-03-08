@@ -379,6 +379,15 @@ botonContinuarReserva.addEventListener('click', async function (event) {
             });
             return;
         }
+        if(validator.isAlpha(apellidos,'es-ES',{ignore:' '}) == false ){
+            Swal.fire({
+                icon: "error",
+                title: "Alerta!",
+                text: "Los nombres y apellidos no pueden contener numeros!",
+                confirmButtonColor: "#48a04b"
+            });
+            return;
+        }
         if((telefono.length < 9 || telefono.length >9 ) || validator.isNumeric(telefono) == false){
             Swal.fire({
                 icon: "error",
