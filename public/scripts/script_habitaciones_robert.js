@@ -2,6 +2,7 @@
 
 
 
+
 let tiposHabitacion = {
     1: 'Habitación Simple',
     2: 'Habitación Doble',
@@ -156,8 +157,22 @@ window.onload = function () {
         contador++;
         contenedor.appendChild(div);
 
-        // Selecciona el botón que acabas de añadir
+        // Selecciona el botón que se acaba de crear
         let btn = div.querySelector('.btn');
+        // Selecciona el input que se acaba de crear
+        let input = div.querySelector('input');
+        //Le añadimos la clase para deshabilitarlo, esto esta en la hoja de CSS estilos.css
+        btn.classList.add('disabled');
+        
+
+        //deshabilita el boton si la cantidad de habitaciones es 0 y lo habilita si es mayor a 0
+        input.addEventListener('change', function () {
+            if (input.value === '0') {
+                btn.classList.add('disabled');
+            } else {
+                btn.classList.remove('disabled');
+            }
+        });
 
         // Añade el evento de clic al botón
         btn.addEventListener('click', function (event) {
@@ -568,12 +583,15 @@ function generarCodigoReserva() {
     return codigo;
 }
 
-function obtenerIdsHabitaciones(){
+function obtenerIdsHabitaciones2(){
+
     let habitacionesSeleccionadas = {
         simple: 0,
         doble: 0,
         superior: 0
     };
+
+    console.log(contadorHabitacionSimple, contadorHabitacionDoble, contadorHabitacionSuperior);
     
     if (contadorHabitacionSimple > 0) {
         habitacionesSeleccionadas.simple = 1;
@@ -592,7 +610,29 @@ function obtenerIdsHabitaciones(){
     //Recorrer la data filtrada y hacerle push a un array con los ids de las habitaciones
     for (let i = 0; i < filtroDeIds.length; i++) {
         idHabitaciones.push(filtroDeIds[i].idHabitacion);
+        console.log(filtroDeIds[i].idHabitacion);
     }
     console.log(filtroDeIds);
     console.log(habitacionesSeleccionadas);
+}
+
+//Copilot
+
+function obtenerIdsHabitaciones() {
+    let habitacionesSeleccionadas = {
+        simple: [],
+        doble: [],
+        superior: []
+    };
+
+    // Filtrar las habitaciones por tipo y seleccionar la cantidad correcta
+    habitacionesSeleccionadas.simple = dataCompleta.filter(habitacion => habitacion.tipo_habitacion === 1).slice(0, contadorHabitacionSimple);
+    habitacionesSeleccionadas.doble = dataCompleta.filter(habitacion => habitacion.tipo_habitacion === 2).slice(0, contadorHabitacionDoble);
+    habitacionesSeleccionadas.superior = dataCompleta.filter(habitacion => habitacion.tipo_habitacion === 3).slice(0, contadorHabitacionSuperior);
+
+    // Concatenar las habitaciones seleccionadas y obtener los IDs
+    let habitaciones = [...habitacionesSeleccionadas.simple, ...habitacionesSeleccionadas.doble, ...habitacionesSeleccionadas.superior];
+    idHabitaciones = habitaciones.map(habitacion => habitacion.idHabitacion);
+
+    console.log(idHabitaciones);
 }
