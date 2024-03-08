@@ -123,7 +123,6 @@
 #resultados {
     padding: 40px;
     overflow: hidden;
-    display: none;
 }
 
 /* Estilos para el contenedor principal de resultados */
@@ -218,5 +217,9 @@
   
     .formulario-Buscar button {
       padding: 7px 15px; 
+    }
+
+    .contenedor-resultado h1 {
+      font-size: 20px;
     }
   }
