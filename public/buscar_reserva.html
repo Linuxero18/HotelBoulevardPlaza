@@ -47,13 +47,13 @@
   <!-------------------- Inico Buscar Reserva -------------------->
   <section>
     <div class="Contenedor-Buscar container">
-        <div class="encabezado-Buscar col-12 col-md-12 col-lg-12">
+        <div class="encabezado-Buscar col-12 ">
             <h1><b>Busca Tu Reserva</b></h1>
             <p>Si ya realizaste una reserva y no la encuentras o si necesitas confirmar que ya realizaste tu reserva puedes buscarla a través del siguiente formulario. Procura que todos tus datos sean válidos y estén en el formato correcto.</p>
         </div>
 
         <div class="Cuerpo-Buscar row flex-md-row flex-column-reverse">
-            <div class="indicaciones-Buscar col-12 col-md-6 col-lg-6">
+            <div class="indicaciones-Buscar col-12 col-md-6 ">
                 <h3>Instrucciones para la Búsqueda</h3>
                 <ul>
                     <li>Selecciona el tipo de búsqueda.</li>
@@ -65,7 +65,7 @@
                 <p>Si necesitas ayuda, no dudes en <a href="#contacto">contactarnos</a>.</p>
             </div>
 
-            <div class="formulario-Buscar col-12 col-md-6 col-lg-6">
+            <div class="formulario-Buscar col-12 col-md-6 ">
                 <form class="container p-3">
 
                     <div class="mb-2 form-check">
@@ -110,39 +110,44 @@
     </div>
 </section>
 
-  <!-- Nueva sección de Resultados mejorada -->
-<section id="resultados" class="" style="display: none;">
-  <div class="contenedor-resultado container">
-    <h1>Resultado De Busqueda</h1>
-
-    <div class="row">
-      <!-- Información Personal -->
-      <div class="col-md-5 resultado">
-        <h4 class="info-personal"><span class="bi bi-person-badge-fill"></span> <b>Información Personal</b></h4>
-        <p><span class="bi bi-person-fill"></span> Nombre: <span id="nombresResultado"></span></p>
-        <p><span class="bi bi-person-fill"></span> Apellido: <span id="apellidosResultado"></span></p>
-        <p><span class="bi bi-credit-card-2-front-fill"></span> <span id="tipoDocResultado"></span>: <span id="documentoResultado"></span></p>
-        <p><span class="bi bi-calendar3-fill"></span> Fecha de Nacimiento: <span id="fechaNacResultado"></span></p>
-        <p><span class="bi bi-telephone-fill"></span> Contacto: <span id="telefonoResultado"></span></p>
+  <!-- Sección de Resultados  -->
+  <section id="resultados" style="display: none;">
+    <div class="contenedor-resultado container">
+      <h1>Resultado De Búsqueda</h1>
+  
+      <div class="row">
+        <!-- Información Personal -->
+        <div class="col-12 col-md-5 col-lg-5 resultado">
+          <h4 class="info-personal"><span class="bi bi-person-badge-fill"></span> <b>Información Personal</b></h4>
+          <p><span class="bi bi-person-fill"></span> Nombre: <span id="nombresResultado"></span></p>
+          <p><span class="bi bi-person-fill"></span> Apellido: <span id="apellidosResultado"></span></p>
+          <p><span class="bi bi-credit-card-2-front-fill"></span> <span id="tipoDocResultado"></span>: <span id="documentoResultado"></span></p>
+          <p><span class="bi bi-calendar3-fill"></span> Fecha de Nacimiento: <span id="fechaNacResultado"></span></p>
+          <p><span class="bi bi-telephone-fill"></span> Contacto: <span id="telefonoResultado"></span></p>
+        </div>
+  
+        <!-- Información de la Reserva -->
+        <div class="col-12 col-md-5 col-lg-5 resultado">
+          <h4 class="info-reserva"><span class="bi bi-card-list"></span> <b>Información de la Reserva</b></h4>
+          <p><span class="bi bi-door-open-fill"></span> Código de Reserva: <span id="reservaCodResultado"></span></p>
+          <p><span class="bi bi-door-open-fill"></span> Fecha de Reserva: <span id="reservaFechaResultado"></span></p>
+          <p><span class="bi bi-tv-fill"></span> Tipo de Habitación: <span id="tipoHabResultado"></span></p>
+          <p class="fechaentrada"><span class="bi bi-calendar-check-fill"></span> Fecha de Entrada: <span id="fechaInResultado"></span></p>
+          <p class="fechasalida"><span class="bi bi-calendar-x-fill"></span> Fecha de Salida: <span id="fechaOutResultado"></span></p>
+          <p><span class="bi bi-tv-fill"></span> Costo Total: <span id="reservaCostoResultado"></span></p>
+          <p><span class="bi bi-credit-card-2-back-fill"></span> Estado de pago: <span id="estadoResultado"></span></p>
+        </div>
       </div>
-
-      <!-- Información de la Reserva -->
-      <div class="col-md-5 resultado">
-        <h4 class="info-reserva"><span class="bi bi-card-list"></span> <b>Información de la Reserva</b></h4>
-        <p><span class="bi bi-door-open-fill"></span> Codigo de Reserva: <span id="reservaCodResultado"></span></p>
-        <p><span class="bi bi-door-open-fill"></span> Fecha de Reserva: <span id="reservaFechaResultado"></span></p>
-        <p><span class="bi bi-tv-fill"></span> Tipo de Habitación: <span id="tipoHabResultado"></span></p>
-        <p class="fechaentrada"><span class="bi bi-calendar-check-fill"></span> Fecha de Entrada: <span id="fechaInResultado"></span></p>
-        <p class="fechasalida"><span class="bi bi-calendar-x-fill"></span> Fecha de Salida: <span id="fechaOutResultado"></span></p>
-        <p><span class="bi bi-tv-fill"></span> Costo Total: <span id="reservaCostoResultado"></span></p>
-        <p><span class="bi bi-credit-card-2-back-fill"></span> Estado de pago: <span id="estadoResultado"></span></p>
+  
+      <div class="row">
+        <div class="col-12 botones-accion">
+          <button class="btn btn-success">Pagar Reserva</button>
+        </div>
       </div>
     </div>
-    <div class="botones-accion">
-      <button class="btn btn-success">Pagar Reserva</button>
-    </div>
-  </div>
-</section>
+  </section>
+  
+  
 
   </main>
 

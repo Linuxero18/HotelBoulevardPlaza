@@ -5,7 +5,7 @@ let con = mysql.createConnection({
     database: "hotelbd",
     user: "root",
     password: "",
-    //port: 3307, // Cambia esto al puerto que has configurado
+    port: 3307, // Cambia esto al puerto que has configurado
 
 });
 

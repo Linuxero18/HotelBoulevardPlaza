@@ -23,106 +23,111 @@
     flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible en el contenedor flex (el cuerpo) */
   }
   
-  /******* Estilos de los contenedores ********/
-  .Contenedor-Buscar {
-    /* Estilos generales para el contenedor de búsqueda */
-    background-color: #353535;
-    color: white;
-    overflow: hidden;
-    border-radius: 20px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-  }
-  
-  .encabezado-Buscar {
-    /* Estilos para el encabezado de búsqueda */
-    height: 210px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    padding: 100px;
-    font-size: 16px;
-    overflow: hidden;
-  }
-  
-  .Cuerpo-Buscar {
-    height: auto;
-    overflow: hidden;
-  }
-  
-  /******* Estilos de las Indicaciones ********/
-  .indicaciones-Buscar {
-    /* Estilos para las indicaciones de búsqueda */
-    height: 100%;
-    padding: 20px 5px 10px 50px;
-    overflow: hidden;
-  }
-  
-  .indicaciones-Buscar h3 {
-    /* Estilos para los títulos en las indicaciones */
-    color: #20aa25;
-    margin-bottom: 10px;
-  }
-  
-  .indicaciones-Buscar ul {
-    /* Estilos para las listas en las indicaciones */
-    list-style-type: none;
-    padding-left: 0px;
-  }
-  
-  .indicaciones-Buscar li {
-    /* Estilos para los elementos de lista en las indicaciones */
-    margin-bottom: 8px;
-    padding-left: 0px;
-  }
-  
-  .indicaciones-Buscar a {
-    color: #20aa25;
-  }
-  
-  .indicaciones-Buscar a:hover {
-    text-decoration: underline;
-  }
-  
-  /******* Estilos del formulario ********/
-  .formulario-Buscar {
-    height: 100%;
-    padding: 10px 50px 10px 50px;
-    overflow: hidden;
-  }
-  
-  .boton-formulario {
-    /* Alineación del botón en el formulario */
-    text-align: end;
-  }
-  
-  .formulario-Buscar button {
-    padding: 7px 75px;
-    margin-top: 5px;
-    color: #fff;
-    background: #20aa25;
-    border-radius: 15px;
-    cursor: pointer;
-  }
-
-  .form-check-label {
-    color: white;
-    font-size: 15px;
-    
-  }
-
-  .form-check-input:checked {
-    background-color: #20aa25; 
-    border-color: #20aa25; 
-    box-shadow: 0 0 0 1px #48A04B; 
-  }
-
-  .form-check-input:active {
-    background-color: #ffff; 
-    border-color: #20aa25; 
-    box-shadow: 0 0 0 1px #20aa25; /
+/* Estilos generales para el contenedor de búsqueda */
+.Contenedor-Buscar {
+  background-color: #353535;
+  color: white;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
+
+/* Estilos para el encabezado de búsqueda */
+.encabezado-Buscar {
+  height: 210px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 80px; /* Reducido el relleno para que no sea tan extenso */
+  font-size: 16px;
+  overflow: hidden;
+}
+
+/* Estilos para el cuerpo de búsqueda */
+.Cuerpo-Buscar {
+  height: auto;
+  overflow: hidden;
+}
+
+/* Estilos para las indicaciones de búsqueda */
+.indicaciones-Buscar {
+  height: 100%;
+  padding: 20px 60px; /* Ajustado el relleno para mejorar la visualización */
+  overflow: hidden;
+}
+
+/* Estilos para los títulos en las indicaciones */
+.indicaciones-Buscar h3 {
+  color: #20aa25;
+  margin-bottom: 10px;
+}
+
+/* Estilos para las listas en las indicaciones */
+.indicaciones-Buscar ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+/* Estilos para los elementos de lista en las indicaciones */
+.indicaciones-Buscar li {
+  margin-bottom: 7px;
+}
+
+/* Estilos para los enlaces en las indicaciones */
+.indicaciones-Buscar a {
+  color: #20aa25;
+  text-decoration: none;
+}
+
+/* Estilos para los enlaces al pasar el ratón */
+.indicaciones-Buscar a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el formulario de búsqueda */
+.formulario-Buscar {
+  height: 100%;
+  padding: 10px 40px; /* Ajustado el relleno para mejorar la visualización */
+  overflow: hidden;
+}
+
+/* Alineación del botón en el formulario */
+.boton-formulario {
+  text-align: end;
+}
+
+/* Estilos para el botón del formulario */
+.formulario-Buscar button {
+  padding: 7px 75px;
+  margin-top: 10px; /* Ajustado el margen superior para separar el botón del resto del formulario */
+  color: #fff;
+  background: #20aa25;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Estilos para la etiqueta del formulario */
+.form-check-label {
+  color: white;
+  font-size: 15px;
+}
+
+/* Estilos para el input de tipo radio cuando está seleccionado */
+.form-check-input:checked {
+  background-color: #20aa25;
+  border-color: #20aa25;
+  box-shadow: 0 0 0 1px #48A04B;
+}
+
+/* Estilos para el input de tipo radio al hacer clic */
+.form-check-input:active {
+  background-color: #ffff;
+  border-color: #20aa25;
+  box-shadow: 0 0 0 1px #20aa25;
+}
+
 
   
   /******* Estilos del footer ********/
@@ -140,55 +145,40 @@
 
 /* Estilos generales para la sección de resultados */
 #resultados {
-    padding: 40px;
-    overflow: hidden;
-    /*display: none;*/
+  padding: 30px;
 }
 
-/* Estilos para el contenedor principal de resultados */
 .contenedor-resultado {
-    background-color: #f8f9fa;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    overflow: hidden;
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 20px;
 }
 
-.contenedor-resultado, .row{
-    padding: 30px;
-    overflow: hidden;
-
-}
-
-/* Estilos para el título de la sección de resultados */
 .contenedor-resultado h1 {
-    margin: 10px 0px 20px 0px;
-    text-align: center;
+  margin: 20px ;
+  text-align: center;
 }
 
-/* Estilos para los detalles de la reserva */
 .resultado {
-    padding: 15px;
-    border: 1px solid #c4c4c4;
-    border-radius: 10px;
-    margin: 10px 30px 10px 60px;
-    overflow: hidden;
+  padding: 20px;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  margin: 40px auto;
+  overflow: hidden;
 }
 
-
-/* Estilos para el botón de acción */
 .botones-accion button {
-    padding: 8px 150px;
-    margin-top: 5px;
-    color: #fff;
-    background: #20aa25;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.botones-accion{
-    align-items: center;
-    text-align: center;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+  color: #fff;
+  background: #20aa25;
+  border-radius: 15px;
+  cursor: pointer;
 }
 
 
@@ -239,7 +229,29 @@
       padding: 7px 15px; 
     }
 
+    /* Estilos para la sección de resultados */
+
+    #resultados {
+      margin-top: 10px;
+      padding: 0px; /* Ajustado el relleno para dispositivos más pequeños */
+    }
+
+    .contenedor-resultado {
+        padding: 10px; /* Ajustado el relleno para dispositivos más pequeños */
+        margin-bottom: 10px; /* Reducido el margen inferior para dispositivos más pequeños */
+    }
+
     .contenedor-resultado h1 {
-      font-size: 20px;
+        font-size: 18px; /* Ajustado el tamaño de la fuente para dispositivos más pequeños */
+    }
+
+    .resultado {
+        padding: 10px; /* Ajustado el relleno para dispositivos más pequeños */
+        margin: 10px 0px; /* Reducido el margen superior e inferior para dispositivos más pequeños */
+    }
+
+    .botones-accion button {
+        width: 100%; /* Ancho completo para dispositivos más pequeños */
+        padding: 8px; /* Ajustado el relleno del botón para dispositivos más pequeños */
     }
   }
