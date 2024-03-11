@@ -102,18 +102,18 @@
   <!---------------------- INICIO BUSCAR ---------------------->
 
   <form id="buscarForm" class="form-section" action="habitaciones.html" method="get">
-    <div class="container">
-      <h3 class="pb-4">Buscar Habitaciones</h3>
+    <div class="container-fluid">
+      <h2 class="pb-5 text-center">Buscar Habitaciones</h2>
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label for="fechaEntrada" class="form-label">Fecha Entrada</label>
+            <label for="fechaEntrada" class="form-label">Fecha de Entrada</label>
             <input type="date" class="form-control fecha" id="fechaEntrada" required />
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <label for="fechaSalida" class="form-label">Fecha Salida</label>
+            <label for="fechaSalida" class="form-label">Fecha de Salida</label>
             <input type="date" class="form-control fecha" id="fechaSalida" required />
           </div>
         </div>
@@ -140,6 +140,61 @@
       </div>
     </div>
   </form>
+  <style>
+/* Estilo para el contenedor del formulario */
+#buscarForm {
+    background-color: rgba(33, 33, 33, 0.9); /* Fondo oscuro con transparencia */
+    padding: 20px 100px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: #fff; /* Texto en color blanco */
+    margin: 0px;
+}
+
+/* Estilo para los títulos del formulario */
+#buscarForm h2 {
+    color: #838383; /* Verde claro */
+    margin-bottom: 0px;
+  }
+
+/* Estilo para las etiquetas del formulario */
+#buscarForm .form-label {
+    font-weight: bold;
+    color: #838383; /* Texto gris claro */
+}
+
+/* Estilo para los campos de entrada */
+#buscarForm .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el botón de búsqueda */
+#buscarForm .btn {
+    background-color: #6d6d6d; /* Verde claro */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para el contenedor de edades de niños */
+#buscarForm #edades-niños-container {
+    margin-top: 15px;
+}
+
+/* Estilo para las filas del formulario */
+#buscarForm .row {
+    margin-bottom: 10px;
+}
+
+/* Estilo para el contenedor general del formulario */
+#buscarForm .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+  </style>
 
 
   <!---------------------- FIN BUSCAR ---------------------->
@@ -151,28 +206,23 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-md-12">
-          <div class="servicios-contenedor section-header text-center text-white pb-5">
+        <div class="col-12 ">
+          <div class="servicios-contenedor section-header text-center text-white ">
             <h2>Nuestros Servicios</h2>
             <p>
-              Ofrecemos una variedad de servicios para garantizar que tu
-              estancia sea cómoda y memorable. Desde habitaciones lujosamente
-              amuebladas hasta un servicio de atención al cliente excepcional,
-              nuestro objetivo es hacer que te sientas como en casa. Wi-Fi
-              gratuito en todas nuestras instalaciones.¡Ven y experimenta la
-              hospitalidad de primera clase!
+              Ofrecemos una variedad de servicios para garantizar una estancia cómoda y memorable.
             </p>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-12 col-md-12 col-lg-4">
-          <div class="card text-white text-center bg-dark pb-2">
+        
+        <div class="col-12 col-md-12 col-lg-4 ">
+          <div class="card text-white text-center bg-dark ">
             <div class="card-body">
               <i class="bi bi-display"></i>
               <h3 class="card-title"><b>Alojamiento</b></h3>
-              <i class="bi"></i>
               <p>
                 Disfruta de una estancia placentera con nuestras comodidades
                 de alojamiento y entretenimiento. Ofrecemos aire
@@ -180,13 +230,12 @@
                 plataformas premium como Netflix, Prime Video y YouTube en
                 todas nuestras habitaciones.
               </p>
-              <a href="#" class="btn btn-success text-white">Mas informacion</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-md-12 col-lg-4">
-          <div class="card text-white text-center bg-dark pb-2">
+          <div class="card text-white text-center bg-dark ">
             <div class="card-body">
               <i class="bi bi-bag-dash"></i>
               <h3 class="card-title"><b>Negocios y Conectividad</b></h3>
@@ -197,13 +246,12 @@
                 comodidad y salas de negocios con aire acondicionado.
                 Enfocados en hacer que tu estancia sea productiva y eficiente.
               </p>
-              <a href="#" class="btn btn-success text-white">Mas informacion</a>
             </div>
           </div>
         </div>
 
-        <div class="col-12 col-md-12 col-lg-4">
-          <div class="card text-white text-center bg-dark pb-2">
+        <div class="col-12 col-md-12 col-lg-4 ">
+          <div class="card text-white text-center bg-dark ">
             <div class="card-body">
               <i class="bi bi-lamp"></i>
               <h3 class="card-title"><b>Adicionales y Comodidades</b></h3>
@@ -214,12 +262,10 @@
                 Además, relájate en nuestra Sala MOVIE con acceso a Netflix,
                 Prime Video y YouTube Premium.
               </p>
-              <a href="#" class="btn btn-success text-white">Mas informacion</a>
             </div>
           </div>
         </div>
       </div>
-      
     </div>
   </section>
   <!---------------------- FIN SECTION SERVICIOS ---------------------->
@@ -230,16 +276,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="habitaciones-contenedor section-header text-center text-white pb-5">
+          <div class="habitaciones-contenedor section-header text-center text-white">
             <h2>Habitaciones</h2>
             <p>
               Nuestras habitaciones están diseñadas para brindarte la máxima
-              comodidad y relajación. Cada habitación está equipada con
-              comodidades modernas y servicios de primera clase. Desde
-              habitaciones individuales hasta suites de lujo, ofrecemos una
-              variedad de opciones para satisfacer tus necesidades. ¡Reserva
-              tu habitación hoy y experimenta la hospitalidad de primera
-              clase!
+              comodidad y relajación.
             </p>
           </div>
         </div>
