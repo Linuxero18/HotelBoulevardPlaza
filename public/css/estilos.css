@@ -20,6 +20,11 @@ a {
     color: #48A04B;
 }
 
+.container {
+    max-width: 1200px;
+    margin:  auto;
+}
+
 /* Estilo del botón */
 .btn {
     padding: 12px 24px;
@@ -86,6 +91,64 @@ header {
     font-size: 13px;
 }
 
+/* Estilo para el fomulario buscar */
+#buscarForm {
+    margin: 10px 5px;
+}
+
+.contenedor-buscar-h{
+    box-shadow: 1px 20px 40px rgba(42, 101, 37, 0.2);
+    border-radius: 10px;
+    padding: 5px 25px;
+    border: 1px solid #4b4b4b;
+}
+
+/* Estilo para los títulos del formulario */
+#buscarForm h2 {
+    color: #48A04B; /* Verde claro */
+    margin-bottom: 10px;
+    padding: 10px 0;
+    font-size: 23px;
+  }
+
+/* Estilo para las etiquetas del formulario */
+#buscarForm .form-label {
+    font-weight: bold;
+    color: #b0b0b0; /* Texto gris claro */
+}
+
+/* Estilo para los campos de entrada */
+#buscarForm .form-control {
+    width: 100%;
+    margin: 11px 0px;
+    padding: 8px;
+}
+
+/* Estilo para el botón de búsqueda */
+#buscarForm .btn {
+    background-color: #48A04B; /* Verde claro */
+    color: #fff;
+    padding: 9px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para el contenedor de edades de niños */
+#buscarForm #edades-niños-container {
+    margin-top: 15px;
+}
+
+/* Estilo para las filas del formulario */
+#buscarForm .row {
+    margin-bottom: 5px;
+}
+
+/* Estilo para el contenedor general del formulario */
+#buscarForm .container {
+    margin: 20px auto;
+}
+
 /* Estilos de la sección Servicios */
 .services {
     padding: 20px;
@@ -138,6 +201,10 @@ header {
     padding: 20px;
     margin: 100px 20px;
 }
+.portfolio button {
+    margin: 10px;
+    padding: 10px;
+}
 
 .img-area img {
     width: 100%;
@@ -148,37 +215,58 @@ header {
     font-size: 16px;
 }
 
-/* Estilos del formulario */
-.form-section {
-    padding: 10px;
-    margin-top: 30px;
+
+
+/* Estilos de contacto */
+.contact {
+    padding: 60px 0;
+    margin: 10px;
+    color: #fff;
+}
+
+.contact .section-header h2 {
     margin-bottom: 30px;
-}
-
-.container {
-    max-width: 1200px;
-    margin:  auto;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-label {
-    margin-bottom: 10px;
-    display: block;
     font-weight: bold;
+    color: #48A04B; /* White */
 }
 
-.form-control {
-    padding: 10px;
+.contact p {
+    margin-bottom: 25px;
+    color: #cccccc; /* Light Gray */
 }
 
-.container-fluid.bg-success {
+.contact .form-control {
     padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #1a1a1a; /* Dark Gray */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #2a2a2a; /* Dark Gray */
+    font-size: 16px;
+    color: #cccccc9b; /* Color del placeholder deseado */
+
 }
+
+.contact .form-control::placeholder {
+    color: #cccccc9b; /* Color del placeholder deseado */
+    }
+
+
+.contact .btn-lg {
+    padding: 10px 80px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+}
+
+
+.contact-form-container {
+    background-color: #1a1a1a; /* Dark Gray */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
 
 /* Estilos responsivos */
 @media (max-width: 767px) {
