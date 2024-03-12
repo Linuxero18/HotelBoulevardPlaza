@@ -52,7 +52,6 @@ header {
 
 /* Estilos del carrusel */
 .carousel {
-    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -63,7 +62,7 @@ header {
 
 .carousel-content {
     position: absolute;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 20px;
     top: 65%;
     left: 50%;
@@ -89,14 +88,13 @@ header {
 
 /* Estilos de la sección Servicios */
 .services {
-    padding: 60px;
-    max-height: 100%;
-    margin: 70px;
+    padding: 20px;
+    margin: 100px 20px;
 }
 
 .servicios-contenedor,
 .habitaciones-contenedor {
-    padding: 15px 20px;
+    padding: 10px;
     margin-bottom: 30px;
     font-size: 20px;
 }
@@ -114,10 +112,11 @@ header {
 }
 
 .card{
-    border: 2px solid rgba(72, 160, 75, 0.3);
+    border: 2px solid #4b4b4b;
     border-radius: 15px;
     margin-bottom: 20px;
     margin-top: 20px;
+    height: 95%;
 }
 
 .card-body i {
@@ -136,9 +135,8 @@ header {
 
 /* Estilos de la sección Habitaciones */
 .portfolio {
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 70px;
+    padding: 20px;
+    margin: 100px 20px;
 }
 
 .img-area img {
@@ -207,9 +205,13 @@ header {
         margin-right: 8px;
     }
 
+    .form-section{
+        padding: 15px;
+    }
+
     /* Estilos de la sección "Servicios" en dispositivos móviles */
     .services {
-        margin: 0px;
+        margin: 7px;
         padding: 0px;
     }
 
@@ -235,6 +237,12 @@ header {
     }
 
     /* Estilos de la sección "Habitaciones" en dispositivos móviles */
+
+    .portfolio {
+        margin: 7px;
+        padding: 0px;
+    }
+
     .portfolio h2 {
         font-size: 20px;
     }
