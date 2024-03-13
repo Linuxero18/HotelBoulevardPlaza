@@ -202,6 +202,10 @@
         margin-top: 80px;
     }
 
+    .section-buscar{
+      margin: 15px;
+    }
+
     .encabezado-Buscar {
       padding: 20px; 
       font-size: 14px;
@@ -233,7 +237,7 @@
 
     #resultados {
       margin-top: 10px;
-      padding: 0px; /* Ajustado el relleno para dispositivos más pequeños */
+      padding: 0x; /* Ajustado el relleno para dispositivos más pequeños */
     }
 
     .contenedor-resultado {
