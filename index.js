@@ -345,5 +345,5 @@ app.get('/home_admin', function (peticion, respuesta) {
 
 //Este metodo establece el puerto en el que se ejecutara el servidor
 app.listen(3000, function (peticion, respuesta) {
-    console.log('server running on port 3000');
+    console.log('Pagina corriendo en el puerto: http://localhost:3000');
 });
