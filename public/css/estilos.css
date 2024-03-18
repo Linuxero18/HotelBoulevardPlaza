@@ -344,11 +344,24 @@ header {
     }
 
     /* Estilos de la sección "Contacto" en dispositivos móviles */
+    .contact {
+        padding: 30px 0;
+        margin: 0px;
+    }
+    
     .contact h2 {
-        font-size: 20px;
+        font-size: 15px;
     }
     .contact p {
-        font-size: 14px;
+        font-size: 12px;
+    }
+    
+    .datos-legales, h5{
+        font-size: 13px;
+    }
+
+    .datos-legales, p, a{
+        font-size: 10px;
     }
 
     /* Estilos del carrusel en dispositivos móviles */
