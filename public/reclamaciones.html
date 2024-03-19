@@ -45,23 +45,21 @@
 
     <!---------------------- INICIO DE TITULO RECLAMACIONES ---------------------->
     <div class="pt-4 pb-3 mt-4 text-center" style="background-color: #48A04B;">
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 class="custom-heading">
-            <img
-              src="img/comentario.png"
-              alt=""
-              height="30px"
-              width="30px"
-              style="padding-right: 5px"
-            />
-            Libro de Reclamaciones
-          </h3>
+        <div class="row">
+            <div class="col-lg-12">
+                    <h3 class="custom-heading">
+                        <img
+                        src="img/comentario.png"
+                        alt=""
+                        height="30px"
+                        width="30px"
+                        style="padding-right: 5px"
+                        />
+                        Libro de Reclamaciones
+                    </h3>
+            </div>
         </div>
-      </div>
     </div>
-
-
     <!---------------------- FIN DE TITULO RECLAMACIONES ---------------------->
 
     <!---------------------- INICIO DE DATOS LEGALES ---------------------->
@@ -90,137 +88,131 @@
 
     <section id="contacto" class="contact section-padding">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row ">
-                        
-                        <div class="col-md-12 pb-4">
-                            <form id="formReclamo" class="contact-form-container p-3 m-auto">
+            <div class="row ">
+                <div class="col-md-12 pb-4">
+                    <form id="formReclamo" class="contact-form-container pt-4 pt-5 m-auto">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Nombres"
+                                        id="nombres"
+                                        name="nombres"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Apellidos"
+                                        id="apellidos"
+                                        name="apellidos"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Nombres"
-                                                id="nombres"
-                                                name="nombres"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Apellidos"
-                                                id="apellidos"
-                                                name="apellidos"
-                                            />
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <select name="tipo_documento" id="tipoDoc" class="form-select form-control">
-                                                    <option value="DNI">DNI</option>
-                                                    <option value="Pasaporte">Pasaporte</option>
-                                                    <option value="CE">Carnet de Extranjeria</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder="Ingrese Nº de documento"
-                                                    id="documento"
-                                                    name="documento"
-                                                    aria-label="Username"
-                                                    aria-describedby="basic-addon1"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Dirección"
-                                                id="direccion"
-                                                name="direccion"
-                                            />
-                                        </div>
-                                    </div>
-                                    <!-- Fecha de nacimiento -->
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <input
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Fecha de nacimiento"
-                                                id="fechaNacimiento"
-                                                name="fechaNacimiento"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Telefono"
-                                                id="telefono"
-                                                name="telefono"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 ">
-                                        <div class="mb-3">
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Correo"
-                                                id="correo"
-                                                name="correo"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <textarea
-                                                class="form-control"
-                                                placeholder="Mensaje"
-                                                id="mensaje"
-                                                name="mensaje"
-                                                rows="3"
-                                            ></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <select name="tipo_reclamo" id="reclamo" class="form-control">
-                                            <option value="0">
-                                                --Seleccione la categoría de su reclamo--
-                                            </option>
-                                            <option value="2">Queja</option>
-                                            <option value="3">Sugerencia</option>
-                                            <option value="1">Reclamo</option>
+                                        <select name="tipo_documento" id="tipoDoc" class="form-select form-control">
+                                            <option value="DNI">DNI</option>
+                                            <option value="Pasaporte">Pasaporte</option>
+                                            <option value="CE">Carnet de Extranjeria</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-12 text-center">
-                                        <button class="btn btn-lg mb-3" type="submit" id="btnEnviar">Enviar</button>
-                                        <!-- </button>onclick="return validarFormulario()" -->
+                                    <div class="col-md-6">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Ingrese Nº de documento"
+                                            id="documento"
+                                            name="documento"
+                                            aria-label="Username"
+                                            aria-describedby="basic-addon1"
+                                        />
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Dirección"
+                                        id="direccion"
+                                        name="direccion"
+                                    />
+                                </div>
+                            </div>
+                            <!-- Fecha de nacimiento -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        placeholder="Fecha de nacimiento"
+                                        id="fechaNacimiento"
+                                        name="fechaNacimiento"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Telefono"
+                                        id="telefono"
+                                        name="telefono"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Correo"
+                                        id="correo"
+                                        name="correo"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <textarea
+                                        class="form-control"
+                                        placeholder="Mensaje"
+                                        id="mensaje"
+                                        name="mensaje"
+                                        rows="3"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <select name="tipo_reclamo" id="reclamo" class="form-control">
+                                    <option value="0">
+                                        --Seleccione la categoría de su reclamo--
+                                    </option>
+                                    <option value="2">Queja</option>
+                                    <option value="3">Sugerencia</option>
+                                    <option value="1">Reclamo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-lg mb-3" type="submit" id="btnEnviar">Enviar</button>
+                                <!-- </button>onclick="return validarFormulario()" -->
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <a href="./reclamaciones_consulta.html">¿Ya ingresaste una consulta o reclamo? Haz click aquí para ver su estado</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <!-- fin -->
+                <div class="text-center">
+                    <a href="./reclamaciones_consulta.html">¿Ya ingresaste una consulta o reclamo? Haz click aquí para ver su estado</a>
+                </div>
             </div>
         </div>
     </section>

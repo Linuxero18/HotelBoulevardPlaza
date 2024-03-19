@@ -20,10 +20,7 @@ a {
     color: #48A04B;
 }
 
-.container {
-    max-width: 1200px;
-    margin:  auto;
-}
+
 
 /* Estilo del botón */
 .btn {
@@ -37,7 +34,8 @@ a {
 }
 
 .btn:hover {
-    background-color: #20aa25;
+    background-color: #53a118;
+    transition: 0.4s;
 }
 
 /* Estilos de la barra de navegación */
@@ -126,12 +124,10 @@ header {
 
 /* Estilo para el botón de búsqueda */
 #buscarForm .btn {
-    background-color: #48A04B; /* Verde claro */
-    color: #fff;
     padding: 9px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 40px;
 }
 
 /* Estilo para el contenedor de edades de niños */
@@ -247,7 +243,7 @@ header {
 }
 
 .contact .form-control::placeholder {
-    color: #cccccc9b; /* Color del placeholder deseado */
+    color: #ccccccb9; /* Color del placeholder deseado */
     }
 
 
@@ -261,10 +257,30 @@ header {
 
 .contact-form-container {
     background-color: #1a1a1a; /* Dark Gray */
-    padding: 40px;
+    padding: 50px;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.608);
 }
+
+/* Estilos para el input de tipo radio cuando está seleccionado */
+.form-check-input:checked {
+    background-color: #20aa25;
+    border-color: #20aa25;
+    box-shadow: 0 0 0 1px #48A04B;
+  }
+  
+  /* Estilos para el input de tipo radio al hacer clic */
+  .form-check-input:active {
+    background-color: #ffff;
+    border-color: #20aa25;
+    box-shadow: 0 0 0 1px #20aa25;
+  }
+  
+  /* Cambia el color del borde al seleccionar un campo de formulario */
+  input:focus{
+      border-color: #20aa25; /* Cambia el color del borde a rojo */
+      outline: none; /* Quita el contorno predeterminado que algunos navegadores agregan al enfocar un campo */
+  }
 
 
 
@@ -356,12 +372,29 @@ header {
         font-size: 12px;
     }
     
-    .datos-legales, h5{
+    .datos-legales, h5,.form-check{
         font-size: 13px;
     }
 
     .datos-legales, p, a{
         font-size: 10px;
+    }
+
+    .contact .form-control {
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 13px;    
+    }
+
+    .contact .btn-lg{
+        padding: 8px 30px;
+        font-size: 14px;
+    }
+
+    .contact-form-container {
+        padding: 13px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.608);
     }
 
     /* Estilos del carrusel en dispositivos móviles */
