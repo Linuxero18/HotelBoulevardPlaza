@@ -1,299 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hotel Boulevard</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="css/estilos.css" />
-    <style>
-      .custom-heading {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
-
-        margin: 0;
-      }
-    </style>
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hotel Boulevard</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"/>
+        <link rel="stylesheet" href="css/estilos.css" />
+    </head>
+  
   <body>
     <!---------------------- BARRA DE NAVEGACIÓN ---------------------->
-    <div>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <div class="container">
-          <a href="index.html" class="navbar-brand"
-            ><span class="color-hotel"
-              ><sup
-                ><img
-                  src="img/logo-empresa-removebg-preview.png"
-                  alt=""
-                  width="100"
-                  height="100" /></sup
-              >Hotel</span
-            >
-            Boulevard Plaza</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarS"
-            aria-controls="navbarS"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarS">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a href="index.html" class="nav-link">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a href="#Servicios" class="nav-link">Servicios</a>
-              </li>
-              <li class="nav-item">
-                <a href="habitaciones.html" class="nav-link">Habitaciones</a>
-              </li>
-              <li class="nav-item">
-                <a href="#contacto" class="nav-link">Contacto</a>
-              </li>
-            </ul>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+          <div class="container">
+            <a href="index.html" class="navbar-brand"><span class="color-hotel"><sup><img src="img/logo-empresa-removebg-preview.png"
+                    alt="" width="100" height="100" /></sup>Hotel</span>
+              Boulevard Plaza</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarS"
+              aria-controls="navbarS" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarS">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.html#Servicios" class="nav-link">Servicios</a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.html#contacto" class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                  <a href="buscar_reserva.html" class="nav-link">Buscar Reserva</a>
+                </li>
+    
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
+        </nav>
+    </header>
     <!---------------------- FIN BARRA DE NAVEGACIÓN ---------------------->
 
-    <!---------------------- INICIO DE CAROUSEL ---------------------->
-
-    <div
-      id="carouselExample"
-      class="carousel slide"
-      data-bs-ride="carousel"
-      style="height: 200px !important"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="img/home-1.jpg" class="d-block w-100 img-fluid" alt="..." />
-        </div>
-      </div>
-    </div>
-
-    <!---------------------- FIN DE CAROUSEL ---------------------->
-
     <!---------------------- INICIO DE TITULO RECLAMACIONES ---------------------->
-
-    <div class="" style="background-color: #48a04b">
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 class="custom-heading">
-            <img
-              src="img/comentario.png"
-              alt=""
-              height="30px"
-              width="30px"
-              style="padding-right: 5px"
-            />
-            Libro de Reclamaciones
-          </h3>
+    <div class="pt-4 pb-3 mt-4 text-center" style="background-color: #48A04B;">
+        <div class="row">
+            <div class="col-lg-12">
+                    <h3 class="custom-heading">
+                        <img
+                        src="img/comentario.png"
+                        alt=""
+                        height="30px"
+                        width="30px"
+                        style="padding-right: 5px"
+                        />
+                        Libro de Reclamaciones
+                    </h3>
+            </div>
         </div>
-      </div>
     </div>
-
     <!---------------------- FIN DE TITULO RECLAMACIONES ---------------------->
 
     <!---------------------- INICIO DE DATOS LEGALES ---------------------->
+    <section class="datoslegales">
+        <div class="container">
+            <div class="bg-dark mt-5 p-2" style="border-radius: 10px;">
+                <div class="text-center m-2 p-1">
+                    <h5><i class="bi bi-building"></i> HAPPY GROUP S.R.LTDA.</h5>
+                    <h5><i class="bi bi-geo-alt"></i> AV. SAN MARTIN NRO. 340 UCAYALI - CORONEL PORTILLO - CALLERIA</h5>
+                    <p>
+                    De acuerdo a la Ley N° 29733, Ley de Protección de Datos Personales y
+                    su Reglamento, el usuario da su consentimiento para el tratamiento de
+                    sus datos personales, los cuales son incorporados en el banco de datos
+                    de Hotel Boulevard Plaza, con la finalidad de absolver sus consultas y
+                    brindarles información publicitaria, dándoles usos que garantizan su
+                    seguridad y confidencialidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div
-      class="card text-bg-success mb-3"
-      style="background-color: #212529 !important"
-    >
-      <div class="card-body">
-        <h5 class="card-title">
-          <i class="bi bi-building"></i> HAPPY GROUP S.R.LTDA.
-        </h5>
-        <h6>
-          <i class="bi bi-geo-alt" style="font-size: medium"></i> AV. SAN MARTIN
-          NRO. 340 UCAYALI - CORONEL PORTILLO - CALLERIA
-        </h6>
-        <br />
-        <p class="card-text">
-          De acuerdo a la Ley N° 29733, Ley de Protección de Datos Personales y
-          su Reglamento, el usuario da su consentimiento para el tratamiento de
-          sus datos personales, los cuales son incorporados en el banco de datos
-          de Hotel Boulevard Plaza, con la finalidad de absolver sus consultas y
-          brindarles información publicitaria, dándoles usos que garantizan su
-          seguridad y confidencialidad.
-        </p>
-      </div>
-    </div>
     <!---------------------- FIN DE DATOS LEGALES ---------------------->
 
     <!---------------------- INICIO FORMULARIO---------------------->
 
     <section id="contacto" class="contact section-padding">
-      <!-- ini -->
-      <div class="row m-0">
-        <div class="col-lg-12" style="padding-left: 20%; padding-right: 20%">
-          <div class="alert alert-success" role="alert">
-            Porfavor ingrese los datos solicitados
-          </div>
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12 pb-4">
+                    <form id="formReclamo" class="contact-form-container pt-4 pt-5 m-auto">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Nombres"
+                                        id="nombres"
+                                        name="nombres"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Apellidos"
+                                        id="apellidos"
+                                        name="apellidos"
+                                    />
+                                </div>
+                            </div>
 
-          <div class="row m-0">
-            <div class="col-md-12 p-0 pt-4 pb-4">
-              <form id="formReclamo" class="bg-dark p-4 m-auto">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Nombres"
-                        id="nombres"
-                        name="nombres"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Apellidos"
-                        id="apellidos"
-                        name="apellidos"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="col-md-12">
-                    <div class="input-group mb-3">
-                      <select name="tipo_documento" id="tipoDoc" class="">
-                        <option value="DNI">DNI</option>
-                        <option value="Pasaporte">Pasaporte</option>
-                        <option value="CE">Carnet de Extranjeria</option>
-                      </select>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Ingrese Nº de documento"
-                        id="documento"
-                        name="documento"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Dirección"
-                        id="direccion"
-                        name="direccion"
-                      />
-                    </div>
-                  </div>
-                  <!-- Fecha de nacimiento -->
-                  <div class="col-md-12">
-                    <div class="mb-3">
-                      <input
-                        type="date"
-                        class="form-control"
-                        placeholder="Fecha de nacimiento"
-                        id="fechaNacimiento"
-                        name="fechaNacimiento"
-                      />
-                    </div>
-                  <div class="col-md-12">
-                    <div class="mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Telefono"
-                        id="telefono"
-                        name="telefono"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Correo"
-                        id="correo"
-                        name="correo"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="mb-3">
-                      <textarea
-                        class="form-control"
-                        placeholder="Mensaje"
-                        id="mensaje"
-                        name="mensaje"
-                        rows="3"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <select name="tipo_reclamo" id="reclamo" class="form-control">
-                      <option value="0">
-                        --Seleccione la categoría de su reclamo--
-                      </option>
-                      <option value="2">Queja</option>
-                      <option value="3">Sugerencia</option>
-                      <option value="1">Reclamo</option>
-                    </select>
-                  </div>
-
-                  <button
-                    class="btn btn-success btn-lg btn-block mt-3"
-                    type="submit"
-                    id="btnEnviar"
-                    
-                  >
-                    Enviar
-                  </button>
-                   <!-- </button>onclick="return validarFormulario()" -->
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <select name="tipo_documento" id="tipoDoc" class="form-select form-control">
+                                            <option value="DNI">DNI</option>
+                                            <option value="Pasaporte">Pasaporte</option>
+                                            <option value="CE">Carnet de Extranjeria</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Ingrese Nº de documento"
+                                            id="documento"
+                                            name="documento"
+                                            aria-label="Username"
+                                            aria-describedby="basic-addon1"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Dirección"
+                                        id="direccion"
+                                        name="direccion"
+                                    />
+                                </div>
+                            </div>
+                            <!-- Fecha de nacimiento -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        placeholder="Fecha de nacimiento"
+                                        id="fechaNacimiento"
+                                        name="fechaNacimiento"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Telefono"
+                                        id="telefono"
+                                        name="telefono"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Correo"
+                                        id="correo"
+                                        name="correo"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <textarea
+                                        class="form-control"
+                                        placeholder="Mensaje"
+                                        id="mensaje"
+                                        name="mensaje"
+                                        rows="3"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <select name="tipo_reclamo" id="reclamo" class="form-control">
+                                    <option value="0">
+                                        --Seleccione la categoría de su reclamo--
+                                    </option>
+                                    <option value="2">Queja</option>
+                                    <option value="3">Sugerencia</option>
+                                    <option value="1">Reclamo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-lg mb-3" type="submit" id="btnEnviar">Enviar</button>
+                                <!-- </button>onclick="return validarFormulario()" -->
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </form>
+                <div class="text-center">
+                    <a href="./reclamaciones_consulta.html">¿Ya ingresaste una consulta o reclamo? Haz click aquí para ver su estado</a>
+                </div>
             </div>
-            <div class="text-center">
-              <a href="./reclamaciones_consulta.html">¿Ya ingresaste una consulta o reclamo? Haz click aquí para ver su estado</a>
-            </div>
-          </div>
         </div>
-        <!-- fin -->
-      </div>
     </section>
+    
+      
     <!---------------------- FIN FORMULARIO ---------------------->
 
     <!---------------------- INICIO FOOTER ---------------------->
 
     <footer class="footer bg-dark p-3 text-center">
-      <div class="container">
-        <p class="text-white">Hotel Boulevard Plaza &copy; 2024</p>
-        <p class="text-white"><a href="">Inicia Sesión Admin</a></p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/HOTELBOULEVARDPLAZA/" class="text-white"><i class="bi bi-facebook"></i></a>
-          <a href="https://youtu.be/hP8RoVnPT_g" class="text-white"><i class="bi bi-youtube"></i></a>
+        <div class="container">
+            <p class="text-white">Hotel Boulevard Plaza &copy; 2024</p>
+            <p class="text-white"><a href="">Inicia Sesión Admin</a></p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/HOTELBOULEVARDPLAZA/" class="text-white"><i class="bi bi-facebook"></i></a>
+                <a href="https://youtu.be/hP8RoVnPT_g" class="text-white"><i class="bi bi-youtube"></i></a>
+            </div>
         </div>
-      </div>
     </footer>
     <!---------------------- FIN FOOTER ---------------------->
     <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
@@ -305,5 +242,5 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-  </body>
+    </body>
 </html>
