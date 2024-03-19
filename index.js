@@ -21,7 +21,7 @@ app.post('/login', function (peticion, respuesta) {
         if (resultado.length > 0) {
             respuesta.redirect('/home_admin');
         } else {
-            respuesta.send('Usuario o contraseña incorrectos');
+            respuesta.send('<script>alert("Credenciales incorrectas. Por favor, inténtelo de nuevo.");</script>');
         }
         respuesta.end();
     });
