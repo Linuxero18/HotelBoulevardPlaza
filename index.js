@@ -14,14 +14,15 @@ app.use(express.static('public'));
 //Este metodo maneja la funcionalidad del login
 app.post('/login', function (peticion, respuesta) {
     let usuario = peticion.body.correo;
-    let password = peticion.body.contra;
+    let password = peticion.body.contrasena;
     console.log(usuario);
     console.log(password);
     db.query('SELECT * FROM usuario WHERE usuario = ? AND password = ?', [usuario, password], function (error, resultado) {
         if (resultado.length > 0) {
-            respuesta.redirect('/home_admin');
+            console.log(resultado);
+            respuesta.send('success');
         } else {
-            respuesta.send('<script>alert("Credenciales incorrectas. Por favor, inténtelo de nuevo.");</script>');
+            respuesta.send('error');
         }
         respuesta.end();
     });

@@ -16,3 +16,31 @@ sign_up_btn2.addEventListener("click", () => {
 sign_in_btn2.addEventListener("click", () => {
     container.classList.remove("sign-up-mode2");
 });
+
+//Enviar datos de inicio de sesion
+let formularioInicioSesion = document.getElementById('form_log');
+formularioInicioSesion.addEventListener('submit', function (e) {
+    e.preventDefault();
+    let correo = document.getElementById('correo').value;
+    let contrasena = document.getElementById('contra').value;
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ correo, contrasena })
+    })
+        .then(res => res.text())
+        .then(data => {
+            if (data === 'error') {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error!",
+                    text: "Usuario o contraseña incorrectos",
+                    confirmButtonColor: "#48a04b"
+                });
+            } else {
+                window.location.href = '../page_admin.html';
+            }
+        });
+});
