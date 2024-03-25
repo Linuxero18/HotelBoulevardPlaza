@@ -16,6 +16,6 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.9.2",
     "nodemailer": "^6.9.13",
-    "sweetalert2": "^11.10.5"
+    "sweetalert2": "^11.10.7"
   }
 }
