@@ -144,13 +144,13 @@
     </div>
 
     <!---------------------- iNICIO FORMULARIO RESERVAR ---------------------->
-    <div class="contenedor-huesped container-fluid">
-        <div id="divDelFormulario" class="formulario-huesped container mt-4 mb-4" style="display: none;">
+    <section id="reserva" class="reserva">
+        <div id="divDelFormulario" class="formulario-huesped oculto container mb-5 mt-5">
             <form id="formularioReserva">
                 <h1 class="text-center" id="tituloFormHuespedes">Registrar huesped </h1>
     
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="tipoDocumento">Tipo de Documento:</label>
                             <select id="tipoDocumento" name="tipoDocumento" class="form-control selectpicker" required>
@@ -160,7 +160,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="documento">Documento:</label>
                             <input type="text" id="documento" name="documento" class="form-control" required
@@ -168,14 +168,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="nombre">Nombres:</label>
                             <input type="text" id="nombres" name="nombres" class="form-control" required
                                 pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Ingrese solo letras">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="apellidos">Apellidos:</label>
                             <input type="text" id="apellidos" name="apellidos" class="form-control" required
@@ -215,7 +215,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </section>
     
 
     <!---------------------- iNICIO FOOTER ---------------------->

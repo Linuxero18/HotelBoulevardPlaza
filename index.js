@@ -6,7 +6,7 @@ let db = require('./bd.js');
 const getConnection = require('./bd.js');
 let app = express();
 
-// NodeMailer
+/* NodeMailer
 const nodemailer = require('nodemailer');
 
 enviarMail = async () => {
@@ -33,7 +33,7 @@ enviarMail = async () => {
 
 enviarMail();
 // NodeMailer
-
+*/
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
