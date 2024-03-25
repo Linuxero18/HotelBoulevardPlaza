@@ -6,6 +6,35 @@ let db = require('./bd.js');
 const getConnection = require('./bd.js');
 let app = express();
 
+// NodeMailer
+const nodemailer = require('nodemailer');
+
+enviarMail = async () => {
+    
+    const config={
+        host: 'smtp.gmail.com',
+        port: '587',
+        auth: {
+            user: 'boulevardplazap@gmail.com',
+            pass: 'drkh pyua yazb wryr'
+        }
+    }
+
+    const mensaje={
+        from: 'boulevardplazap@gmail.com',
+        to: 'boulevardplazap@gmail.com', //correo de destino
+        subjet : 'Correo de Pruebas',
+        text: 'Envio de correo desde nodejs utilizando NodeMailer'
+    }
+    const transport = nodemailer.createTransport(config);
+    const info = await transport.sendMail(mensaje);
+    console.log(info);
+}
+
+enviarMail();
+// NodeMailer
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
