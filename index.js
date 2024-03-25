@@ -8,6 +8,35 @@ const app = express();
 const mercadopago = require('mercadopago');
 const cliente = new mercadopago.MercadoPagoConfig({ accessToken: 'TEST-8326400819798321-032509-75a585ac077cff1e7a9d0cb7fff75062-1053050103' });
 
+/* NodeMailer
+const nodemailer = require('nodemailer');
+
+enviarMail = async () => {
+    
+    const config={
+        host: 'smtp.gmail.com',
+        port: '587',
+        auth: {
+            user: 'boulevardplazap@gmail.com',
+            pass: 'drkh pyua yazb wryr'
+        }
+    }
+
+    const mensaje={
+        from: 'boulevardplazap@gmail.com',
+        to: 'boulevardplazap@gmail.com', //correo de destino
+        subjet : 'Correo de Pruebas',
+        text: 'Envio de correo desde nodejs utilizando NodeMailer'
+    }
+    const transport = nodemailer.createTransport(config);
+    const info = await transport.sendMail(mensaje);
+    console.log(info);
+}
+
+enviarMail();
+// NodeMailer
+*/
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));

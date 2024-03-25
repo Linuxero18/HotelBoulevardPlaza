@@ -50,7 +50,7 @@ header {
 
 .navbar-nav .nav-link {
     font-size: 16px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 /* Estilos del carrusel */
@@ -65,13 +65,12 @@ header {
 
 .carousel-content {
     position: absolute;
-    border-radius: 10px;
     padding: 20px;
-    top: 65%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo transparente oscuro */
+    background-color: rgba(0, 0, 0, 0.514); /* Fondo transparente oscuro */
 }
 
 .carousel-content h3 {
@@ -231,7 +230,7 @@ header {
     color: #cccccc; /* Light Gray */
 }
 
-.contact .form-control {
+.contact .form-control, .reserva .form-control{
     padding: 20px;
     margin-bottom: 20px;
     border: 2px solid #1a1a1a; /* Dark Gray */
@@ -255,7 +254,7 @@ header {
 }
 
 
-.contact-form-container {
+.contact-form-container,.formulario-huesped{
     background-color: #1a1a1a; /* Dark Gray */
     padding: 50px;
     border-radius: 12px;
@@ -285,7 +284,7 @@ header {
 
 
 /* Estilos responsivos */
-@media (max-width: 767px) {
+@media (max-width: 765px) {
     body{
         margin-top: 0px;
     }
@@ -306,7 +305,7 @@ header {
 
     .navbar-nav .nav-link {
         font-size: 15px;
-        margin-right: 8px;
+        margin-right: 5px;
     }
 
     .form-section{
@@ -400,11 +399,13 @@ header {
     /* Estilos del carrusel en dispositivos móviles */
     .carousel-content {
         padding: 5px;
+        top: 60%;
+        left: 50%;
     }
 
     .carousel-content h3 {
         font-size: 1rem;
-        margin-bottom: 6px;
+        margin-bottom: 10px;
     }
 
     .carousel-content p {
@@ -444,7 +445,6 @@ header {
 .text-habitaciones{
     background-color: #48a04b4d;
     padding: 40px 0px 10px 0px;
-
 }
 
 .titulo-busqueda{
@@ -459,8 +459,8 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Corregido */
-    padding: 20px;
-    margin: 20px 0;
+    padding: 15px;
+    margin: 15px 0;
     background-color: #161815;
     color: white; /* Corregido */
 }
@@ -474,7 +474,7 @@ header {
     color: #fff;
     background-color: #4d4d4d44;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
     display: none; /* Ajustado */
     flex-direction: column; /* Ajustado */
 }
@@ -524,7 +524,7 @@ header {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 16px;
 }
 
 .reservation-button {
@@ -534,8 +534,4 @@ header {
 .disabled {
     pointer-events: none;
     color: gray;
-}
-
-.contenedor-huesped{
-    background-color: #4d4d4d44;
 }
