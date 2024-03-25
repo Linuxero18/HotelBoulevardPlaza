@@ -1,3 +1,9 @@
+
+
+const mp = new MercadoPago('TEST-fcffc950-c8de-44ee-ac56-94e0b28f39d6', { locale: 'es-PE' });
+
+
+
 function manejarCampos() {
     let opcion1Checked = document.getElementById("busquedaDocumento").checked;
     document.getElementById("codigoReservaBusqueda").disabled = opcion1Checked;
@@ -46,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     //Este metodo maneja si los campos del formulario estan habilitados o no
-    
+
 
     //Agregar el evento click al boton
     botonBuscar.addEventListener('click', function (event) {
@@ -64,21 +70,22 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(datos)
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if (data.length === 0) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'No se encontraron datos!',
-                });
-            } else {
-                mostrarDatos(data);
-                mostrarSeccion();
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.length === 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No se encontraron datos!',
+                    });
+                } else {
+                    mostrarDatos(data);
+                    pagarReserva();
+                    mostrarSeccion();
+                }
+            })
+            .catch(error => console.error('Error:', error));
     });
 
 
@@ -92,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //Radio buttons
         let busquedaDocumento = document.getElementById('busquedaDocumento').checked;
         let busquedaCodigo = document.getElementById('busquedaCodigo').checked;
-        
+
         //Revisar si la busqueda es por documento o por codigo y validar de acuerdo a eso
         if (busquedaDocumento) {
             if (tipoDeDocumento === "" || numeroDeDocumento === "" || apellidos === "") {
@@ -104,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 return;
             }
-            if ((tipoDeDocumento=="DNI" && (numeroDeDocumento.length < 8 || numeroDeDocumento.length  > 9)) || (tipoDeDocumento=="CE" && (numeroDeDocumento.length < 9 || numeroDeDocumento.length  > 9)) || (tipoDeDocumento=="PASAPORTE" && (numeroDeDocumento.length < 8 || numeroDeDocumento.length  > 8))){
+            if ((tipoDeDocumento == "DNI" && (numeroDeDocumento.length < 8 || numeroDeDocumento.length > 9)) || (tipoDeDocumento == "CE" && (numeroDeDocumento.length < 9 || numeroDeDocumento.length > 9)) || (tipoDeDocumento == "PASAPORTE" && (numeroDeDocumento.length < 8 || numeroDeDocumento.length > 8))) {
                 Swal.fire({
                     icon: "error",
                     title: "Alerta!",
@@ -113,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 return;
             }
-            if(validator.isNumeric(numeroDeDocumento) == false){
+            if (validator.isNumeric(numeroDeDocumento) == false) {
                 Swal.fire({
                     icon: "error",
                     title: "Alerta!",
@@ -122,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 return;
             }
-            if(validator.isAlpha(apellidos,'es-ES',{ignore:' '}) == false ){
+            if (validator.isAlpha(apellidos, 'es-ES', { ignore: ' ' }) == false) {
                 Swal.fire({
                     icon: "error",
                     title: "Alerta!",
@@ -142,10 +149,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 return;
             }
-    
-            
-            
-            if(numeroReserva.length < 6 || numeroReserva.length > 6){
+
+
+
+            if (numeroReserva.length < 6 || numeroReserva.length > 6) {
                 Swal.fire({
                     icon: "error",
                     title: "Alerta!",
@@ -156,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        
+
         //Aqui estoy enviando nulos los parametros si es que los campos estan vacios
         tipoDeDocumento = tipoDeDocumento === "" ? null : tipoDeDocumento;
         numeroDeDocumento = numeroDeDocumento === "" ? null : numeroDeDocumento;
@@ -218,4 +225,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
 });
+
+async function pagarReserva() {
+    try {
+        let titulo = 'Reserva: ' + document.getElementById('reservaCodResultado').innerHTML;
+        const reserva = {
+            title: titulo,
+            quantity: 1,
+            price: document.getElementById('reservaCostoResultado').innerHTML,
+            codigo: document.getElementById('reservaCodResultado').innerHTML
+        };
+
+        const response = await fetch('/create_preference', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reserva)
+        });
+
+        const preference = await response.json();
+
+        crearBotonCheckout(preference.id);
+    }
+    catch (error) {
+        console.log(error);
+    }
+
+};
+
+function crearBotonCheckout(preferenceId) {
+    const bricksBuilder = mp.bricks();
+
+    const renderComponent = async () => {
+        if (window.checkoutButton) window.checkoutButton.unmount();
+
+        bricksBuilder.create("wallet", "wallet_container", {
+            initialization: {
+                preferenceId: preferenceId,
+            },
+            customization: {
+                visual: {
+                    buttonBackground: 'Green',
+                    borderRadius: '16px'
+                }
+            }
+        });
+    };
+
+    renderComponent();
+}

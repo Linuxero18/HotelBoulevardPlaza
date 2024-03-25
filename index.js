@@ -1,14 +1,17 @@
 //Autor: Robert Diaz
 //Este es el documento del servidor, el cual se encarga de manejar las peticiones del cliente y realizar las consultas a la base de datos
-
-let express = require('express');
-let db = require('./bd.js');
+const cors = require('cors');
+const express = require('express');
+const db = require('./bd.js');
 const getConnection = require('./bd.js');
-let app = express();
+const app = express();
+const mercadopago = require('mercadopago');
+const cliente = new mercadopago.MercadoPagoConfig({ accessToken: 'TEST-8326400819798321-032509-75a585ac077cff1e7a9d0cb7fff75062-1053050103' });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(cors());
 
 
 //Este metodo maneja la funcionalidad del login
@@ -147,9 +150,9 @@ app.get('/habitaciones', (req, res) => {
 
     // Convertir fechas a objetos Date
     fechaEntrada = new Date(fechaEntrada);
-    console.log(fechaEntrada.toISOString().slice(0,10));
+    console.log(fechaEntrada.toISOString().slice(0, 10));
     fechaSalida = new Date(fechaSalida);
-    console.log(fechaSalida.toISOString().slice(0,10));
+    console.log(fechaSalida.toISOString().slice(0, 10));
 
     // Buscar habitaciones que coincidan con los criterios
     let query = `
@@ -333,6 +336,37 @@ app.post('/buscarreserva', (req, res) => {
     });
 });
 
+//Este metodo manejo los pagos con mercadopago
+app.post('/create_preference', async (req, res) => {
+    try {
+        const body = {
+            items: [
+                {
+                    title: req.body.title,
+                    quantity: Number(req.body.quantity),
+                    unit_price: parseInt(req.body.price),
+                    currency_id: 'PEN'
+                }
+            ],
+            back_urls: {
+                success: 'https://austonetire.com.ec/pago-realizado-exitosamente/',
+                failure: 'http://localhost:3000/home',
+                pending: 'http://localhost:3000/home'
+            },
+            auto_return: 'approved',
+        };
+
+        
+
+        const preference = new mercadopago.Preference(cliente);
+        const result = await preference.create({body});
+
+        res.json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Error al crear la preferencia de pago' });
+    }
+});
 
 
 //Este metodo carga la pagina principal
