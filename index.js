@@ -8,34 +8,50 @@ const app = express();
 const mercadopago = require('mercadopago');
 const cliente = new mercadopago.MercadoPagoConfig({ accessToken: 'TEST-8326400819798321-032509-75a585ac077cff1e7a9d0cb7fff75062-1053050103' });
 
-/* NodeMailer
 const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
 
-enviarMail = async () => {
-    
-    const config={
-        host: 'smtp.gmail.com',
-        port: '587',
-        auth: {
-            user: 'boulevardplazap@gmail.com',
-            pass: 'drkh pyua yazb wryr'
-        }
-    }
-
-    const mensaje={
-        from: 'boulevardplazap@gmail.com',
-        to: 'boulevardplazap@gmail.com', //correo de destino
-        subjet : 'Correo de Pruebas',
-        text: 'Envio de correo desde nodejs utilizando NodeMailer'
-    }
-    const transport = nodemailer.createTransport(config);
-    const info = await transport.sendMail(mensaje);
-    console.log(info);
-}
-
-enviarMail();
 // NodeMailer
-*/
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+
+// Ruta para manejar el envío del formulario de contacto
+app.post('/enviar-correo', (req, res) => {
+    const { nombre, email, mensaje } = req.body;
+
+    // Configurar el transporte de correo
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'boulevardplazap@gmail.com', // Reemplaza con tu dirección de correo
+            pass: 'ffqv nwuf ymwv uxro' // Reemplaza con tu contraseña
+        }
+    });
+
+    // Configurar el mensaje de correo
+    const mailOptions = {
+        from: 'boulevardplazap@gmail.com', // Reemplaza con tu dirección de correo
+        to: email, // Reemplaza con la dirección de correo del destinatario
+        subject: 'Mensaje de contacto desde el sitio web',
+        text: `Nombre: ${nombre}\nCorreo electrónico: ${email}\nMensaje: ${mensaje}`
+    };
+
+    // Enviar el correo
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error al enviar el correo:', error);
+            res.status(500).json({ error: 'Error al enviar el correo electrónico' });
+        } else {
+            console.log('Correo enviado:', info.response);
+            res.json({ mensaje: 'Correo electrónico enviado correctamente' });
+        }
+    });
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,3 +1,47 @@
+// NodeMailer
+
+document.getElementById('contactoForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const nombre = formData.get('nombre');
+    const email = formData.get('email');
+    const mensaje = formData.get('mensaje');
+
+    try {
+        const response = await fetch('/enviar-correo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre, email, mensaje })
+        });
+        const data = await response.json();
+
+        Swal.fire({
+            icon: 'success',
+            title: '¡Gracias por contactarnos!',
+            text: 'Te responderemos pronto.',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ok'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/';
+            }
+        });
+    } catch (error) {
+        console.error('Error al enviar el formulario de contacto:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al enviar el formulario. Por favor, intenta nuevamente más tarde.'
+        });
+    }
+});
+
+// Fin NodeMailer
+
+
 $(document).ready(function () {
     // Restricciones de fechas al cargar la página
     let fechaActual = obtenerFechaActual();
