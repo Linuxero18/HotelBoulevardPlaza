@@ -8,10 +8,10 @@ const app = express();
 const mercadopago = require('mercadopago');
 const cliente = new mercadopago.MercadoPagoConfig({ accessToken: 'TEST-8326400819798321-032509-75a585ac077cff1e7a9d0cb7fff75062-1053050103' });
 
+// NodeMailer
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 
-// NodeMailer
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,17 +28,35 @@ app.post('/enviar-correo', (req, res) => {
         port: 587,
         secure: false,
         auth: {
-            user: 'boulevardplazap@gmail.com', // Reemplaza con tu dirección de correo
-            pass: 'ffqv nwuf ymwv uxro' // Reemplaza con tu contraseña
+            user: 'boulevardplazap@gmail.com', //dirección de correo
+            pass: 'ffqv nwuf ymwv uxro' //tu contraseña
         }
     });
 
     // Configurar el mensaje de correo
     const mailOptions = {
-        from: 'boulevardplazap@gmail.com', // Reemplaza con tu dirección de correo
-        to: email, // Reemplaza con la dirección de correo del destinatario
+        from: 'boulevardplazap@gmail.com', //dirección de correo
+        to: email, //dirección de correo del destinatario
         subject: 'Mensaje de contacto desde el sitio web',
-        text: `Nombre: ${nombre}\nCorreo electrónico: ${email}\nMensaje: ${mensaje}`
+        html:
+        `
+        <div style="font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 20px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #dddddd; background-color: #ffffff;"><strong>¡Hola, ${nombre}!</strong></td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #dddddd; background-color: #ffffff;">
+                        <p><b>Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos a la brevedad posible.<b></p>
+                        <p><b>Este es el mensaje que nos enviaste:<b></p>
+                        <blockquote>${mensaje}</blockquote>
+                        <p><b>Saludos cordiales,<b></p>
+                        <p><b>El equipo de Boulevard Plaza<b></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    `
     };
 
     // Enviar el correo
