@@ -368,6 +368,7 @@ app.post('/buscarreserva', (req, res) => {
 //Este metodo manejo los pagos con mercadopago
 app.post('/create_preference', async (req, res) => {
     try {
+        const id_reserva = req.body.codigo
         const body = {
             items: [
                 {
@@ -378,17 +379,28 @@ app.post('/create_preference', async (req, res) => {
                 }
             ],
             back_urls: {
-                success: 'https://austonetire.com.ec/pago-realizado-exitosamente/',
+                success: 'http://localhost:3000/home',
                 failure: 'http://localhost:3000/home',
                 pending: 'http://localhost:3000/home'
             },
-            auto_return: 'approved',
+            //auto_return: 'approved',
         };
 
         
 
         const preference = new mercadopago.Preference(cliente);
         const result = await preference.create({body});
+
+        if (result){
+            let query = `UPDATE reserva SET estado = 3 WHERE codigo_reserva = ?`;
+            db.query(query, [id_reserva], (err, result) => {
+                if (err) {
+                    console.error('Error al actualizar el estado de la reserva:', err);
+                    res.status(500).json({ error: 'Error al actualizar el estado de la reserva' });
+                    return;
+                }
+            });
+        }
 
         res.json({ id: result.id });
     } catch (error) {

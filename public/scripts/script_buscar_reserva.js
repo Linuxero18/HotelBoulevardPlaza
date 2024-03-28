@@ -2,6 +2,7 @@
 
 const mp = new MercadoPago('TEST-fcffc950-c8de-44ee-ac56-94e0b28f39d6', { locale: 'es-PE' });
 
+let reservaEstadoFinal = 0;
 
 
 function manejarCampos() {
@@ -81,7 +82,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
                 } else {
                     mostrarDatos(data);
-                    pagarReserva();
+                    console.log(reservaEstadoFinal);
+                    if (reservaEstadoFinal == 3 || reservaEstadoFinal == 2) {
+                        console.log('No se puede pagar');
+                    }
+                    else{
+                        pagarReserva();
+                    }
                     mostrarSeccion();
                 }
             })
@@ -214,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('fechaOutResultado').innerHTML = formatearFecha(fechaDeLaSalida);
         document.getElementById('reservaCostoResultado').innerHTML = costoTotal + ' S/.';
         document.getElementById('estadoResultado').innerHTML = estadosReserva[estadoDeLaReserva];
+        reservaEstadoFinal = estadoDeLaReserva;
 
     }
 
