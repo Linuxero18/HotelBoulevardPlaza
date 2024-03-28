@@ -413,10 +413,11 @@ app.post('/create_preference', async (req, res) => {
                 }
             ],
             back_urls: {
-                success: 'http://localhost:3000/home',
+                success: 'http://localhost:3000/pagoExitoso',
                 failure: 'http://localhost:3000/home',
                 pending: 'http://localhost:3000/home'
             },
+            external_reference: id_reserva,
             //auto_return: 'approved',
         };
 
@@ -425,16 +426,17 @@ app.post('/create_preference', async (req, res) => {
         const preference = new mercadopago.Preference(cliente);
         const result = await preference.create({body});
 
-        if (result){
-            let query = `UPDATE reserva SET estado = 3 WHERE codigo_reserva = ?`;
-            db.query(query, [id_reserva], (err, result) => {
-                if (err) {
-                    console.error('Error al actualizar el estado de la reserva:', err);
-                    res.status(500).json({ error: 'Error al actualizar el estado de la reserva' });
-                    return;
-                }
-            });
-        }
+        // console.log(result);
+        // if (result.status === 'approved'){
+        //     let query = `UPDATE reserva SET estado = 3 WHERE codigo_reserva = ?`;
+        //     db.query(query, [id_reserva], (err, result) => {
+        //         if (err) {
+        //             console.error('Error al actualizar el estado de la reserva:', err);
+        //             res.status(500).json({ error: 'Error al actualizar el estado de la reserva' });
+        //             return;
+        //         }
+        //     });
+        // }
 
         res.json({ id: result.id });
     } catch (error) {
@@ -444,6 +446,26 @@ app.post('/create_preference', async (req, res) => {
 });
 
 
+//Aqui se maneja la pag de pago exitoso
+
+app.get('/pagoExitoso', async (req, res) => {
+    const paymentStatus = req.query.status;
+    const externalReference = req.query.external_reference;
+
+    if (paymentStatus === 'approved') {
+        let query = `UPDATE reserva SET estado = 3 WHERE codigo_reserva = ?`;
+        db.query(query, [externalReference], (err, result) => {
+            if (err) {
+                console.error('Error al actualizar el estado de la reserva:', err);
+                res.status(500).json({ error: 'Error al actualizar el estado de la reserva' });
+                return;
+            }
+        });
+    }
+
+    // Aquí puedes redirigir al usuario a la página que desees o mostrar un mensaje
+    res.redirect('/home');
+});
 //Este metodo carga la pagina principal
 app.get('/home', function (peticion, respuesta) {
     respuesta.sendFile(__dirname + '/public/index.html');
