@@ -8,34 +8,68 @@ const app = express();
 const mercadopago = require('mercadopago');
 const cliente = new mercadopago.MercadoPagoConfig({ accessToken: 'TEST-8326400819798321-032509-75a585ac077cff1e7a9d0cb7fff75062-1053050103' });
 
-/* NodeMailer
-const nodemailer = require('nodemailer');
-
-enviarMail = async () => {
-    
-    const config={
-        host: 'smtp.gmail.com',
-        port: '587',
-        auth: {
-            user: 'boulevardplazap@gmail.com',
-            pass: 'drkh pyua yazb wryr'
-        }
-    }
-
-    const mensaje={
-        from: 'boulevardplazap@gmail.com',
-        to: 'boulevardplazap@gmail.com', //correo de destino
-        subjet : 'Correo de Pruebas',
-        text: 'Envio de correo desde nodejs utilizando NodeMailer'
-    }
-    const transport = nodemailer.createTransport(config);
-    const info = await transport.sendMail(mensaje);
-    console.log(info);
-}
-
-enviarMail();
 // NodeMailer
-*/
+const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+
+// Ruta para manejar el envío del formulario de contacto
+app.post('/enviar-correo', (req, res) => {
+    const { nombre, email, mensaje } = req.body;
+
+    // Configurar el transporte de correo
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'boulevardplazap@gmail.com', //dirección de correo
+            pass: 'ffqv nwuf ymwv uxro' //tu contraseña
+        }
+    });
+
+    // Configurar el mensaje de correo
+    const mailOptions = {
+        from: 'boulevardplazap@gmail.com', //dirección de correo
+        to: email, //dirección de correo del destinatario
+        subject: 'Mensaje de contacto desde el sitio web',
+        html:
+        `
+        <div style="font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 20px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #dddddd; background-color: #ffffff;"><strong>¡Hola, ${nombre}!</strong></td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #dddddd; background-color: #ffffff;">
+                        <p><b>Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos a la brevedad posible.<b></p>
+                        <p><b>Este es el mensaje que nos enviaste:<b></p>
+                        <blockquote>${mensaje}</blockquote>
+                        <p><b>Saludos cordiales,<b></p>
+                        <p><b>El equipo de Boulevard Plaza<b></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    `
+    };
+
+    // Enviar el correo
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error al enviar el correo:', error);
+            res.status(500).json({ error: 'Error al enviar el correo electrónico' });
+        } else {
+            console.log('Correo enviado:', info.response);
+            res.json({ mensaje: 'Correo electrónico enviado correctamente' });
+        }
+    });
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
