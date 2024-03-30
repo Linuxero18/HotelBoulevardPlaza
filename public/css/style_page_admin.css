@@ -51,7 +51,7 @@
 body{
     height: 100vh;
     width: 100%;
-    background-color: darkcyan;
+    background-color: rgb(62, 214, 79);
 }
 
 /*-----------------Menu*/
@@ -294,8 +294,6 @@ main{
 main.min-main{
     margin-left: 80px;
 }
-
-
 
 /*------------------> Responsive*/
 @media (max-height: 660px){

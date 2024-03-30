@@ -1,4 +1,3 @@
-
 const cloud = document.getElementById("bed");
 const barraLateral = document.querySelector(".barra-lateral");
 const spans = document.querySelectorAll("span");
@@ -30,6 +29,26 @@ palanca.addEventListener("click",()=>{
     let body = document.body;
     body.classList.toggle("dark-mode");
     circulo.classList.toggle("prendido");
+
+    // Guardar el estado del modo oscuro en LocalStorage
+    if(body.classList.contains("dark-mode")) {
+        localStorage.setItem('modo-oscuro', 'true');
+    } else {
+        localStorage.setItem('modo-oscuro', 'false');
+    }
+});
+
+// Al cargar la página, comprobar el estado del modo oscuro en LocalStorage
+document.addEventListener("DOMContentLoaded", (event) => {
+    let modoOscuro = localStorage.getItem('modo-oscuro');
+    let body = document.body;
+    if(modoOscuro === 'true') {
+        body.classList.add("dark-mode");
+        circulo.classList.add("prendido");
+    } else {
+        body.classList.remove("dark-mode");
+        circulo.classList.remove("prendido");
+    }
 });
 
 cloud.addEventListener("click",()=>{
@@ -39,3 +58,4 @@ cloud.addEventListener("click",()=>{
         span.classList.toggle("oculto");
     });
 });
+
