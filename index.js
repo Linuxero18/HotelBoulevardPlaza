@@ -336,8 +336,10 @@ app.post('/registrarpersonacliente', (req, res) => {
 });
 
 //Este metodo registra las reservas
+
 app.post('/registrarreserva', (req, res) => {
-    let { codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado } = req.body;
+    let { codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado, correo } = req.body;
+    console.log(req.body);
     let queryReserva = `
         INSERT INTO reserva (codigo_reserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -363,6 +365,39 @@ app.post('/registrarreserva', (req, res) => {
                 res.status(500).json({ error: 'Error al actualizar el estado de la habitación' });
                 return;
             }
+
+            // Configura el transportador de Nodemailer
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'boulevardplazap@gmail.com',
+                    pass: 'ffqv nwuf ymwv uxro'
+                }
+            });
+
+            // Configura el correo electrónico
+            let mailOptions = {
+                from: 'boulevardplazap@gmail.com',
+                to: correo,
+                subject: 'Confirmación de reserva',
+                text: `Hola, tu reserva con el código ${codigoReserva} ha sido registrada con éxito. Recuerda que puedes pagar tu reserva en línea a traves del siguiente link: http://localhost:3000/buscar_reserva.html. ¡Gracias por elegirnos!.
+
+                       Te recordamos nuestros datos de contacto:
+                        Teléfono: 987654321
+                        Correo:
+
+                          ¡Te esperamos!
+                `
+            };
+
+            // Envía el correo electrónico
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    console.error('Error al enviar el correo electrónico:', err);
+                } else {
+                    console.log('Correo electrónico enviado:', info.response);
+                }
+            });
 
             res.json({ status: 'success', idReserva: result.insertId });
         });

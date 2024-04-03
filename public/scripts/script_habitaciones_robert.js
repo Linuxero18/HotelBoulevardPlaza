@@ -463,7 +463,7 @@ botonContinuarReserva.addEventListener('click', async function (event) {
                                 for (let controladorPersona = 0; controladorPersona < idPersonas.length && !errorOcurrido; controladorPersona++) {
                                     await registrarPersonaComoCliente(idPersonas[controladorPersona], errorOcurrido, idClientes);
                                     for (let controladorHabitacion = 0; controladorHabitacion < idHabitaciones.length && !errorOcurrido; controladorHabitacion++) {
-                                        await registrarReserva(idClientes[controladorPersona], idHabitaciones[controladorHabitacion], codigoReserva, errorOcurrido);
+                                        await registrarReserva(idClientes[controladorPersona], idHabitaciones[controladorHabitacion], codigoReserva, errorOcurrido, correo);
                                     }
                                 }
                                 console.log("Me sali del while");
@@ -518,7 +518,7 @@ async function registrarPersonaComoCliente(idPersona, errorOcurrido) {
     }
 }
 
-async function registrarReserva(idCliente, idHabitacion, codigoReserva, errorOcurrido) {
+async function registrarReserva(idCliente, idHabitacion, codigoReserva, errorOcurrido, correo) {
 
     
 
@@ -543,7 +543,8 @@ async function registrarReserva(idCliente, idHabitacion, codigoReserva, errorOcu
                 fecha_out: fecha_out,
                 costo_total: costoTotalConIGV,
                 observacion: observacion,
-                estado: estado
+                estado: estado,
+                correo: correo
             })
         });
 
