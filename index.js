@@ -380,15 +380,29 @@ app.post('/registrarreserva', (req, res) => {
                 from: 'boulevardplazap@gmail.com',
                 to: correo,
                 subject: 'Confirmación de reserva',
-                text: `Hola, tu reserva con el código ${codigoReserva} ha sido registrada con éxito. Recuerda que puedes pagar tu reserva en línea a traves del siguiente link: http://localhost:3000/buscar_reserva.html. ¡Gracias por elegirnos!.
-
-                       Te recordamos nuestros datos de contacto:
-                        Teléfono: 987654321
-                        Correo:
-
-                          ¡Te esperamos!
-                `
-            };
+                html: `
+                <div style="font-family: Arial, sans-serif; color: #444; max-width: 600px; margin: 0 auto;">
+                    <div style="background-color: #f4f4f4; padding: 20px;">
+                        <h2 style="color: #007bff; margin-bottom: 10px;">¡Confirmación de reserva!</h2>
+                        <p>Estimado/a cliente,</p>
+                        <p>Su reserva con el código <strong>${codigoReserva}</strong> ha sido registrada con éxito.</p>
+                        <p>Le recordamos que puede pagar su reserva en línea a través del siguiente <a href="http://localhost:3000/buscar_reserva.html" style="color: #007bff; text-decoration: none;">enlace</a>.</p>
+                        <p>¡Gracias por elegirnos!</p>
+                    </div>
+        
+                    <div style="margin-top: 20px; padding: 20px; border-top: 2px solid #007bff;">
+                        <p>Atentamente,</p>
+                        <p><b><El equipo de Boulevard Plaza</b></p>
+                    </div>
+        
+                    <div style="margin-top: 20px; background-color: #f4f4f4; padding: 20px;">
+                        <p style="margin-bottom: 5px;"><strong>Contacto:</strong></p>
+                        <p><strong>Teléfono:</strong> 987654321</p>
+                        <p><strong>Correo electrónico:</strong> boulevardplazap@gmail.com</p>
+                    </div>
+                </div>
+            `
+        };
 
             // Envía el correo electrónico
             transporter.sendMail(mailOptions, (err, info) => {
