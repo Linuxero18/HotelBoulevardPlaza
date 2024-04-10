@@ -337,8 +337,10 @@ app.post('/registrarpersonacliente', (req, res) => {
 });
 
 //Este metodo registra las reservas
+
 app.post('/registrarreserva', (req, res) => {
-    let { codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado } = req.body;
+    let { codigoReserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado, correo } = req.body;
+    console.log(req.body);
     let queryReserva = `
         INSERT INTO reserva (codigo_reserva, idHabitacion, idCliente, fecha_reserva, fecha_in, fecha_out, costo_total, observacion, estado)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -364,6 +366,53 @@ app.post('/registrarreserva', (req, res) => {
                 res.status(500).json({ error: 'Error al actualizar el estado de la habitación' });
                 return;
             }
+
+            // Configura el transportador de Nodemailer
+            let transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'boulevardplazap@gmail.com',
+                    pass: 'ffqv nwuf ymwv uxro'
+                }
+            });
+
+            // Configura el correo electrónico
+            let mailOptions = {
+                from: 'boulevardplazap@gmail.com',
+                to: correo,
+                subject: 'Confirmación de reserva',
+                html: `
+                <div style="font-family: Arial, sans-serif; color: #444; max-width: 600px; margin: 0 auto;">
+                    <div style="background-color: #f4f4f4; padding: 20px;">
+                        <h2 style="color: #007bff; margin-bottom: 10px;">¡Confirmación de reserva!</h2>
+                        <p>Estimado/a cliente,</p>
+                        <p>Su reserva con el código <strong>${codigoReserva}</strong> ha sido registrada con éxito.</p>
+                        <p>Le recordamos que puede pagar su reserva en línea a través del siguiente <a href="http://localhost:3000/buscar_reserva.html" style="color: #007bff; text-decoration: none;">enlace</a>.</p>
+                        <p>¡Gracias por elegirnos!</p>
+                    </div>
+        
+                    <div style="margin-top: 20px; padding: 20px; border-top: 2px solid #007bff;">
+                        <p>Atentamente,</p>
+                        <p><b><El equipo de Boulevard Plaza</b></p>
+                    </div>
+        
+                    <div style="margin-top: 20px; background-color: #f4f4f4; padding: 20px;">
+                        <p style="margin-bottom: 5px;"><strong>Contacto:</strong></p>
+                        <p><strong>Teléfono:</strong> 987654321</p>
+                        <p><strong>Correo electrónico:</strong> boulevardplazap@gmail.com</p>
+                    </div>
+                </div>
+            `
+        };
+
+            // Envía el correo electrónico
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    console.error('Error al enviar el correo electrónico:', err);
+                } else {
+                    console.log('Correo electrónico enviado:', info.response);
+                }
+            });
 
             res.json({ status: 'success', idReserva: result.insertId });
         });
