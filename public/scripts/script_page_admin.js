@@ -1,3 +1,26 @@
+const ejs = require('ejs');
+const path = require('path');
+
+
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/home_admin', (req, res) => {
+    const query = 'SELECT idPersona, nombres, apellidos, tipo_doc, numero_doc, fecha_nacimiento, direccion, telefono, correo FROM persona';
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los usuarios:', err);
+            res.status(500).send('Error al obtener los usuarios');
+            return;
+        }
+
+        res.render('page_admin', { users: results });
+    });
+});
+
+
+
 const cloud = document.getElementById("bed");
 const barraLateral = document.querySelector(".barra-lateral");
 const spans = document.querySelectorAll("span");
@@ -58,4 +81,3 @@ cloud.addEventListener("click",()=>{
         span.classList.toggle("oculto");
     });
 });
-

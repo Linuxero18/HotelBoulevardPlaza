@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina de Administrador</title>
     <link rel="stylesheet" href="../css/style_page_admin.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
     <div class="menu">
@@ -47,7 +72,7 @@
             </ul>
             <ul>
                 <li>
-                    <a id="inbox" href="./clientes_admin.html">
+                    <a id="inbox" href="./clientes_admin.ejs">
                         <ion-icon name="accessibility-outline"></ion-icon>
                         <span>Clientes</span>
                     </a>
@@ -72,7 +97,7 @@
             </div>
     
             <div class="usuario">
-                <img src="/public/img/usuario_admin.png" alt="">
+                <img src="../img/usuario_admin.png" alt="">
                 <div class="info-usuario">
                     <div class="nombre-email">
                         <span class="nombre">Piter</span>
@@ -84,22 +109,50 @@
         </div>
 
     </div>
-
-
     <main>
-        <h1>Contenido</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
+        <div class="container">
+            <h2>Lista de Usuarios</h2>
+        </div>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Tipo de Documento</th>
+                    <th>Número de Documento</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(function(user) { %>
+                    <tr>
+                        <td><%= user.idPersona %></td>
+                        <td><%= user.nombres %></td>
+                        <td><%= user.apellidos %></td>
+                        <td><%= user.tipo_doc %></td>
+                        <td><%= user.numero_doc %></td>
+                        <td><%= user.fecha_nacimiento %></td>
+                        <td><%= user.direccion %></td>
+                        <td><%= user.telefono %></td>
+                        <td><%= user.correo %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
     </main>
-
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../scripts/script_page_admin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#userTable').DataTable();
+    });
+    </script>
 </body>
 </html>

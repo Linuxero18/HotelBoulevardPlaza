@@ -1,4 +1,6 @@
-let mysql = require('mysql');
+const mysql = require('mysql');
+const express = require('express');
+const app = express();
 
 let con = mysql.createConnection({
     host: "localhost",
@@ -13,5 +15,6 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("Tamos ready!");
 });
+
 
 module.exports = con;

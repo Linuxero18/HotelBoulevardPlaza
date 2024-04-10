@@ -5,6 +5,7 @@ const express = require('express');
 const db = require('./bd.js');
 const getConnection = require('./bd.js');
 const app = express();
+
 const mercadopago = require('mercadopago');
 const cliente = new mercadopago.MercadoPagoConfig({ accessToken: 'TEST-8326400819798321-032509-75a585ac077cff1e7a9d0cb7fff75062-1053050103' });
 
@@ -17,6 +18,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+
 
 // Ruta para manejar el envío del formulario de contacto
 app.post('/enviar-correo', (req, res) => {
@@ -93,7 +95,6 @@ app.post('/login', function (peticion, respuesta) {
         respuesta.end();
     });
 });
-
 
 //Este metodo maneja la funcionalidad de registrar un reclamo
 app.post('/registrarReclamo', function (peticion, respuesta) {
@@ -479,3 +480,4 @@ app.get('/home_admin', function (peticion, respuesta) {
 app.listen(3000, function (peticion, respuesta) {
     console.log('Pagina corriendo en el puerto: http://localhost:3000');
 });
+
