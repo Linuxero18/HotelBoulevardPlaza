@@ -516,6 +516,17 @@ app.get('/pagoExitoso', async (req, res) => {
     // Aquí puedes redirigir al usuario a la página que desees o mostrar un mensaje
     res.redirect('/home');
 });
+
+//Este metodo muestra los reclamos ingresados en la BD
+app.get('/reclamos', function (peticion, respuesta) {
+    db.query('SELECT * FROM libro_reclamos', function (error, resultado) {
+        if (error) {
+            throw error;
+        } else {
+            respuesta.send(resultado);
+        }
+    });
+});
 //Este metodo carga la pagina principal
 app.get('/home', function (peticion, respuesta) {
     respuesta.sendFile(__dirname + '/public/index.html');
