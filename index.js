@@ -518,8 +518,8 @@ app.get('/pagoExitoso', async (req, res) => {
 });
 
 //Este metodo muestra los reclamos ingresados en la BD
-app.get('/reclamos', function (peticion, respuesta) {
-    db.query('SELECT * FROM libro_reclamos', function (error, resultado) {
+app.get('/clientes', function (peticion, respuesta) {
+    db.query('SELECT * FROM persona', function (error, resultado) {
         if (error) {
             throw error;
         } else {
@@ -527,6 +527,8 @@ app.get('/reclamos', function (peticion, respuesta) {
         }
     });
 });
+
+
 //Este metodo carga la pagina principal
 app.get('/home', function (peticion, respuesta) {
     respuesta.sendFile(__dirname + '/public/index.html');
