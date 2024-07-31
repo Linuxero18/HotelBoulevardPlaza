@@ -517,9 +517,9 @@ app.get('/pagoExitoso', async (req, res) => {
     res.redirect('/home');
 });
 
-//Este metodo muestra los reclamos ingresados en la BD
+//Este metodo muestra los clientes ingresados en la BD
 app.get('/clientes', function (peticion, respuesta) {
-    db.query('SELECT * FROM persona', function (error, resultado) {
+    db.query('SELECT * FROM clientesbd', function (error, resultado) {
         if (error) {
             throw error;
         } else {
@@ -528,6 +528,73 @@ app.get('/clientes', function (peticion, respuesta) {
     });
 });
 
+app.get('/clientes/:id', function (req, res) { 
+    const id = req.params.id;
+    db.query('SELECT * FROM clientesbd WHERE idPersona = ?', [id], function (error, resultado) {
+        if (error) {
+            console.error('Error al obtener el cliente:', error);
+            res.status(500).send({ error: 'Error al obtener el cliente' });
+        } else {
+            res.json(resultado[0]);
+        }
+    });
+});
+
+//Este metodo muestra los clientes ingresados en la BD
+app.post('/clientes', function (peticion, respuesta) {
+    const { nombres, apellidos, tipo_doc, numero_doc, direccion, fecha_nacimiento, telefono, correo } = peticion.body;
+    if (!nombres || !apellidos || !tipo_doc || !numero_doc || !direccion || !fecha_nacimiento || !telefono || !correo) {
+        respuesta.status(400).send({ error: 'Todos los campos son obligatorios.' });
+        return;
+    }
+
+    const query = 'INSERT INTO clientesbd (nombres, apellidos, tipo_doc, numero_doc, fecha_nacimiento, direccion, telefono, correo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [nombres, apellidos, tipo_doc, numero_doc, fecha_nacimiento, direccion, telefono, correo];
+
+    db.query(query, values, function (error, resultado) {
+        if (error) {
+            console.error('Error al insertar el cliente:', error);
+            respuesta.status(500).send({ error: 'Error al insertar el cliente' });
+        } else {
+            respuesta.send({ status: 'success', message: 'Cliente agregado exitosamente.' });
+        }
+    });
+});
+
+app.put('/clientes/:id', function (req, res) {
+    const id = req.params.id;
+    const { nombres, apellidos, tipo_doc, numero_doc, direccion, fecha_nacimiento, telefono, correo } = req.body;
+
+    if (!nombres || !apellidos || !tipo_doc || !numero_doc || !direccion || !fecha_nacimiento || !telefono || !correo) {
+        return res.status(400).send({ error: 'Todos los campos son obligatorios.' });
+    }
+
+    const query = `UPDATE clientesbd SET nombres = ?, apellidos = ?, tipo_doc = ?, numero_doc = ?, fecha_nacimiento = ?, direccion = ?, telefono = ?, correo = ? WHERE idPersona = ?`;
+    const values = [nombres, apellidos, tipo_doc, numero_doc, fecha_nacimiento, direccion, telefono, correo, id];
+
+    db.query(query, values, function (error, resultado) {
+        if (error) {
+            console.error('Error al actualizar el cliente:', error);
+            res.status(500).send({ error: 'Error al actualizar el cliente' });
+        } else {
+            res.send({ status: 'success', message: 'Cliente actualizado exitosamente.' });
+        }
+    });
+});
+
+app.delete('/clientes/:id', function (req, res) {
+    const id = req.params.id;
+
+    const query = 'DELETE FROM clientesbd WHERE idPersona = ?';
+    db.query(query, [id], function (error, resultado) {
+        if (error) {
+            console.error('Error al eliminar el cliente:', error);
+            res.status(500).send({ error: 'Error al eliminar el cliente' });
+        } else {
+            res.send({ status: 'success', message: 'Cliente eliminado exitosamente.' });
+        }
+    });
+});
 
 //Este metodo carga la pagina principal
 app.get('/home', function (peticion, respuesta) {

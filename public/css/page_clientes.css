@@ -1,0 +1,77 @@
+.bg{
+    background-image: url('../img/home-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.titulo {
+    margin-bottom: 10px;
+}
+
+:root {
+    --radio: 8px;
+}
+
+#btnAgregar, #btnEliminar, #btnEditar {
+    margin-right: 4%;
+    margin-left: 4%;
+    margin-top: 0.8%;
+    margin-bottom: 0.8%;
+}
+
+table {
+    background-color: beige;
+}
+
+button {
+    background-color: black;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+button.active {
+    background-color: #252520;
+    border-color: darkgrey;
+    color: white;
+}
+
+button:hover {
+    background-color: #252520;
+    border-color: dimgrey;
+    color: white;
+}
+
+.buscador {
+    width: 65%;
+    margin: 0 auto;
+    height: auto;
+    text-align: center;
+    border: 2px solid red;
+}
+
+th:first-child, td:first-child {
+    border-top-left-radius: var(--radio);
+}
+th:last-child, td:last-child {
+    border-top-right-radius: var(--radio);
+}
+tr:last-child td:first-child {
+    border-bottom-left-radius: var(--radio);
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: var(--radio);
+}
+
+#mensaje {
+    font-size: 1rem;
+    width: 100%;
+    color: rgb(238, 191, 0);
+    margin-bottom: 15px;
+
+}
