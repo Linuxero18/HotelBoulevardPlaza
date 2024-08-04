@@ -596,6 +596,58 @@ app.delete('/clientes/:id', function (req, res) {
     });
 });
 
+
+//Este metodo muestra las habitaciones ingresadas en la BD
+app.get('/habitacionesdisponibles', function (peticion, respuesta) {
+    db.query('SELECT * FROM habitacion', function (error, resultado) {
+        if (error) {
+            throw error;
+        } else {
+            respuesta.send(resultado);
+        }
+    });
+});
+
+// Agregar habitación
+app.post('/agregarhabitacion', (req, res) => {
+    const { numero, piso, descripcion, precio_dia, tipo_habitacion, aforo, estado } = req.body;
+    const sql = `INSERT INTO habitacion (numero, piso, descripcion, precio_dia, tipo_habitacion, aforo, estado) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    db.query(sql, [numero, piso, descripcion, precio_dia, tipo_habitacion, aforo, estado], (err, result) => {
+        if (err) throw err;
+        console.log("Habitación agregada exitosamente");
+    });
+});
+
+// Eliminar habitación
+app.delete('/eliminarhabitacion/:id', (req, res) => {
+    const id = req.params.id;
+    const checkReservasSQL = `SELECT COUNT(*) as count FROM reserva WHERE idHabitacion = ?`;
+    db.query(checkReservasSQL, [id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Error al verificar reservas' });
+        }
+        
+        if (result[0].count > 0) {
+            // Hay reservas asociadas, no se puede eliminar
+            return res.status(400).json({ message: 'No se puede eliminar la habitación porque tiene reservas asociadas' });
+        }
+        
+        // No hay reservas, procede con la eliminación
+        const deleteSQL = `DELETE FROM habitacion WHERE idHabitacion = ?`;
+        db.query(deleteSQL, [id], (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ message: 'Error al eliminar la habitación' });
+            } else {
+                res.json({ message: 'Habitación eliminada exitosamente' });
+            }
+        });
+    });
+});
+
+
+
 //Este metodo carga la pagina principal
 app.get('/home', function (peticion, respuesta) {
     respuesta.sendFile(__dirname + '/public/index.html');

@@ -1,5 +1,5 @@
 .bg{
-    background-image: url('../img/home-2.jpg');
+    background-image: url('../img/home-1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -52,7 +52,7 @@ button:hover {
     margin: 0 auto;
     height: auto;
     text-align: center;
-    border: 2px solid red;
+    border: 2px solid rgb(255, 0, 0);
 }
 
 th:first-child, td:first-child {
@@ -71,7 +71,8 @@ tr:last-child td:last-child {
 #mensaje {
     font-size: 1rem;
     width: 100%;
-    color: rgb(238, 191, 0);
+    color: rgb(0, 0, 0);
     margin-bottom: 15px;
+    font-style: bold;
 
 }

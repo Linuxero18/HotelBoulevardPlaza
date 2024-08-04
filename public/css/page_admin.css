@@ -1,0 +1,12 @@
+.bg {
+    background-image: url('../img/home-3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.admin-card {
+    transition: transform 0.3s;
+}
+.admin-card:hover {
+    transform: translateY(-7px);
+}

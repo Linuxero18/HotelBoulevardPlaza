@@ -1,0 +1,35 @@
+.bg{
+    background-image: url('../img/home-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#btnAgregar, #btnEliminar{
+    margin-right: 4%;
+    margin-left: 4%;
+    margin-top: 0.8%;
+    margin-bottom: 0.8%;
+}
+
+table {
+    background-color: beige;
+}
+
+:root {
+    --radio: 8px;
+}
+
+th:first-child, td:first-child {
+    border-top-left-radius: var(--radio);
+}
+th:last-child, td:last-child {
+    border-top-right-radius: var(--radio);
+}
+tr:last-child td:first-child {
+    border-bottom-left-radius: var(--radio);
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: var(--radio);
+}

@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${i.correo}</td>
                     <td>${i.telefono}</td>
                     <td>${fechaConvertida}</td>
-                    <td><input type="radio" name="filaSeleccionada" value="${i.idPersona}"></td>
+                    <td><input type="radio" id="idSeleccionado" name="filaSeleccionada" value="${i.idPersona}"></td>
                 </tr>`;
             a++;
         });

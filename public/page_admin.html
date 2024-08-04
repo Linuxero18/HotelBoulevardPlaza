@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina de Administrador</title>
+    <title>Panel de Administrador - Hotel Boulevard Plaza</title>
+    <link rel="stylesheet" href="./css/page_admin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
-    <header>PAGINA DE ADMINISTRADOR</header>
-    <main>
-        <div>
+<body class="bg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+        <div class="container">
+            <a class="navbar-brand" href="./page_admin.html" style="color: rgb(0, 0, 0);" align="center">Hotel Boulevard Plaza - Admin</a>
+        </div>
+    </nav>
 
+    <main class="container my-5 ">
+        <h1 class="text-center mb-4">Panel de Administrador</h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="card admin-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Gestión de Clientes</h5>
+                        <p class="card-text">Administre la información de los clientes</p>
+                        <a href="./admin_html/page_clientes.html" class="btn btn-primary">Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card admin-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Gestión de Habitaciones</h5>
+                        <p class="card-text">Administre las habitaciones del hotel</p>
+                        <a href="./admin_html/page_habitaciones.html" class="btn btn-primary">Acceder</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
-    <footer>
-        <a href="./admin_html/page_clientes.html">gestionar clientes</a>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <p class="text-muted">&copy; 2024 Hotel Boulevard Plaza</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
